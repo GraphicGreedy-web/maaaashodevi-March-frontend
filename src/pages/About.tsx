@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Users, Award, Clock, MapPin, Heart, ArrowRight } from 'lucide-react';
-import PageTransition from '../components/PageTransition';
-import AnimatedCard from '../components/AnimatedCard';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Users, Award, Clock, MapPin, Heart, ArrowRight } from "lucide-react";
+import PageTransition from "../components/PageTransition";
+import AnimatedCard from "../components/AnimatedCard";
 
 const About: React.FC = () => {
   const fadeInUp = {
@@ -12,49 +12,33 @@ const About: React.FC = () => {
   };
   const teamMembers = [
     {
-      name: 'Neha Gupta',
-      position: 'Tour Operator',
+      name: "Neha Gupta",
+      position: "Tour Operator",
       image:
-        'https://media-hosting.imagekit.io//4390027224a24a12/photo_6226378170655948932_y.jpg?Expires=1836092040&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dNICFOmQaROgcFKtIiHlCWPfLjtaYkGX53wqxFfcoC0WWKPPp-YZxXe5rxoBXzrmdL9wa1Tc3vxsQH82DJWINBm54Lpdg9KPAbip2x3s2r07INakuVilfJEvAhWyeiFH1WwX~j~TmGqG2F~00eSIoeJ75JFL7871d-ubch7yIZr8VqnoTdKY70VPov3wAEKeJ3xtB7iR~9s4Ae4Y8TLFP5YiMAOhRwUZrTmDFNymS6jf9BDOOxMRhJVi0pZoRVvudo09PX~9IcTVRASHH9LK1aTjDgaeQ7htPQMDu4p1TSp6FN~NeclkpRtavpkflHLyh0Q6rhCx8MLXaetO5~VIow__',
+        "https://media-hosting.imagekit.io//4390027224a24a12/photo_6226378170655948932_y.jpg?Expires=1836092040&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dNICFOmQaROgcFKtIiHlCWPfLjtaYkGX53wqxFfcoC0WWKPPp-YZxXe5rxoBXzrmdL9wa1Tc3vxsQH82DJWINBm54Lpdg9KPAbip2x3s2r07INakuVilfJEvAhWyeiFH1WwX~j~TmGqG2F~00eSIoeJ75JFL7871d-ubch7yIZr8VqnoTdKY70VPov3wAEKeJ3xtB7iR~9s4Ae4Y8TLFP5YiMAOhRwUZrTmDFNymS6jf9BDOOxMRhJVi0pZoRVvudo09PX~9IcTVRASHH9LK1aTjDgaeQ7htPQMDu4p1TSp6FN~NeclkpRtavpkflHLyh0Q6rhCx8MLXaetO5~VIow__",
       bio: "Neha ensures that every pilgrim's needs are met with warmth and efficiency, from the first inquiry to post-tour follow-up.",
-    },
-    {
-      // name: 'Rahul Mehta',
-      // position: 'Tour Guide',
-      // image: 'https://images.unsplash.com/photo-1595436065982-e0884eb7c38b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      // bio: 'Rahul brings history to life with his deep knowledge of pilgrimage sites and engaging storytelling.',
     },
   ];
 
   const milestones = [
     {
-      year: '2014',
-      title: 'Foundation',
+      year: "2014",
+      title: "Foundation",
       description:
-        'Maaa Aasho Devi Dharma Yatra was established with a mission to provide authentic <b>spiritual experiences</b>.',
+        "Maaa Aasho Devi Dharma Yatra was established with a mission to provide authentic <b>spiritual experiences</b>.",
     },
     {
-      year: '2019',
-      title: 'Expansion',
+      year: "2019",
+      title: "Expansion",
       description:
-        'We embarked on a transformative journey to better serve pilgrims across <b>North India</b>.',
+        "We embarked on a transformative journey to better serve pilgrims across <b>North India</b>.",
     },
     {
-      year: '2024',
-      title: 'Expansion to South',
+      year: "2024",
+      title: "Expansion to South",
       description:
         '"Expanded to long-distance pilgrimages, serving devotees across <b>South India</b> with devotion.',
-      // },
-      // {
-      //   year: '2020',
-      //   title: 'Digital Transformation',
-      //   description: 'Launched online booking and virtual tour previews to enhance the customer experience.'
-      // },
-      // {
-      //   year: '2024',
-      //   title: 'Global Reach',
-      //   description: 'Expanded services to cater to the Indian diaspora worldwide, organizing group pilgrimages from overseas.'
-    },
+    }
   ];
 
   return (
@@ -253,7 +237,7 @@ const About: React.FC = () => {
                         className="text-primary mt-1 mr-2 flex-shrink-0"
                       />
                       <span>
-                        {' '}
+                        {" "}
                         <b>Comfort and Safety</b> From transportation to
                         accommodation, we prioritize safety, hygiene, and
                         convenience for all travelers, including the elderly.
@@ -420,7 +404,7 @@ const About: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className={`flex items-center ${
-                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     }`}
                   >
                     <div className="w-1/2 px-4"></div>
@@ -595,7 +579,7 @@ const About: React.FC = () => {
                     </svg>
                   </div>
                   <p className="text-gray-700 italic mb-4">
-                    "Felt like traveling with family! The team ensured a{' '}
+                    "Felt like traveling with family! The team ensured a{" "}
                     <b>smooth and comfortable journey</b> throughout."
                   </p>
                   <div className="flex items-center">
