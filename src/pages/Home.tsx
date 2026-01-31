@@ -21,41 +21,41 @@ const Home: React.FC = () => {
   const popularTour = allTour.filter((t)=>t.popular)
   console.log("popular: ", popularTour)
   console.log("home:", getToursHook());
-  const destinations = [
-    {
-      id: 1,
-      name: "Chardham Yatra",
-      image:
-        "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
-      description:
-        "Embark on a soul-enriching pilgrimage to Yamunotri, Gangotri, Kedarnath and Badrinath – the Char Dham of India..",
-      rating: 4.9,
-      duration: "13 Days",
-      link: "/destinations/varanasi",
-    },
-    {
-      id: 2,
-      name: "Dakshin Yatra",
-      image:
-        "https://media-hosting.imagekit.io//ea1a764230064c4b/Untitled%20design.png?Expires=1835983228&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=RAidSFv2qRF8br-SuPrVhRpYei8pJ3EKrwx7pCwWRgFByAdu0M8AJDJqIZGHvdFw4zvOxtmYZH9UhLRiYUjQfdKavLLP8tTJKhcehvZI2VC4S3wlaXUF2zMj-ADlMH2c1QVGOGuznONqzcr6q4rWe8z2Ay7JF2Y-LYK-iVza3j8hw-cezY~lvk03N7PUL4w5ogy8oxQobc2QQ-zpi25hiIDuwH5qIHCT7~31czIk58RVjusbs65~2TGv59Os42BC~btf02fwDn6HEV5Vx1aXvuz6l7jnYfyftGaKt2ZdZXSljbU~eIZLagicrJeSyjU-fPocPhIlqiPFE8AZxW1h6Q__",
-      description:
-        "Visit the gateway to the Gods and witness the mesmerizing Ganga Aarti.",
-      rating: 4.8,
-      duration: "10 Days",
-      link: "/destinations/South",
-    },
-    {
-      id: 3,
-      name: "Ujjain",
-      image:
-        "https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2022/10/13102255/Ujjain.jpg",
-      description:
-        "Embark on a sacred journey to the holy cave shrine in the Himalayas.",
-      rating: 4.9,
-      duration: "7 Days",
-      link: "/destinations/amarnath",
-    },
-  ];
+  // const destinations = [
+  //   {
+  //     id: 1,
+  //     name: "Chardham Yatra",
+  //     image:
+  //       "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
+  //     description:
+  //       "Embark on a soul-enriching pilgrimage to Yamunotri, Gangotri, Kedarnath and Badrinath – the Char Dham of India..",
+  //     rating: 4.9,
+  //     duration: "13 Days",
+  //     link: "/destinations/varanasi",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Dakshin Yatra",
+  //     image:
+  //       "https://media-hosting.imagekit.io//ea1a764230064c4b/Untitled%20design.png?Expires=1835983228&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=RAidSFv2qRF8br-SuPrVhRpYei8pJ3EKrwx7pCwWRgFByAdu0M8AJDJqIZGHvdFw4zvOxtmYZH9UhLRiYUjQfdKavLLP8tTJKhcehvZI2VC4S3wlaXUF2zMj-ADlMH2c1QVGOGuznONqzcr6q4rWe8z2Ay7JF2Y-LYK-iVza3j8hw-cezY~lvk03N7PUL4w5ogy8oxQobc2QQ-zpi25hiIDuwH5qIHCT7~31czIk58RVjusbs65~2TGv59Os42BC~btf02fwDn6HEV5Vx1aXvuz6l7jnYfyftGaKt2ZdZXSljbU~eIZLagicrJeSyjU-fPocPhIlqiPFE8AZxW1h6Q__",
+  //     description:
+  //       "Visit the gateway to the Gods and witness the mesmerizing Ganga Aarti.",
+  //     rating: 4.8,
+  //     duration: "10 Days",
+  //     link: "/destinations/South",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Ujjain",
+  //     image:
+  //       "https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2022/10/13102255/Ujjain.jpg",
+  //     description:
+  //       "Embark on a sacred journey to the holy cave shrine in the Himalayas.",
+  //     rating: 4.9,
+  //     duration: "7 Days",
+  //     link: "/destinations/amarnath",
+  //   },
+  // ];
 
   const upcomingYatras = [
     {
