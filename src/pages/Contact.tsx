@@ -13,7 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
-
+import { useContactHook } from "../hooks/fetchhooks.js";
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -24,7 +24,6 @@ const Contact: React.FC = () => {
     tour: "",
     message: "",
   });
-
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
@@ -35,53 +34,31 @@ const Contact: React.FC = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const GOOGLE_SHEET_URL =
-    "https://script.google.com/macros/s/AKfycbwbXCw8NTa2YZzAC0Ez_nKy9a8Wt6I8riqdFhfTrbPmms-4aFv-yXWxyKf8l15bMFL0OQ/exec"; // Paste your URL here
+  const submitContact = useContactHook();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!GOOGLE_SHEET_URL) {
-      alert("");
-      return;
-    }
-
     try {
-      const response = await fetch(GOOGLE_SHEET_URL, {
-        method: "POST",
-        mode: "",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json(); // Read JSON response
-      console.log("Success:", result);
-
+      await submitContact(formData);
       setSubmitted(true);
-      alert("Form submitted successfully!");
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Failed to submit form.");
+      console.log("contact submitted");
+    } catch (err) {
+      console.error("submit failed", err);
     }
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
 
     // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        contactMethod: "Email",
-        subject: "",
-        tour: "",
-        message: "",
-      });
-      setSubmitted(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setFormData({
+    //     name: "",
+    //     email: "",
+    //     phone: "",
+    //     contactMethod: "Email",
+    //     subject: "",
+    //     tour: "",
+    //     message: "",
+    //   });
+    //   setSubmitted(false);
+    // }, 3000);
   };
 
   const fadeInUp = {
