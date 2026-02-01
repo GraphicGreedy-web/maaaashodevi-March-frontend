@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   MapPin,
   Phone,
@@ -11,18 +11,18 @@ import {
   Users,
   Calendar,
   CheckCircle,
-} from 'lucide-react';
-import PageTransition from '../components/PageTransition';
+} from "lucide-react";
+import PageTransition from "../components/PageTransition";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    contactMethod: 'Email',
-    subject: '',
-    tour: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    contactMethod: "Email",
+    subject: "",
+    tour: "",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -30,55 +30,55 @@ const Contact: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const GOOGLE_SHEET_URL =
-    'https://script.google.com/macros/s/AKfycbwbXCw8NTa2YZzAC0Ez_nKy9a8Wt6I8riqdFhfTrbPmms-4aFv-yXWxyKf8l15bMFL0OQ/exec'; // Paste your URL here
+    "https://script.google.com/macros/s/AKfycbwbXCw8NTa2YZzAC0Ez_nKy9a8Wt6I8riqdFhfTrbPmms-4aFv-yXWxyKf8l15bMFL0OQ/exec"; // Paste your URL here
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!GOOGLE_SHEET_URL) {
-      alert('');
+      alert("");
       return;
     }
 
     try {
       const response = await fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: '',
+        method: "POST",
+        mode: "",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       const result = await response.json(); // Read JSON response
-      console.log('Success:', result);
+      console.log("Success:", result);
 
       setSubmitted(true);
-      alert('Form submitted successfully!');
+      alert("Form submitted successfully!");
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Failed to submit form.');
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form.");
     }
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setSubmitted(true);
 
     // Reset form after 3 seconds
     setTimeout(() => {
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        contactMethod: 'Email',
-        subject: '',
-        tour: '',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        contactMethod: "Email",
+        subject: "",
+        tour: "",
+        message: "",
       });
       setSubmitted(false);
     }, 3000);
@@ -130,9 +130,9 @@ const Contact: React.FC = () => {
                       className="bg-[#ff6b6b] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#ff5b5b] transition duration-300 flex items-center"
                     >
                       <p className="align-centre">
-                        CLICK HERE --{' '}
+                        CLICK HERE --{" "}
                         <span className="text-[#000000]">
-                          https://forms.gle/M13mFhbbfsNqJrpf6{' '}
+                          https://forms.gle/M13mFhbbfsNqJrpf6{" "}
                         </span>
                       </p>
                       <button></button>
@@ -283,7 +283,7 @@ const Contact: React.FC = () => {
               </motion.div>
 
               {/* Contact Form */}
-              {/* <motion.div
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -346,7 +346,7 @@ const Contact: React.FC = () => {
                           htmlFor="email"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                          Email Address{' '}
+                          Email Address{" "}
                           <span className="text-[#ff6b6b]">*</span>
                         </label>
                         <input
@@ -513,13 +513,13 @@ const Contact: React.FC = () => {
                         htmlFor="privacy"
                         className="ml-2 block text-sm text-gray-700"
                       >
-                        I agree to the{' '}
+                        I agree to the{" "}
                         <a
                           href="/privacy-policy"
                           className="text-[#ff6b6b] hover:underline"
                         >
                           privacy policy
-                        </a>{' '}
+                        </a>{" "}
                         and consent to being contacted.
                       </label>
                     </motion.div>
@@ -536,9 +536,9 @@ const Contact: React.FC = () => {
                     >
                       Send Message <Send className="ml-2 h-4 w-4" />
                     </motion.button>
-                  </form> */}
-              {/* )}
-              </motion.div> */}
+                  </form>
+                )}
+              </motion.div>
             </div>
           </div>
         </section>
@@ -583,7 +583,7 @@ const Contact: React.FC = () => {
                       Headquarters
                     </h3>
                     <p className="text-gray-600 mb-4">
-                      lal Ghati, Bhopal (MP) India{' '}
+                      lal Ghati, Bhopal (MP) India{" "}
                     </p>
                     <a
                       href="#"
@@ -854,7 +854,7 @@ const Contact: React.FC = () => {
                   className="inline-flex items-center text-[#ff6b6b] font-medium hover:underline"
                 >
                   Contact us via mobile or WhatsApp for quick and easy bookings.
-                  We're here to assist you!{' '}
+                  We're here to assist you!{" "}
                   <ArrowRight className="ml-1 h-4 w-4" />
                 </a>
               </motion.div>
