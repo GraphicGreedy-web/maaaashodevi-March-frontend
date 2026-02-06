@@ -13,7 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
-import { useContactHook } from "../hooks/fetchhooks.js";
+import { useContactHook } from "../hooks/fetchHooks";
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
