@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: [
         sitemap({
             hostname: "https://maaaashodevidharmayatra.in",
+            dynamicRoutes:["/", "/about", "/gallery", "/blog", "/upcoming-plans", "/contact", "/blog/spiritual-significance-varanasi"]
         }),
     ],
 });

@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     sitemap({
       hostname: "https://maaaashodevidharmayatra.in", // change to your real domain
-    }),
+    dynamicRoutes:["/", "/about", "/gallery", "/blog", "/upcoming-plans", "/contact", "/blog/spiritual-significance-varanasi"]}),
   ],
   optimizeDeps: {
     exclude: ["lucide-react"],
