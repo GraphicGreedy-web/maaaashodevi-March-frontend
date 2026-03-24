@@ -25,7 +25,7 @@ const UpcomingPlans: React.FC = () => {
         const tours = await fetchAllTours();
         setAllTours(tours ?? []);
       } catch (error) {
-        console.error("Failed to load tours", error);
+        // console.error("Failed to load tours", error);
         setAllTours([]);
       } finally {
         setIsLoading(false);
