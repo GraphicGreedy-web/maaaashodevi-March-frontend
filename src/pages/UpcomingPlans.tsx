@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { getToursHook } from "../hooks/fetchHooks.js";
+import { fetchAllTours } from "../frontRoutes/fetchRoutes.js";
 import {
   Calendar,
   MapPin,
@@ -16,118 +16,24 @@ import AnimatedCard from "../components/AnimatedCard";
 const UpcomingPlans: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("all");
-  const allTours = getToursHook();
-  console.log("upcoming:", getToursHook());
-  // const upcomingTrips = [
-  //   {
-  //     id: 1,
-  //     title: "CharDham Yatra",
-  //     image:
-  //       "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
-  //     startDate: "20 April - 2 May, 2026 & 15 May - 27 May",
-  //     endDate: "May 27, 2025",
-  //     duration: "10 Night - 11 Days",
-  //     price: "₹34,999",
-  //     locations: ["Yamunotri", "Gangotri", "Kedarnath", "Badrinath"],
-  //     region: "North India",
-  //     state: "Uttarakhand",
-  //     //groupSize: '30-50 People',
-  //     availableSeats: 15,
-  //     featured: true,
-  //     description:
-  //       "Sacred CharDham: Yamunotri, Gangotri, Kedarnath, Badrinath.",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "CharDham Yatra",
-  //     image:
-  //       "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
-  //     startDate: "1 - 13 June | 17 - 29 June, 2026",
-  //     endDate: "May 27, 2025",
-  //     duration: "10 Night - 11 Days",
-  //     price: "₹34,999",
-  //     locations: ["Yamunotri", "Gangotri", "Kedarnath", "Badrinath"],
-  //     region: "North India",
-  //     state: "Uttarakhand",
-  //     //groupSize: '30-50 People',
-  //     availableSeats: 15,
-  //     featured: true,
-  //     description:
-  //       "Sacred CharDham: Yamunotri, Gangotri, Kedarnath, Badrinath.",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Dakshin Yatra | Jagannath Puri",
-  //     image:
-  //       "https://www.poojn.in/wp-content/uploads/2025/02/Kalyana-Venkateswara-Temple-Srinivasa-Mangapuram-Your-Complete-Guide.jpeg.jpg",
-  //     startDate: "1 - 11 July 2026",
-  //     duration: "8 Night - 9 Days",
-  //     price: "39,999",
-  //     locations: ["Katra", "Pahalgam", "Amarnath Cave"],
-  //     region: "South India",
-  //     state: "Tamil Nadu",
-  //     //groupSize: '15-20 People',
-  //     availableSeats: 12,
-  //     featured: true,
-  //     description:
-  //       "Seek blessings at the holy shrines of Mata Vaishno Devi and the sacred Amarnath Cave in one journey.",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Braj Yatra",
-  //     image:
-  //       "https://3.bp.blogspot.com/-Ncy2FYL5BgU/UBfCjjWnmsI/AAAAAAAAAp8/bv70wDLPSok/s1600/Shriji+Temple+-Laadli+Sarkar+Mahal-+Radha+Rani+Mandir1st.JPG",
-  //     startDate: "25 Feb - 1 March 2026",
-  //     endDate: "September 9, 2025",
-  //     duration: "4 Nights - 5 Days",
-  //     price: "₹14,999",
-  //     locations: ["Puri", "Konark", "Bhubaneswar"],
-  //     region: "North India",
-  //     state: "Uttar Pradesh",
-  //     //groupSize: '15-20 People',
-  //     availableSeats: 20,
-  //     featured: true,
-  //     description:
-  //       "Explore the sacred Braj Temple in Vrindavan and the architectural marvel of Bihari Lal Temple.",
-  //   },
+  const [allTours, setAllTours] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //   {
-  //     id: 5,
-  //     title: "Ujjain Mahakaleshwar",
-  //     image:
-  //       "https://media.easemytrip.com/media/Blog/India/638791301081070175/638791301081070175odQaJ5.png",
-  //     startDate: "1 Feb 2026",
-  //     endDate: "December 9, 2025",
-  //     duration: "1 Days",
-  //     price: "₹999",
-  //     locations: ["Ujjain", "Omkareshwar", "Indore"],
-  //     region: "Central India",
-  //     state: "Madhya Pradesh",
-  //     groupSize: "15-20 People",
-  //     availableSeats: 20,
-  //     featured: false,
-  //     description:
-  //       "Experience the divine presence at the Mahakaleshwar Jyotirlinga in Ujjain and participate in the famous Bhasma Aarti.",
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Nepal",
-  //     image:
-  //       "https://www.thestatesman.com/wp-content/uploads/2023/06/ajeet-manandhar-WUxvx42rHrk-unsplash.jpg",
-  //     startDate: "1 Aug - 11 Aug 2026",
-  //     endDate: "December 9, 2025",
-  //     duration: "10 Nights 11 Days",
-  //     price: "₹34,999",
-  //     locations: ["Ujjain", "Omkareshwar", "Indore"],
-  //     region: "North India",
-  //     state: "Nepal",
-  //     groupSize: "15-20 People",
-  //     availableSeats: 20,
-  //     featured: false,
-  //     description:
-  //       "Experience the divine presence at the Mahakaleshwar Jyotirlinga in Ujjain and participate in the famous Bhasma Aarti.",
-  //   },
-  // ];
+  useEffect(() => {
+    const loadTours = async () => {
+      try {
+        const tours = await fetchAllTours();
+        setAllTours(tours ?? []);
+      } catch (error) {
+        console.error("Failed to load tours", error);
+        setAllTours([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadTours();
+  }, []);
 
   const featuredTrips = allTours.filter((trip) => trip.featured);
 
@@ -192,70 +98,76 @@ const UpcomingPlans: React.FC = () => {
               Featured Packages
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[2rem]">
-              {featuredTrips.map((trip, order: number) => (
-                <AnimatedCard key={trip._id} delay={order * 0.1}>
-                  <div
-                    className="relative overflow-hidden"
-                    style={cardDimension}
-                  >
-                    <img
-                      src={trip.image}
-                      alt={trip.title}
-                      className="object-cover transition-transform duration-500 hover:scale-110"
-                      style={imageDimension}
-                    />
-                    <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                      Featured
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">
-                      {trip.title.includes("Yatra") ? (
-                        <>
-                          {trip.title.replace(" Yatra", "")} <i>Yatra</i>
-                        </>
-                      ) : (
-                        trip.title
-                      )}
-                    </h3>
-                    <div className="flex items-center text-sm text-gray-500 mb-2">
-                      <MapPin size={14} className="text-primary mr-1" />
-                      <span>{trip.state}</span>
-                    </div>
-                    <p
-                      className="text-gray-600 mb-4 line-clamp-2"
-                      dangerouslySetInnerHTML={{ __html: trip.description }}
-                    ></p>
-
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="flex items-center">
-                        <Clock size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.duration}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.groupSize}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.startDate}</span>
-                      </div>
-                      <div className="flex items-center font-bold text-primary">
-                        {trip.price}
-                      </div>
-                    </div>
-
-                    <Link
-                      to="/contact"
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
+            {isLoading ? (
+              <div className="flex items-center justify-center py-16">
+                <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[2rem]">
+                {featuredTrips.map((trip, order: number) => (
+                  <AnimatedCard key={trip._id} delay={order * 0.1}>
+                    <div
+                      className="relative overflow-hidden"
+                      style={cardDimension}
                     >
-                      Book Now
-                    </Link>
-                  </div>
-                </AnimatedCard>
-              ))}
-            </div>
+                      <img
+                        src={trip.image}
+                        alt={trip.title}
+                        className="object-cover transition-transform duration-500 hover:scale-110"
+                        style={imageDimension}
+                      />
+                      <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                        Featured
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">
+                        {trip.title.includes("Yatra") ? (
+                          <>
+                            {trip.title.replace(" Yatra", "")} <i>Yatra</i>
+                          </>
+                        ) : (
+                          trip.title
+                        )}
+                      </h3>
+                      <div className="flex items-center text-sm text-gray-500 mb-2">
+                        <MapPin size={14} className="text-primary mr-1" />
+                        <span>{trip.state}</span>
+                      </div>
+                      <p
+                        className="text-gray-600 mb-4 line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: trip.description }}
+                      ></p>
+
+                      <div className="grid grid-cols-2 gap-2 mb-4">
+                        <div className="flex items-center">
+                          <Clock size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.duration}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Users size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.groupSize}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Calendar size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.startDate}</span>
+                        </div>
+                        <div className="flex items-center font-bold text-primary">
+                          {trip.price}
+                        </div>
+                      </div>
+
+                      <Link
+                        to="/contact"
+                        className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
+                      >
+                        Book Now
+                      </Link>
+                    </div>
+                  </AnimatedCard>
+                ))}
+              </div>
+            )}
           </section>
 
           {/* Search and Filter Section */}
@@ -295,79 +207,74 @@ const UpcomingPlans: React.FC = () => {
 
           {/* Package Listings Section */}
           <section>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[2rem]">
-              {filteredTrips.map((trip, index) => (
-                <AnimatedCard key={trip.id} delay={index * 0.05}>
-                  <div
-                    className="relative overflow-hidden"
-                    style={cardDimension}
-                  >
-                    <img
-                      src={trip.image}
-                      alt={trip.title}
-                      className="object-cover transition-transform duration-500 hover:scale-110"
-                      style={imageDimension}
-                    />
-                    <div className="absolute top-4 right-4 bg-white text-primary px-3 py-1 rounded-full text-sm font-medium">
-                      {trip.duration}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">
-                      {trip.title.includes("Yatra") ? (
-                        <>
-                          {trip.title.replace(" Yatra", "")} <i>Yatra</i>
-                        </>
-                      ) : (
-                        trip.title
-                      )}
-                    </h3>
-                    <div className="flex items-center text-sm text-gray-500 mb-2">
-                      <MapPin size={14} className="text-primary mr-1" />
-                      <span>{trip.state}</span>
-                    </div>
-                    <p
-                      className="text-gray-600 mb-4 line-clamp-2"
-                      dangerouslySetInnerHTML={{ __html: trip.description }}
-                    ></p>
-
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="flex items-center">
-                        <Clock size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.duration}</span>
-                      </div>
-                      {/* <div className="flex items-center">
-                        <Users size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.groupSize}</span>
-                      </div> */}
-                      <div className="flex items-center">
-                        <Calendar size={14} className="text-primary mr-1" />
-                        <span className="text-sm">{trip.startDate}</span>
-                      </div>
-                      <div className="flex items-center font-bold text-primary">
-                        {trip.price}
-                      </div>
-                    </div>
-
-                    <Link
-                      to="/contact"
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
+            {isLoading ? (
+              <div className="flex items-center justify-center py-16">
+                <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[2rem]">
+                {filteredTrips.map((trip, index) => (
+                  <AnimatedCard key={trip.id} delay={index * 0.05}>
+                    <div
+                      className="relative overflow-hidden"
+                      style={cardDimension}
                     >
-                      Book Now
-                    </Link>
-                  </div>
-                </AnimatedCard>
-              ))}
-            </div>
+                      <img
+                        src={trip.image}
+                        alt={trip.title}
+                        className="object-cover transition-transform duration-500 hover:scale-110"
+                        style={imageDimension}
+                      />
+                      <div className="absolute top-4 right-4 bg-white text-primary px-3 py-1 rounded-full text-sm font-medium">
+                        {trip.duration}
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">
+                        {trip.title.includes("Yatra") ? (
+                          <>
+                            {trip.title.replace(" Yatra", "")} <i>Yatra</i>
+                          </>
+                        ) : (
+                          trip.title
+                        )}
+                      </h3>
+                      <div className="flex items-center text-sm text-gray-500 mb-2">
+                        <MapPin size={14} className="text-primary mr-1" />
+                        <span>{trip.state}</span>
+                      </div>
+                      <p
+                        className="text-gray-600 mb-4 line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: trip.description }}
+                      ></p>
 
-            {filteredTrips.length === 0 && (
-              <div className="text-center py-16">
-                <h3 className="text-xl font-semibold mb-2">
-                  No packages found
-                </h3>
-                <p className="text-gray-600">
-                  Try adjusting your search or filter criteria
-                </p>
+                      <div className="grid grid-cols-2 gap-2 mb-4">
+                        <div className="flex items-center">
+                          <Clock size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.duration}</span>
+                        </div>
+                        {/* <div className="flex items-center">
+                          <Users size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.groupSize}</span>
+                        </div> */}
+                        <div className="flex items-center">
+                          <Calendar size={14} className="text-primary mr-1" />
+                          <span className="text-sm">{trip.startDate}</span>
+                        </div>
+                        <div className="flex items-center font-bold text-primary">
+                          {trip.price}
+                        </div>
+                      </div>
+
+                      <Link
+                        to="/contact"
+                        className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
+                      >
+                        Book Now
+                      </Link>
+                    </div>
+                  </AnimatedCard>
+                ))}
               </div>
             )}
           </section>
