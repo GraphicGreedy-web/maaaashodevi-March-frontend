@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Users, Award, Clock, MapPin, Heart, ArrowRight } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import AnimatedCard from "../components/AnimatedCard";
+import SEO from "../components/SEO";
 
 const About: React.FC = () => {
   const fadeInUp = {
@@ -43,6 +44,16 @@ const About: React.FC = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="About Maa Asho Devi Dharam Yatra | Trusted Pilgrimage Travel Team"
+        description="Learn about Maa Asho Devi Dharam Yatra, our journey, values and experience in organizing safe and meaningful pilgrimage tours across India."
+        path="/about"
+        keywords={[
+          "about pilgrimage company",
+          "religious travel agency india",
+          "about maa asho devi dharam yatra",
+        ]}
+      />
       <div className="min-h-screen bg-gray-50 py-20">
         {/* Hero Section */}
         <section className="py-12">

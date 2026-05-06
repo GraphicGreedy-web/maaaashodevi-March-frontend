@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { fetchAllTours, fetchContact } from "../frontRoutes/fetchRoutes.js";
 import { useState } from 'react';
-import axios from "axios";
 export const getToursHook = () => {
   const [tours, setTours] = useState([]);
   useEffect(() => {

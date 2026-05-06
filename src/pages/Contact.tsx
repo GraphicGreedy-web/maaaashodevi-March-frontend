@@ -11,20 +11,29 @@ import {
   Users,
   Calendar,
   CheckCircle,
+  XCircle,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import { useContactHook } from "../hooks/fetchHooks";
+import SEO from "../components/SEO";
+
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  contactMethod: "Email",
+  subject: "",
+  tour: "",
+  message: "",
+};
+
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    contactMethod: "Email",
-    subject: "",
-    tour: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -38,27 +47,47 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     try {
-      await submitContact(formData);
-      setSubmitted(true);
-      console.log("contact submitted");
+      const response = await submitContact(formData);
+
+      if (response?.success === true) {
+        setFormData(initialFormData);
+        setToast({
+          type: "success",
+          message:
+            response.message ||
+            "Your message was sent successfully. We'll contact you soon.",
+        });
+      } else {
+        setToast({
+          type: "error",
+          message:
+            response?.message || "We could not send your message right now.",
+        });
+      }
     } catch (err) {
-      console.error("submit failed", err);
+      const message =
+        (
+          err as {
+            response?: { data?: { message?: string } };
+            message?: string;
+          }
+        )?.response?.data?.message ||
+        "We could not send your message right now.";
+
+      setToast({
+        type: "error",
+        message,
+      });
+    } finally {
+      setIsSubmitting(false);
     }
 
-    // Reset form after 3 seconds
-    // setTimeout(() => {
-    //   setFormData({
-    //     name: "",
-    //     email: "",
-    //     phone: "",
-    //     contactMethod: "Email",
-    //     subject: "",
-    //     tour: "",
-    //     message: "",
-    //   });
-    //   setSubmitted(false);
-    // }, 3000);
+    window.setTimeout(() => {
+      setToast(null);
+    }, 3500);
   };
 
   const fadeInUp = {
@@ -68,7 +97,38 @@ const Contact: React.FC = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Contact Maa Asho Devi Dharam Yatra | Book Your Pilgrimage"
+        description="Contact Maa Asho Devi Dharam Yatra for pilgrimage bookings, custom spiritual tour packages and travel assistance for your next yatra."
+        path="/contact"
+        keywords={[
+          "contact pilgrimage tour operator",
+          "book spiritual tour",
+          "yatra booking contact",
+        ]}
+      />
       <div className="min-h-screen bg-gray-50 font-sans">
+        {toast ? (
+          <div className="fixed right-4 top-4 z-50">
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              className={`flex max-w-sm items-start gap-3 rounded-xl border px-4 py-3 shadow-lg ${
+                toast.type === "success"
+                  ? "border-green-200 bg-green-50 text-green-800"
+                  : "border-red-200 bg-red-50 text-red-800"
+              }`}
+            >
+              {toast.type === "success" ? (
+                <CheckCircle className="mt-0.5 h-5 w-5 shrink-0" />
+              ) : (
+                <XCircle className="mt-0.5 h-5 w-5 shrink-0" />
+              )}
+              <p className="text-sm font-medium">{toast.message}</p>
+            </motion.div>
+          </div>
+        ) : null}
         {/* Hero Section with Contact Us Title */}
         <section className="py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -272,23 +332,7 @@ const Contact: React.FC = () => {
                   Send Us a Message
                 </h2>
 
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-green-50 border border-green-200 rounded-lg p-6 text-center"
-                  >
-                    <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-green-800 mb-2">
-                      Message Sent Successfully!
-                    </h3>
-                    <p className="text-green-700">
-                      Thank you for reaching out. We'll get back to you shortly.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -360,6 +404,7 @@ const Contact: React.FC = () => {
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
                           placeholder="Enter your phone number"
+                          required
                         />
                       </motion.div>
                       <motion.div
@@ -381,6 +426,7 @@ const Contact: React.FC = () => {
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
                         >
+                          <option value="Email">Email</option>
                           <option value="Phone">Phone</option>
                           <option value="WhatsApp">WhatsApp</option>
                         </select>
@@ -501,7 +547,7 @@ const Contact: React.FC = () => {
                       </label>
                     </motion.div>
 
-                    <motion.button
+                      <motion.button
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -509,12 +555,13 @@ const Contact: React.FC = () => {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-gradient-to-r from-[#ff6b6b] to-[#ff8e8e] text-white py-3 px-6 rounded-lg font-medium hover:from-[#ff5b5b] hover:to-[#ff7e7e] transition duration-300 flex items-center justify-center"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-[#ff6b6b] to-[#ff8e8e] text-white py-3 px-6 rounded-lg font-medium hover:from-[#ff5b5b] hover:to-[#ff7e7e] transition duration-300 flex items-center justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Send Message <Send className="ml-2 h-4 w-4" />
+                      {isSubmitting ? "Sending..." : "Send Message"}{" "}
+                      <Send className="ml-2 h-4 w-4" />
                     </motion.button>
                   </form>
-                )}
               </motion.div>
             </div>
           </div>

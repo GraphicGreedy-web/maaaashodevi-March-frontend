@@ -6,6 +6,7 @@ import ThreeJSBackground from "../components/ThreeJSBackground";
 import AnimatedCard from "../components/AnimatedCard";
 import PageTransition from "../components/PageTransition";
 import { getToursHook } from "../hooks/fetchHooks.js";
+import SEO from "../components/SEO";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
 
@@ -19,8 +20,6 @@ const Home: React.FC = () => {
   };
   const allTour = getToursHook()
   const popularTour = allTour.filter((t)=>t.popular)
-  console.log("popular: ", popularTour)
-  console.log("home:", getToursHook());
   // const destinations = [
   //   {
   //     id: 1,
@@ -120,6 +119,42 @@ const Home: React.FC = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Maa Asho Devi Dharam Yatra | Religious Tour Packages in India"
+        description="Book spiritual tour packages across India with Maa Asho Devi Dharam Yatra. Explore Char Dham, Kedarnath, Varanasi and other guided pilgrimage journeys."
+        path="/"
+        keywords={[
+          "religious tour packages india",
+          "pilgrimage tours",
+          "char dham package",
+          "kedarnath tour package",
+          "spiritual travel agency",
+        ]}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: "Maa Asho Devi Dharam Yatra",
+            url: "https://maaaashodevidharmayatra.in",
+            description:
+              "Women-led spiritual tour agency offering pilgrimage packages across India.",
+            telephone: "+91 9131714171",
+            email: "maaaashodevidharmayatra@gmail.com",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Maa Asho Devi Dharam Yatra",
+            url: "https://maaaashodevidharmayatra.in",
+            potentialAction: {
+              "@type": "SearchAction",
+              target:
+                "https://maaaashodevidharmayatra.in/blog?search={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          },
+        ]}
+      />
       <div className="relative">
         <ThreeJSBackground />
 

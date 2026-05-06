@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fetchAllTours } from "../frontRoutes/fetchRoutes.js";
 import {
@@ -12,8 +12,10 @@ import {
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import AnimatedCard from "../components/AnimatedCard";
+import SEO from "../components/SEO";
 
 const UpcomingPlans: React.FC = () => {
+  const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("all");
   const [allTours, setAllTours] = useState<any[]>([]);
@@ -63,8 +65,29 @@ const UpcomingPlans: React.FC = () => {
   };
   const imageDimension = { height: "15rem", width: "30rem" };
   const cardDimension = { height: "15rem" };
+  const isDestinationFilterPage = location.pathname.startsWith("/destinations/");
   return (
     <PageTransition>
+      <SEO
+        title={
+          isDestinationFilterPage
+            ? "Destination Filter | Upcoming Yatra Plans"
+            : "Upcoming Yatra Plans | Pilgrimage Tour Departures"
+        }
+        description={
+          isDestinationFilterPage
+            ? "Filtered pilgrimage destination view for Maa Asho Devi Dharam Yatra packages."
+            : "Browse upcoming pilgrimage departures, featured yatra packages and spiritual tour plans across North, South, East and West India."
+        }
+        path={isDestinationFilterPage ? location.pathname : "/upcoming-plans"}
+        robots={isDestinationFilterPage ? "noindex, follow" : "index, follow"}
+        keywords={[
+          "upcoming yatra plans",
+          "pilgrimage departures",
+          "religious tour packages",
+          "book yatra package",
+        ]}
+      />
       <div className="min-h-screen bg-gray-50 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -113,6 +136,8 @@ const UpcomingPlans: React.FC = () => {
                       <img
                         src={trip.image}
                         alt={trip.title}
+                        loading="lazy"
+                        decoding="async"
                         className="object-cover transition-transform duration-500 hover:scale-110"
                         style={imageDimension}
                       />

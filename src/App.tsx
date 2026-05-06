@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-// import { Routes, Route, useLocation } from 'react-router';
-import { AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"; //
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import UpcomingPlans from './pages/UpcomingPlans';
-import Contact from './pages/Contact';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
+import React, { Suspense, lazy, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Gallery = lazy(() => import("./pages/Gallery"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const UpcomingPlans = lazy(() => import("./pages/UpcomingPlans"));
+const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 
 function App() {
   const location = useLocation();
@@ -25,7 +25,14 @@ function App() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <AnimatePresence mode="wait">
+        <Suspense
+          fallback={
+            <div className="flex min-h-[50vh] items-center justify-center px-4">
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
+            </div>
+          }
+        >
+          <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             {/* <a href="maaaashodevidharmayatra.in/about"> Abt </a> */}
@@ -42,8 +49,9 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             {/* Add more routes as needed */}
-            </Routes> 
-        </AnimatePresence>
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
       </main>
       <Footer />
     </div>

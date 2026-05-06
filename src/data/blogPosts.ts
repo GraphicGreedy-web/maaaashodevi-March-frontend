@@ -9,6 +9,9 @@ export interface BlogPostType {
   readTime: string;
   category: string;
   slug: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
 }
 
 export const blogPosts: BlogPostType[] = [
@@ -911,5 +914,90 @@ export const blogPosts: BlogPostType[] = [
       
   //     <p>Whether viewed as a religious pilgrimage, a cultural spectacle, or a logistical marvel, the Kumbh Mela continues to fascinate and inspire, offering a glimpse into both India's ancient spiritual heritage and its dynamic, evolving present.</p>
   //   `
+  },
+  {
+    id: 2,
+    title: "Char Dham Yatra Travel Guide 2026: Route, Best Time, Cost and Packing Tips",
+    excerpt:
+      "Plan your Char Dham Yatra with confidence using this practical 2026 guide covering route planning, ideal travel months, budget tips, packing essentials and senior-friendly advice.",
+    image:
+      "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
+    author: "Neha Gupta",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    category: "Travel Tips",
+    slug: "char-dham-yatra-travel-guide-2026",
+    metaTitle:
+      "Char Dham Yatra Travel Guide 2026 | Route, Cost, Best Time and Tips",
+    metaDescription:
+      "Read our Char Dham Yatra travel guide for 2026 with route details, best time to visit, packing tips, budget planning and practical advice for families and senior pilgrims.",
+    keywords: [
+      "char dham yatra travel guide",
+      "char dham yatra 2026",
+      "best time for char dham yatra",
+      "char dham yatra cost",
+      "char dham tour package",
+    ],
+    content: `
+      <h1>Char Dham Yatra Travel Guide 2026</h1>
+
+      <p>The Char Dham Yatra is one of the most meaningful spiritual journeys in India. Covering Yamunotri, Gangotri, Kedarnath and Badrinath, this sacred circuit brings together devotion, mountain travel and deep personal reflection. If you are planning your Char Dham Yatra in 2026, a little preparation will help you travel more comfortably and focus on the spiritual side of the journey.</p>
+
+      <h2>What is the Char Dham Yatra route?</h2>
+
+      <p>The traditional route usually begins from Haridwar or Rishikesh and moves in this order: Yamunotri, Gangotri, Kedarnath and Badrinath. This sequence is considered spiritually auspicious and is also the most practical for road travel in Uttarakhand.</p>
+
+      <ul>
+        <li>Yamunotri: dedicated to Goddess Yamuna</li>
+        <li>Gangotri: associated with the origin of Maa Ganga</li>
+        <li>Kedarnath: one of the twelve Jyotirlingas of Lord Shiva</li>
+        <li>Badrinath: the sacred dham of Lord Vishnu</li>
+      </ul>
+
+      <h2>Best time to visit Char Dham in 2026</h2>
+
+      <p>Most pilgrims prefer May to June and September to October. These periods usually offer better road access and more manageable weather than the heavy monsoon weeks. If you are travelling with elders or children, choosing a stable-weather window can make the trip much easier.</p>
+
+      <p>Peak-season travel brings more devotees, so transport and accommodation should be arranged early. If you want a smoother experience, consider travelling just before the main rush or soon after the busiest dates.</p>
+
+      <h2>How many days are needed?</h2>
+
+      <p>A comfortable Char Dham itinerary usually takes 10 to 12 days. That gives enough time for darshan, road transfers, rest stops and weather delays. Rushed itineraries may save time, but they often become tiring, especially at high altitude.</p>
+
+      <h2>Budget and tour planning</h2>
+
+      <p>Your total budget depends on transport style, hotel category, meal preferences and whether you choose helicopter support for Kedarnath. Group tours are often easier for families because local coordination, driver planning and stay management are handled in advance.</p>
+
+      <p>If you want to compare available departures, you can review our <a href="/upcoming-plans">upcoming pilgrimage plans</a> and choose a route that matches your schedule and comfort level.</p>
+
+      <h2>Packing checklist for Char Dham Yatra</h2>
+
+      <ul>
+        <li>Warm layers, thermal wear and a light waterproof jacket</li>
+        <li>Comfortable walking shoes with strong grip</li>
+        <li>Personal medicines and a basic first-aid kit</li>
+        <li>Identity proof and printed booking details</li>
+        <li>Power bank, torch and reusable water bottle</li>
+        <li>Rain cover and extra socks for mountain travel</li>
+      </ul>
+
+      <h2>Important health and comfort tips</h2>
+
+      <p>The yatra includes long drives and high-altitude conditions, so hydration, proper rest and light meals are important. Senior pilgrims should discuss travel plans with their doctor in advance, especially if they have heart, breathing or mobility concerns.</p>
+
+      <p>For Kedarnath, always keep some buffer in your plan. Weather shifts can affect movement, and flexible scheduling reduces stress during the journey.</p>
+
+      <h2>Why guided pilgrimage tours help</h2>
+
+      <p>A guided Char Dham tour can reduce common travel problems such as hotel mismatches, route confusion and local transport delays. It also helps first-time pilgrims stay focused on darshan instead of managing every detail themselves.</p>
+
+      <p>If you want help planning a family trip, a women-led pilgrimage group or a customized departure, you can reach us through our <a href="/contact">contact page</a> and we will help you choose the right package.</p>
+
+      <h2>Final thoughts</h2>
+
+      <p>The Char Dham Yatra is not just a holiday plan. It is a sacred journey that asks for patience, discipline and devotion. When the route, stay and timing are arranged properly, the experience becomes much more peaceful and spiritually rewarding.</p>
+
+      <p>Plan early, travel prepared and let the journey unfold with faith.</p>
+    `,
   }
 ];

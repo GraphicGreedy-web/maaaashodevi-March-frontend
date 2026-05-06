@@ -5,6 +5,7 @@ import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import AnimatedCard from '../components/AnimatedCard';
 import { blogPosts } from '../data/blogPosts';
+import SEO from '../components/SEO';
 
 const Blog: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -29,6 +30,27 @@ const Blog: React.FC = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Spiritual Travel Blog | Pilgrimage Guides and Yatra Tips"
+        description="Explore pilgrimage guides, destination insights and practical travel tips for Char Dham, Kedarnath, Varanasi and other spiritual journeys across India."
+        path="/blog"
+        type="blog"
+        keywords={[
+          'spiritual travel blog',
+          'pilgrimage travel tips',
+          'char dham guide',
+          'kedarnath travel guide',
+          'religious tour blog',
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'Maa Asho Devi Dharam Yatra Blog',
+          url: 'https://maaaashodevidharmayatra.in/blog',
+          description:
+            'Pilgrimage guides, destination articles and travel tips for spiritual journeys across India.',
+        }}
+      />
       <div className="min-h-screen bg-gray-50 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -87,7 +109,7 @@ const Blog: React.FC = () => {
                   <div className="relative h-64 lg:h-auto">
                     <img 
                       src={blogPosts[0].image} 
-                      alt="Featured Post" 
+                      alt={blogPosts[0].title} 
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">

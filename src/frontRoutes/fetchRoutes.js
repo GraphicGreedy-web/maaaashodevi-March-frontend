@@ -5,6 +5,5 @@ export const fetchAllTours = async () => {
 };
 export const fetchContact = async (formData) => {
     const res = await submitContactRoute(formData);
-    console.log("fetched: ", res?.data)
     return res?.data;
 }
