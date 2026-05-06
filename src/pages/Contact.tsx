@@ -137,12 +137,19 @@ const Contact: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Contact Tour Agency in Bhopal | Maa Asho Devi Dharam Yatra"
-        description="Contact Maa Asho Devi Dharam Yatra, a tour agency in Bhopal, for dharma yatra from Bhopal, Char Dham Yatra package from Bhopal, and family pilgrimage booking support."
+        title="Contact Dharma Yatra Tour Agency in Bhopal and MP | Maa Asho Devi Dharam Yatra"
+        description="Contact Maa Asho Devi Dharam Yatra, a dharma yatra tour agency in Bhopal and MP, for dharma yatra from Bhopal, Char Dham Yatra package from Bhopal, and family pilgrimage booking support."
         path="/contact"
         keywords={[
+          "maa dhamra",
+          "maa dharma",
+          "maa dharam yatra",
+          "maa asho devi dharam yatra",
           "tour agency in bhopal contact",
+          "tour agency in mp",
+          "tour agency in madhya pradesh",
           "best tour agency in bhopal",
+          "dharma yatra",
           "dharma yatra booking",
           "dharma yatra from bhopal",
           "char dham yatra package from bhopal",
@@ -156,7 +163,7 @@ const Contact: React.FC = () => {
             name: "Contact Maa Asho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in/contact",
             description:
-              "Contact page for Maa Asho Devi Dharam Yatra, a Bhopal-based tour agency for dharma yatra and pilgrimage travel.",
+              "Contact page for Maa Asho Devi Dharam Yatra, a Bhopal-based dharma yatra tour agency in Madhya Pradesh for pilgrimage travel.",
           },
           {
             "@context": "https://schema.org",

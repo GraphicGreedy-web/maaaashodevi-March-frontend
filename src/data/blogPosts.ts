@@ -35,6 +35,8 @@ export const blogPosts: BlogPostType[] = [
       "Looking for a tour agency in Bhopal for dharma yatra? Learn what to check before booking Char Dham, Kedarnath, Vrindavan or family pilgrimage tours.",
     keywords: [
       "tour agency in bhopal",
+      "tour agency in mp",
+      "tour agency in madhya pradesh",
       "dharma yatra",
       "dharma yatra from bhopal",
       "pilgrimage tour operator bhopal",
@@ -86,6 +88,7 @@ export const blogPosts: BlogPostType[] = [
     keywords: [
       "best tour agency in bhopal",
       "tour agency in bhopal",
+      "tour agency in mp",
       "yatra packages from bhopal",
       "pilgrimage package bhopal",
       "spiritual tour operator bhopal",
@@ -132,6 +135,7 @@ export const blogPosts: BlogPostType[] = [
       "Planning a dharma yatra from Bhopal? Explore popular pilgrimage destinations, best seasons, and practical travel tips for a smoother spiritual journey.",
     keywords: [
       "dharma yatra from bhopal",
+      "tour agency in mp",
       "dharma yatra",
       "char dham from bhopal",
       "pilgrimage tours from bhopal",
@@ -181,6 +185,7 @@ export const blogPosts: BlogPostType[] = [
       "char dham yatra package from bhopal",
       "char dham yatra from bhopal",
       "tour agency in bhopal",
+      "tour agency in mp",
       "dharma yatra package",
       "kedarnath yatra package from bhopal",
     ],
@@ -227,6 +232,8 @@ export const blogPosts: BlogPostType[] = [
     keywords: [
       "best tour agency in bhopal",
       "tour agency in bhopal",
+      "tour agency in mp",
+      "tour agency in madhya pradesh",
       "family tour agency bhopal",
       "dharma yatra tour operator",
       "best travel agency in bhopal",
@@ -253,6 +260,100 @@ export const blogPosts: BlogPostType[] = [
 
       <h2>Final thought</h2>
       <p>The <strong>best tour agency in Bhopal</strong> is the one that combines honesty, route knowledge, practical support, and respect for the traveller's purpose. For families planning both holiday and <strong>dharma yatra</strong> journeys, those qualities matter much more than marketing language.</p>
+    `,
+  },
+  {
+    id: 6,
+    title: "How to Find a Tour Agency in MP for a Well-Planned Dharma Yatra",
+    excerpt:
+      "A practical guide for travellers searching for a tour agency in MP for dharma yatra, Char Dham, Kedarnath, Vrindavan, Ujjain and other pilgrimage routes.",
+    image:
+      "https://www.thestatesman.com/wp-content/uploads/2023/06/ajeet-manandhar-WUxvx42rHrk-unsplash.jpg",
+    author: "Neha Gupta",
+    date: "May 6, 2026",
+    readTime: "7 min read",
+    category: "Travel Tips",
+    slug: "tour-agency-in-mp-for-dharma-yatra",
+    metaTitle:
+      "Tour Agency in MP for Dharma Yatra | Madhya Pradesh Pilgrimage Guide",
+    metaDescription:
+      "Searching for a tour agency in MP for dharma yatra? Learn what pilgrims in Madhya Pradesh should check before booking Char Dham, Kedarnath and other spiritual tours.",
+    keywords: [
+      "tour agency in mp",
+      "tour agency in madhya pradesh",
+      "dharma yatra",
+      "dharma yatra from bhopal",
+      "tour agency in bhopal",
+      "char dham yatra package from bhopal",
+    ],
+    content: `
+      <h1>How to Find a Tour Agency in MP for a Well-Planned Dharma Yatra</h1>
+
+      <p>When people search for a <strong>tour agency in MP</strong>, they usually want a company that understands both travel planning and the devotional side of the journey. That becomes even more important for a <strong>dharma yatra</strong>, where comfort, timing, route clarity, and support during the trip all matter to the family.</p>
+
+      <h2>Why Madhya Pradesh travellers often search locally</h2>
+      <p>Families across Madhya Pradesh often prefer an operator that understands regional travel habits, group expectations, and practical departure planning. A <strong>tour agency in Madhya Pradesh</strong> can often provide better communication and more confidence before a pilgrimage booking is confirmed.</p>
+
+      <h2>Choose an agency with pilgrimage experience</h2>
+      <p>A regular holiday planner may not always be the right fit for a yatra. A proper <strong>dharma yatra</strong> package may involve temple timings, long road travel, weather changes, elderly travellers, and spiritually important schedules. That is why experience with Char Dham, Kedarnath, Vrindavan, Ujjain, Jagannath Puri, Nepal, and Dakshin Yatra routes matters.</p>
+
+      <h2>Look for support before and during the journey</h2>
+      <p>A good operator should explain the route, stay quality, meals, timing, and group process clearly before booking. During the journey, support matters just as much. Pilgrims usually want one reliable point of contact if questions or travel issues come up on the way.</p>
+
+      <h2>Bhopal is a strong starting point for MP pilgrims</h2>
+      <p>Many searches for a <strong>tour agency in Bhopal</strong> are really part of a wider search for trusted yatra support in the state. Travellers often compare city-based service, local trust, and route knowledge before choosing a package for longer spiritual travel.</p>
+
+      <h2>Think beyond price alone</h2>
+      <p>For a pilgrimage, lower pricing is not the only thing to compare. Families should also ask about safety, accommodation standards, meal planning, travel pacing, and how much help is available to senior citizens or first-time pilgrims. A peaceful experience usually depends on good planning, not just a cheap package.</p>
+
+      <h2>Final thought</h2>
+      <p>If you are searching for a <strong>tour agency in MP</strong>, choose one that understands the spiritual purpose of a <strong>dharma yatra</strong> and can support travellers with clarity and care. That balance usually leads to a much smoother pilgrimage experience.</p>
+    `,
+  },
+  {
+    id: 7,
+    title: "Maa Dharam Yatra: What Travellers Search Before Booking a Spiritual Tour",
+    excerpt:
+      "A brand-focused guide for travellers searching Maa Dharam Yatra, Maa Dhamra, or Maa Asho Devi Dharam Yatra for trusted pilgrimage planning and support.",
+    image:
+      "https://staticimg.amarujala.com/assets/images/2016/03/13/snowfall-in-kedarnath_1457875309.jpeg",
+    author: "Neha Gupta",
+    date: "May 6, 2026",
+    readTime: "6 min read",
+    category: "Travel Tips",
+    slug: "maa-dharam-yatra-tour-guide",
+    metaTitle:
+      "Maa Dharam Yatra | Maa Asho Devi Dharam Yatra Travel Guide",
+    metaDescription:
+      "Searching for Maa Dharam Yatra or Maa Asho Devi Dharam Yatra? Learn about pilgrimage support, dharma yatra planning and what families should expect before booking.",
+    keywords: [
+      "maa dhamra",
+      "maa dharma",
+      "maa dharam yatra",
+      "maa asho devi dharam yatra",
+      "dharma yatra",
+      "tour agency in bhopal",
+      "tour agency in mp",
+    ],
+    content: `
+      <h1>Maa Dharam Yatra: What Travellers Search Before Booking a Spiritual Tour</h1>
+
+      <p>Many pilgrims search for a trusted spiritual travel company by brand name rather than by destination first. That is why searches such as <strong>Maa Dharam Yatra</strong>, <strong>Maa Dhamra</strong>, and <strong>Maa Asho Devi Dharam Yatra</strong> matter. These searches usually come from people who already want a familiar and dependable travel partner for a pilgrimage.</p>
+
+      <h2>Why brand trust matters in a dharma yatra</h2>
+      <p>A <strong>dharma yatra</strong> is not just about transport and hotel booking. Families often want reassurance, clear communication, support for elderly travellers, and a team that understands the devotional purpose of the journey. When people search by brand name, they are usually trying to confirm whether the company feels reliable enough for that responsibility.</p>
+
+      <h2>What travellers usually want to know</h2>
+      <p>Before booking, pilgrims often look for destination experience, route planning, stay details, food support, and how clearly the agency handles communication. They may also want to know whether the company regularly operates Char Dham, Kedarnath, Vrindavan, Ujjain, Jagannath Puri, Nepal, and other pilgrimage routes.</p>
+
+      <h2>Why Bhopal and MP searches connect to the brand</h2>
+      <p>Many people who search a <strong>tour agency in Bhopal</strong> or a <strong>tour agency in MP</strong> eventually narrow their search to a specific brand they trust. That is where a name like <strong>Maa Asho Devi Dharam Yatra</strong> becomes important. It helps pilgrims connect a local operator with a spiritual travel identity they can remember.</p>
+
+      <h2>Brand searches often include spelling variations</h2>
+      <p>In real searches, people may type a brand in slightly different ways. Some may search <strong>Maa Dharam</strong>, others may type <strong>Maa Dhamra</strong>, and some may search the full company name. Good SEO should help all of those visitors reach the same trusted source.</p>
+
+      <h2>Final thought</h2>
+      <p>If travellers are searching for <strong>Maa Dharam Yatra</strong> or <strong>Maa Asho Devi Dharam Yatra</strong>, they are usually looking for a familiar spiritual travel partner. Strong pilgrimage support, clear planning, and consistent service are what turn that brand search into a confident booking decision.</p>
     `,
   },
 ];

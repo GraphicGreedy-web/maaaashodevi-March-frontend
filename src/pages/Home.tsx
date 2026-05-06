@@ -120,11 +120,17 @@ const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Maa Asho Devi Dharam Yatra | Tour Agency in Bhopal for Dharma Yatra"
-        description="Maa Asho Devi Dharam Yatra is a Bhopal-based tour agency for dharma yatra, Char Dham Yatra packages from Bhopal, Kedarnath tours, Vrindavan, Ujjain and other pilgrimage journeys."
+        title="Maa Asho Devi Dharam Yatra | Tour Agency in Bhopal and MP for Dharma Yatra"
+        description="Maa Asho Devi Dharam Yatra is a Bhopal-based tour agency in MP for dharma yatra, Char Dham Yatra packages from Bhopal, Kedarnath tours, Vrindavan, Ujjain and other pilgrimage journeys."
         path="/"
         keywords={[
+          "maa dhamra",
+          "maa dharma",
+          "maa dharam yatra",
+          "maa asho devi dharam yatra",
           "tour agency in bhopal",
+          "tour agency in mp",
+          "tour agency in madhya pradesh",
           "best tour agency in bhopal",
           "dharma yatra",
           "dharma yatra from bhopal",
@@ -142,7 +148,7 @@ const Home: React.FC = () => {
             alternateName: "Maa Aasho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in",
             description:
-              "Bhopal-based spiritual tour agency offering dharma yatra and pilgrimage packages across India.",
+              "Bhopal-based spiritual tour agency in Madhya Pradesh offering dharma yatra and pilgrimage packages across India.",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
             image:
@@ -176,6 +182,12 @@ const Home: React.FC = () => {
             ],
             knowsAbout: [
               "Dharma Yatra",
+              "Maa Dhamra",
+              "Maa Dharma",
+              "Maa Dharam Yatra",
+              "Maa Asho Devi Dharam Yatra",
+              "Tour Agency in MP",
+              "Tour Agency in Madhya Pradesh",
               "Dharma Yatra from Bhopal",
               "Char Dham Yatra",
               "Char Dham Yatra from Bhopal",

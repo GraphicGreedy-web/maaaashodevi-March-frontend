@@ -31,14 +31,21 @@ const Blog: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Spiritual Travel Blog | Pilgrimage Guides and Yatra Tips"
-        description="Explore pilgrimage guides, destination insights and practical travel tips for dharma yatra from Bhopal, Char Dham Yatra packages from Bhopal, Kedarnath and other spiritual journeys."
+        title="Dharma Yatra Blog | Tour Agency in MP, Pilgrimage Guides and Yatra Tips"
+        description="Explore dharma yatra guides, destination insights and practical travel tips from a tour agency in MP for dharma yatra from Bhopal, Char Dham Yatra packages from Bhopal, Kedarnath and other spiritual journeys."
         path="/blog"
         type="blog"
         keywords={[
+          'maa dhamra',
+          'maa dharma',
+          'maa dharam yatra',
+          'maa asho devi dharam yatra',
           'spiritual travel blog',
           'best tour agency in bhopal',
           'tour agency in bhopal',
+          'tour agency in mp',
+          'tour agency in madhya pradesh',
+          'dharma yatra',
           'dharma yatra from bhopal',
           'char dham yatra package from bhopal',
           'char dham yatra from bhopal',
@@ -53,7 +60,7 @@ const Blog: React.FC = () => {
           name: 'Maa Asho Devi Dharam Yatra Blog',
           url: 'https://maaaashodevidharmayatra.in/blog',
           description:
-            'Pilgrimage guides, destination articles and travel tips for spiritual journeys across India.',
+            'Dharma yatra guides, destination articles and travel tips from a tour agency in Madhya Pradesh for spiritual journeys across India.',
         }}
       />
       <div className="min-h-screen bg-gray-50 py-20">
