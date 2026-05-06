@@ -32,11 +32,16 @@ const Blog: React.FC = () => {
     <PageTransition>
       <SEO
         title="Spiritual Travel Blog | Pilgrimage Guides and Yatra Tips"
-        description="Explore pilgrimage guides, destination insights and practical travel tips for Char Dham, Kedarnath, Varanasi and other spiritual journeys across India."
+        description="Explore pilgrimage guides, destination insights and practical travel tips for dharma yatra from Bhopal, Char Dham Yatra packages from Bhopal, Kedarnath and other spiritual journeys."
         path="/blog"
         type="blog"
         keywords={[
           'spiritual travel blog',
+          'best tour agency in bhopal',
+          'tour agency in bhopal',
+          'dharma yatra from bhopal',
+          'char dham yatra package from bhopal',
+          'char dham yatra from bhopal',
           'pilgrimage travel tips',
           'char dham guide',
           'kedarnath travel guide',

@@ -11,7 +11,7 @@ import {
   Heart,
 } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
-import { blogPosts, BlogPost as BlogPostType } from '../data/blogPosts';
+import { blogPosts, type BlogPostType } from '../data/blogPosts';
 import SEO from '../components/SEO';
 
 const BlogPost: React.FC = () => {

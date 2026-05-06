@@ -120,38 +120,77 @@ const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Maa Asho Devi Dharam Yatra | Religious Tour Packages in India"
-        description="Book spiritual tour packages across India with Maa Asho Devi Dharam Yatra. Explore Char Dham, Kedarnath, Varanasi and other guided pilgrimage journeys."
+        title="Maa Asho Devi Dharam Yatra | Tour Agency in Bhopal for Dharma Yatra"
+        description="Maa Asho Devi Dharam Yatra is a Bhopal-based tour agency for dharma yatra, Char Dham Yatra packages from Bhopal, Kedarnath tours, Vrindavan, Ujjain and other pilgrimage journeys."
         path="/"
         keywords={[
-          "religious tour packages india",
-          "pilgrimage tours",
+          "tour agency in bhopal",
+          "best tour agency in bhopal",
+          "dharma yatra",
+          "dharma yatra from bhopal",
+          "char dham yatra package from bhopal",
+          "char dham yatra from bhopal",
           "char dham package",
           "kedarnath tour package",
-          "spiritual travel agency",
+          "spiritual travel agency bhopal",
         ]}
         schema={[
           {
             "@context": "https://schema.org",
-            "@type": "TravelAgency",
+            "@type": ["TravelAgency", "LocalBusiness"],
             name: "Maa Asho Devi Dharam Yatra",
+            alternateName: "Maa Aasho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in",
             description:
-              "Women-led spiritual tour agency offering pilgrimage packages across India.",
+              "Bhopal-based spiritual tour agency offering dharma yatra and pilgrimage packages across India.",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
+            image:
+              "https://staticimg.amarujala.com/assets/images/2016/03/13/snowfall-in-kedarnath_1457875309.jpeg",
+            areaServed: ["Bhopal", "Madhya Pradesh", "India"],
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Om Shiva Nagar, Lal Ghati",
+              addressLocality: "Bhopal",
+              addressRegion: "Madhya Pradesh",
+              addressCountry: "IN",
+            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                ],
+                opens: "09:00:00",
+                closes: "21:00:00",
+              },
+            ],
+            sameAs: [
+              "https://www.facebook.com/share/p/1HG3z2Q8AX/",
+              "https://wa.me/message/AGFJTGPLJOE7N1",
+            ],
+            knowsAbout: [
+              "Dharma Yatra",
+              "Dharma Yatra from Bhopal",
+              "Char Dham Yatra",
+              "Char Dham Yatra from Bhopal",
+              "Char Dham Yatra Package from Bhopal",
+              "Kedarnath Yatra",
+              "Pilgrimage Tours",
+              "Religious Tour Packages",
+            ],
           },
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "Maa Asho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in",
-            potentialAction: {
-              "@type": "SearchAction",
-              target:
-                "https://maaaashodevidharmayatra.in/blog?search={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
+            inLanguage: "en-IN",
           },
         ]}
       />

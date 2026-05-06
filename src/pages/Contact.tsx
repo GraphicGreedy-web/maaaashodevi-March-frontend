@@ -27,6 +27,45 @@ const initialFormData = {
   message: "",
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What type of delicious and affordable food options can we get?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We offer the option to customize your meal, where a group can decide on a common meal, including sabji, roti, and rice, ensuring a personalized and budget-friendly dining experience.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How large are your tour groups?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our standard tour groups typically range from 15 to 30 people, and we also offer private tours for families and smaller groups.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is included in your tour packages?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We provide comprehensive travel services, including comfortable accommodation, transportation, and meals for a seamless pilgrimage experience.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I book a tour with you?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can contact us by phone, WhatsApp, or through the website contact page to reserve your spot and receive booking guidance.",
+      },
+    },
+  ],
+};
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,13 +137,42 @@ const Contact: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Contact Maa Asho Devi Dharam Yatra | Book Your Pilgrimage"
-        description="Contact Maa Asho Devi Dharam Yatra for pilgrimage bookings, custom spiritual tour packages and travel assistance for your next yatra."
+        title="Contact Tour Agency in Bhopal | Maa Asho Devi Dharam Yatra"
+        description="Contact Maa Asho Devi Dharam Yatra, a tour agency in Bhopal, for dharma yatra from Bhopal, Char Dham Yatra package from Bhopal, and family pilgrimage booking support."
         path="/contact"
         keywords={[
-          "contact pilgrimage tour operator",
-          "book spiritual tour",
-          "yatra booking contact",
+          "tour agency in bhopal contact",
+          "best tour agency in bhopal",
+          "dharma yatra booking",
+          "dharma yatra from bhopal",
+          "char dham yatra package from bhopal",
+          "char dham yatra from bhopal",
+          "char dham booking bhopal",
+        ]}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Maa Asho Devi Dharam Yatra",
+            url: "https://maaaashodevidharmayatra.in/contact",
+            description:
+              "Contact page for Maa Asho Devi Dharam Yatra, a Bhopal-based tour agency for dharma yatra and pilgrimage travel.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Maa Asho Devi Dharam Yatra",
+            telephone: "+91 9131714171",
+            email: "maaaashodevidharmayatra@gmail.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Om Shiva Nagar, Lal Ghati",
+              addressLocality: "Bhopal",
+              addressRegion: "Madhya Pradesh",
+              addressCountry: "IN",
+            },
+          },
+          faqSchema,
         ]}
       />
       <div className="min-h-screen bg-gray-50 font-sans">

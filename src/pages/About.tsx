@@ -45,14 +45,38 @@ const About: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="About Maa Asho Devi Dharam Yatra | Trusted Pilgrimage Travel Team"
-        description="Learn about Maa Asho Devi Dharam Yatra, our journey, values and experience in organizing safe and meaningful pilgrimage tours across India."
+        title="About Maa Asho Devi Dharam Yatra | Tour Agency in Bhopal"
+        description="Learn about Maa Asho Devi Dharam Yatra, a tour agency in Bhopal focused on dharma yatra from Bhopal, Char Dham Yatra packages from Bhopal and spiritually meaningful group tours."
         path="/about"
         keywords={[
           "about pilgrimage company",
-          "religious travel agency india",
+          "tour agency in bhopal",
+          "best tour agency in bhopal",
+          "dharma yatra operator",
+          "dharma yatra from bhopal",
+          "char dham yatra package from bhopal",
           "about maa asho devi dharam yatra",
         ]}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Maa Asho Devi Dharam Yatra",
+          url: "https://maaaashodevidharmayatra.in/about",
+          description:
+            "About page for Maa Asho Devi Dharam Yatra, a tour agency in Bhopal offering dharma yatra and pilgrimage travel planning.",
+          mainEntity: {
+            "@type": ["TravelAgency", "LocalBusiness"],
+            name: "Maa Asho Devi Dharam Yatra",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Om Shiva Nagar, Lal Ghati",
+              addressLocality: "Bhopal",
+              addressRegion: "Madhya Pradesh",
+              addressCountry: "IN",
+            },
+            telephone: "+91 9131714171",
+          },
+        }}
       />
       <div className="min-h-screen bg-gray-50 py-20">
         {/* Hero Section */}

@@ -107,7 +107,12 @@ const SEO = ({
       description,
     );
     upsertMetaTag("meta[name='twitter:image']", "name", "twitter:image", image);
-    upsertMetaTag("meta[name='twitter:title']", "name", "twitter:title", title);
+    upsertMetaTag(
+      "meta[name='twitter:image:alt']",
+      "name",
+      "twitter:image:alt",
+      title,
+    );
 
     let canonicalTag = document.head.querySelector<HTMLLinkElement>(
       "link[rel='canonical']",
