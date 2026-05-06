@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { trackVisit } from "./utils/visitTracker";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -20,6 +21,11 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const currentPath = `${location.pathname}${location.search}`;
+    void trackVisit(currentPath);
+  }, [location.pathname, location.search]);
 
   return (
     <div className="flex flex-col min-h-screen">
