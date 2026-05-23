@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Calendar, Users, Star, ArrowRight } from "lucide-react";
 import ThreeJSBackground from "../components/ThreeJSBackground";
@@ -9,12 +9,15 @@ import { getReviewsHook, getToursHook, useReviewHook } from "../hooks/fetchHooks
 import SEO from "../components/SEO";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
+  const ratingFormRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
   const [reviewForm, setReviewForm] = useState({
     name: "",
     location: "",
     rating: 5,
     quote: "",
   });
+  const [isRatingFormOpen, setIsRatingFormOpen] = useState(false);
   const [isSubmittingReview, setIsSubmittingReview] = useState(false);
   const [reviewToast, setReviewToast] = useState<{
     type: "success" | "error";
@@ -131,6 +134,39 @@ const Home: React.FC = () => {
   ];
 
   const testimonials = reviews.length > 0 ? reviews : defaultTestimonials;
+
+  useEffect(() => {
+    const openRatingForm = () => {
+      setIsRatingFormOpen(true);
+      window.setTimeout(() => {
+        ratingFormRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 50);
+    };
+
+    window.addEventListener("open-rating-form", openRatingForm);
+
+    return () => {
+      window.removeEventListener("open-rating-form", openRatingForm);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (location.hash !== "#rating-form") {
+      return;
+    }
+
+    setIsRatingFormOpen(true);
+
+    window.setTimeout(() => {
+      ratingFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
+  }, [location.hash]);
 
   const handleReviewChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -723,11 +759,23 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.6, delay: 0.2 }}
+              id="rating-form"
+              ref={ratingFormRef}
               className="mx-auto mt-12 max-w-2xl rounded-2xl bg-white/95 p-6 shadow-xl"
             >
-              <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                Share Your Rating
-              </h3>
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Share Your Rating
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setIsRatingFormOpen((prev) => !prev)}
+                  className="rounded-full border border-primary px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                >
+                  {isRatingFormOpen ? "Hide Form" : "Give Rating"}
+                </button>
+              </div>
+              {isRatingFormOpen ? (
               <form onSubmit={handleReviewSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <input
@@ -778,6 +826,12 @@ const Home: React.FC = () => {
                   {isSubmittingReview ? "Saving..." : "Submit Rating"}
                 </button>
               </form>
+              ) : (
+                <p className="text-gray-600">
+                  Click the button above or use the navbar Rating button to open
+                  the review form and share your stars and remark.
+                </p>
+              )}
             </motion.div>
           </div>
         </section>
