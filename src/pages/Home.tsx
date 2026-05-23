@@ -1,14 +1,25 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Calendar, Users, Star, ArrowRight } from "lucide-react";
 import ThreeJSBackground from "../components/ThreeJSBackground";
 import AnimatedCard from "../components/AnimatedCard";
 import PageTransition from "../components/PageTransition";
-import { getToursHook } from "../hooks/fetchHooks.js";
+import { getReviewsHook, getToursHook, useReviewHook } from "../hooks/fetchHooks.js";
 import SEO from "../components/SEO";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
+  const [reviewForm, setReviewForm] = useState({
+    name: "",
+    location: "",
+    rating: 5,
+    quote: "",
+  });
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+  const [reviewToast, setReviewToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -19,6 +30,8 @@ const Home: React.FC = () => {
     whyChooseUsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   const allTour = getToursHook()
+  const { reviews, setReviews } = getReviewsHook()
+  const submitReview = useReviewHook();
   const popularTour = allTour.filter((t)=>t.popular)
   // const destinations = [
   //   {
@@ -90,7 +103,7 @@ const Home: React.FC = () => {
     },
   ];
 
-  const testimonials = [
+  const defaultTestimonials = [
     {
       id: 1,
       name: "Mitish",
@@ -116,6 +129,65 @@ const Home: React.FC = () => {
       rating: 5,
     },
   ];
+
+  const testimonials = reviews.length > 0 ? reviews : defaultTestimonials;
+
+  const handleReviewChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+    setReviewForm((prev) => ({
+      ...prev,
+      [name]: name === "rating" ? Number(value) : value,
+    }));
+  };
+
+  const handleReviewSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingReview(true);
+
+    try {
+      const response = await submitReview(reviewForm);
+
+      if (response?.success === true && response?.review) {
+        setReviews((prev) => [response.review, ...prev].slice(0, 12));
+        setReviewForm({
+          name: "",
+          location: "",
+          rating: 5,
+          quote: "",
+        });
+        setReviewToast({
+          type: "success",
+          message: response.message || "Thank you for your rating.",
+        });
+      } else {
+        setReviewToast({
+          type: "error",
+          message: response?.message || "We could not save your rating right now.",
+        });
+      }
+    } catch (err) {
+      const message =
+        (
+          err as {
+            response?: { data?: { message?: string } };
+            message?: string;
+          }
+        )?.response?.data?.message || "We could not save your rating right now.";
+
+      setReviewToast({
+        type: "error",
+        message,
+      });
+    } finally {
+      setIsSubmittingReview(false);
+    }
+
+    window.setTimeout(() => {
+      setReviewToast(null);
+    }, 3500);
+  };
 
   return (
     <PageTransition>
@@ -570,6 +642,19 @@ const Home: React.FC = () => {
         <section className="py-20 bg-testimonial-pattern bg-cover bg-fixed relative">
           <div className="absolute inset-0 bg-gray-900/70"></div>
           <div className="container mx-auto px-4 relative z-10">
+            {reviewToast ? (
+              <div className="mb-6 flex justify-center">
+                <div
+                  className={`rounded-xl px-4 py-3 text-sm font-medium shadow-lg ${
+                    reviewToast.type === "success"
+                      ? "bg-green-50 text-green-800"
+                      : "bg-red-50 text-red-800"
+                  }`}
+                >
+                  {reviewToast.message}
+                </div>
+              </div>
+            ) : null}
             <div className="text-center mb-16">
               <motion.h2
                 initial="hidden"
@@ -597,7 +682,7 @@ const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <AnimatedCard
-                  key={testimonial.id}
+                  key={testimonial._id || testimonial.id}
                   delay={index * 0.1}
                   className="bg-white/95"
                 >
@@ -631,6 +716,69 @@ const Home: React.FC = () => {
                 </AnimatedCard>
               ))}
             </div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mx-auto mt-12 max-w-2xl rounded-2xl bg-white/95 p-6 shadow-xl"
+            >
+              <h3 className="mb-4 text-2xl font-bold text-gray-900">
+                Share Your Rating
+              </h3>
+              <form onSubmit={handleReviewSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <input
+                    type="text"
+                    name="name"
+                    value={reviewForm.name}
+                    onChange={handleReviewChange}
+                    placeholder="Your name"
+                    required
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                  />
+                  <input
+                    type="text"
+                    name="location"
+                    value={reviewForm.location}
+                    onChange={handleReviewChange}
+                    placeholder="Your city"
+                    required
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <select
+                  name="rating"
+                  value={reviewForm.rating}
+                  onChange={handleReviewChange}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                >
+                  <option value={5}>5 Stars</option>
+                  <option value={4}>4 Stars</option>
+                  <option value={3}>3 Stars</option>
+                  <option value={2}>2 Stars</option>
+                  <option value={1}>1 Star</option>
+                </select>
+                <textarea
+                  name="quote"
+                  value={reviewForm.quote}
+                  onChange={handleReviewChange}
+                  placeholder="Write your remark"
+                  required
+                  rows={4}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmittingReview}
+                  className="w-full rounded-full bg-primary py-3 font-medium text-white transition-all duration-300 hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {isSubmittingReview ? "Saving..." : "Submit Rating"}
+                </button>
+              </form>
+            </motion.div>
           </div>
         </section>
 
