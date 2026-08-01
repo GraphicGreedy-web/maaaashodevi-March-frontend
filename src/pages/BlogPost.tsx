@@ -13,6 +13,7 @@ import {
 import PageTransition from '../components/PageTransition';
 import { blogPosts, type BlogPostType } from '../data/blogPosts';
 import SEO from '../components/SEO';
+import { getGuideForTourTitle } from '../data/seoLinks';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -119,7 +120,20 @@ const BlogPost: React.FC = () => {
         },
       ],
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: post.title,
+      url: `https://maaaashodevidharmayatra.in/blog/${post.slug}`,
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'Maa Asho Devi Dharam Yatra',
+        url: 'https://maaaashodevidharmayatra.in',
+      },
+      about: post.keywords?.slice(0, 5),
+    },
   ];
+  const relatedPackageGuide = getGuideForTourTitle(post.title);
 
   return (
     <PageTransition>
@@ -243,6 +257,39 @@ const BlogPost: React.FC = () => {
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                     Travel
                   </span>
+                </div>
+
+                <div className="mt-10 rounded-2xl bg-primary/5 p-6">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Turn This Guide Into a Real Journey
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    After reading the planning guide, compare live departures and
+                    ask for a family-friendly pilgrimage plan from Bhopal.
+                  </p>
+                  <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                    <Link
+                      to="/upcoming-plans"
+                      className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 font-medium text-white transition-all duration-300 hover:bg-primary/90"
+                    >
+                      View Upcoming Packages
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center justify-center rounded-full border border-primary px-5 py-3 font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                    >
+                      Talk to Our Team
+                    </Link>
+                  </div>
+                  {relatedPackageGuide ? (
+                    <p className="mt-4 text-sm text-gray-600">
+                      Related destination guide:
+                      {' '}
+                      <Link to={relatedPackageGuide.path} className="font-medium text-primary hover:underline">
+                        {relatedPackageGuide.title}
+                      </Link>
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </div>

@@ -6,6 +6,8 @@ const distDir = resolve(projectRoot, "dist");
 const sitemapPath = resolve(distDir, "sitemap.xml");
 const sourceRobotsPath = resolve(projectRoot, "public", "robots.txt");
 const distRobotsPath = resolve(distDir, "robots.txt");
+const nonContentUrlPattern =
+  /https:\/\/maaaashodevidharmayatra\.in\/google[a-z0-9-]*($|\.html$)/i;
 
 if (existsSync(sitemapPath)) {
   const sitemapXml = readFileSync(sitemapPath, "utf8");
@@ -20,7 +22,7 @@ if (existsSync(sitemapPath)) {
 
     const loc = locMatch[1];
 
-    if (seen.has(loc)) {
+    if (seen.has(loc) || nonContentUrlPattern.test(loc)) {
       return "";
     }
 

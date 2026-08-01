@@ -324,6 +324,41 @@ const Home: React.FC = () => {
             name: "Maa Asho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in",
             inLanguage: "en-IN",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://maaaashodevidharmayatra.in/blog",
+              "query-input": "required name=search_term_string",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Which pilgrimage packages can travellers book from Bhopal?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Maa Asho Devi Dharam Yatra offers spiritual journeys from Bhopal including Char Dham, Kedarnath, Ujjain, Vrindavan, Nepal and other family-oriented religious tours.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are the tours suitable for families and senior citizens?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. The company focuses on family-friendly pilgrimage planning with support for elders, route guidance, and organized travel assistance.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How can travellers ask for a custom yatra plan?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Travellers can use the contact page to discuss dates, destinations, and customized religious tour packages from Bhopal.",
+                },
+              },
+            ],
           },
         ]}
       />

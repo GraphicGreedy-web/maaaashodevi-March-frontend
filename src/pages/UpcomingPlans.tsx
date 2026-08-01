@@ -13,6 +13,7 @@ import {
 import PageTransition from "../components/PageTransition";
 import AnimatedCard from "../components/AnimatedCard";
 import SEO from "../components/SEO";
+import { getGuideForTourTitle, planningGuides } from "../data/seoLinks";
 
 const UpcomingPlans: React.FC = () => {
   const cachedTours = getCachedTours();
@@ -69,6 +70,32 @@ const UpcomingPlans: React.FC = () => {
   };
   const imageDimension = { height: "15rem", width: "30rem" };
   const cardDimension = { height: "15rem" };
+  const featuredTripSchemas = featuredTrips.slice(0, 6).map((trip) => ({
+    "@type": "TouristTrip",
+    name: trip.title,
+    description:
+      typeof trip.description === "string"
+        ? trip.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
+        : "Pilgrimage package from Bhopal",
+    image: trip.image,
+    touristType: "Pilgrimage travellers",
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: (trip.locations ?? []).slice(0, 6).map((location, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: location,
+      })),
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "INR",
+      price: typeof trip.price === "string" ? trip.price.replace(/[^\d.]/g, "") : "",
+      availability: "https://schema.org/InStock",
+      url: "https://maaaashodevidharmayatra.in/contact",
+    },
+  }));
+
   return (
     <PageTransition>
       <SEO
@@ -81,6 +108,76 @@ const UpcomingPlans: React.FC = () => {
           "char dham yatra package from bhopal",
           "kedarnath tour package from bhopal",
           "book pilgrimage package bhopal",
+        ]}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Upcoming Religious Tour Packages from Bhopal",
+            url: "https://maaaashodevidharmayatra.in/upcoming-plans",
+            description:
+              "Featured and upcoming pilgrimage departures from Bhopal, including Char Dham, Kedarnath, Ujjain, Nepal and other devotional routes.",
+            isPartOf: {
+              "@type": "WebSite",
+              name: "Maa Asho Devi Dharam Yatra",
+              url: "https://maaaashodevidharmayatra.in",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://maaaashodevidharmayatra.in/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Upcoming Plans",
+                item: "https://maaaashodevidharmayatra.in/upcoming-plans",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Featured pilgrimage packages from Bhopal",
+            itemListElement: featuredTrips.slice(0, 6).map((trip, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: trip.title,
+              url: "https://maaaashodevidharmayatra.in/upcoming-plans",
+            })),
+          },
+          ...featuredTripSchemas.map((schema) => ({
+            "@context": "https://schema.org",
+            ...schema,
+          })),
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Which religious tour packages from Bhopal are available?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The page lists current pilgrimage departures such as Char Dham, Kedarnath, Ujjain, Nepal and other family-friendly spiritual journeys from Bhopal.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can families request a custom pilgrimage package?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Travellers can contact Maa Asho Devi Dharam Yatra for a custom route, date, or family-oriented pilgrimage plan.",
+                },
+              },
+            ],
+          },
         ]}
       />
       <div className="min-h-screen bg-gray-50 py-20">
@@ -181,6 +278,14 @@ const UpcomingPlans: React.FC = () => {
                       >
                         Book Now
                       </Link>
+                      {getGuideForTourTitle(trip.title) ? (
+                        <Link
+                          to={getGuideForTourTitle(trip.title)?.path || "/blog"}
+                          className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:underline"
+                        >
+                          Read related guide <ArrowRight size={14} className="ml-1" />
+                        </Link>
+                      ) : null}
                     </div>
                   </AnimatedCard>
                 ))}
@@ -290,11 +395,49 @@ const UpcomingPlans: React.FC = () => {
                       >
                         Book Now
                       </Link>
+                      {getGuideForTourTitle(trip.title) ? (
+                        <Link
+                          to={getGuideForTourTitle(trip.title)?.path || "/blog"}
+                          className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:underline"
+                        >
+                          Read related guide <ArrowRight size={14} className="ml-1" />
+                        </Link>
+                      ) : null}
                     </div>
                   </AnimatedCard>
                 ))}
               </div>
             )}
+          </section>
+
+          <section className="mt-16 rounded-3xl bg-white p-8 shadow-sm">
+            <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h3 className="text-2xl font-bold">Plan With Destination Guides</h3>
+                <p className="max-w-2xl text-gray-600">
+                  Read route-specific blog posts before choosing your package so
+                  families, elders, and first-time pilgrims know what to expect.
+                </p>
+              </div>
+              <Link
+                to="/blog"
+                className="inline-flex items-center text-primary font-medium hover:underline"
+              >
+                Explore all yatra articles <ArrowRight size={16} className="ml-1" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {planningGuides.map((guide) => (
+                <Link
+                  key={guide.path}
+                  to={guide.path}
+                  className="rounded-2xl border border-gray-200 bg-gray-50 p-5 transition-colors hover:border-primary hover:bg-primary/5"
+                >
+                  <h4 className="font-semibold text-gray-900">{guide.title}</h4>
+                  <p className="mt-2 text-sm text-gray-600">{guide.description}</p>
+                </Link>
+              ))}
+            </div>
           </section>
 
           {/* Call to Action */}

@@ -6,6 +6,7 @@ import PageTransition from '../components/PageTransition';
 import AnimatedCard from '../components/AnimatedCard';
 import { blogPosts } from '../data/blogPosts';
 import SEO from '../components/SEO';
+import { planningGuides } from '../data/seoLinks';
 
 const Blog: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -50,11 +51,42 @@ const Blog: React.FC = () => {
         ]}
         schema={{
           '@context': 'https://schema.org',
-          '@type': 'Blog',
-          name: 'Maa Asho Devi Dharam Yatra Blog',
-          url: 'https://maaaashodevidharmayatra.in/blog',
-          description:
-            'Dharma yatra guides, destination articles and travel tips from a tour agency in Madhya Pradesh for spiritual journeys across India.',
+          '@graph': [
+            {
+              '@type': 'Blog',
+              name: 'Maa Asho Devi Dharam Yatra Blog',
+              url: 'https://maaaashodevidharmayatra.in/blog',
+              description:
+                'Dharma yatra guides, destination articles and travel tips from a tour agency in Madhya Pradesh for spiritual journeys across India.',
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: 'https://maaaashodevidharmayatra.in/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Blog',
+                  item: 'https://maaaashodevidharmayatra.in/blog',
+                },
+              ],
+            },
+            {
+              '@type': 'ItemList',
+              name: 'Pilgrimage planning articles',
+              itemListElement: blogPosts.slice(0, 10).map((post, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: post.title,
+                url: `https://maaaashodevidharmayatra.in/blog/${post.slug}`,
+              })),
+            },
+          ],
         }}
       />
       <div className="min-h-screen bg-gray-50 py-20">
@@ -193,6 +225,45 @@ const Blog: React.FC = () => {
                 </div>
               </AnimatedCard>
             ))}
+          </div>
+
+          <div className="mt-16 rounded-3xl bg-white p-8 shadow-sm">
+            <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h3 className="text-2xl font-bold">Ready to Match a Guide With a Package?</h3>
+                <p className="max-w-2xl text-gray-600">
+                  Use these destination articles to compare routes, then jump to
+                  live departures and contact support for the right pilgrimage plan.
+                </p>
+              </div>
+              <Link
+                to="/upcoming-plans"
+                className="inline-flex items-center text-primary font-medium hover:underline"
+              >
+                View upcoming packages <ArrowRight size={16} className="ml-1" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {planningGuides.map((guide) => (
+                <div
+                  key={guide.path}
+                  className="rounded-2xl border border-gray-200 bg-gray-50 p-5"
+                >
+                  <Link to={guide.path} className="font-semibold text-gray-900 hover:text-primary">
+                    {guide.title}
+                  </Link>
+                  <p className="mt-2 text-sm text-gray-600">{guide.description}</p>
+                  <div className="mt-4 flex items-center gap-4 text-sm">
+                    <Link to={guide.path} className="text-primary hover:underline">
+                      Read guide
+                    </Link>
+                    <Link to="/upcoming-plans" className="text-primary hover:underline">
+                      See packages
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Call to Action */}
