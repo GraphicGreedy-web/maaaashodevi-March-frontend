@@ -14,6 +14,7 @@ import PageTransition from "../components/PageTransition";
 import AnimatedCard from "../components/AnimatedCard";
 import SEO from "../components/SEO";
 import { getGuideForTourTitle, planningGuides } from "../data/seoLinks";
+import { getPackagePathForTitle, packagePages } from "../data/packagePages";
 
 const UpcomingPlans: React.FC = () => {
   const cachedTours = getCachedTours();
@@ -99,14 +100,19 @@ const UpcomingPlans: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Upcoming Religious Tour Packages from Bhopal | Maa Asho Devi Dharam Yatra"
-        description="Browse upcoming religious tour packages from Bhopal, including Char Dham Yatra packages, Kedarnath tours and family pilgrimage departures across India."
+        title="Maa Aasho Devi Tours Packages | Religious Tour Package Bhopal"
+        description="Browse upcoming packages from Maa Aasho Devi Tours, including Char Dham Yatra Bhopal departures, Kedarnath tour package Bhopal plans and family pilgrimage routes."
         path="/upcoming-plans"
         keywords={[
+          "maa aasho devi tours",
+          "maa aasho devi dharma yatra",
           "upcoming yatra plans from bhopal",
+          "tour agency bhopal",
           "religious tour packages from bhopal",
+          "religious tour package bhopal",
+          "char dham yatra bhopal",
           "char dham yatra package from bhopal",
-          "kedarnath tour package from bhopal",
+          "kedarnath tour package bhopal",
           "book pilgrimage package bhopal",
         ]}
         schema={[
@@ -119,7 +125,7 @@ const UpcomingPlans: React.FC = () => {
               "Featured and upcoming pilgrimage departures from Bhopal, including Char Dham, Kedarnath, Ujjain, Nepal and other devotional routes.",
             isPartOf: {
               "@type": "WebSite",
-              name: "Maa Asho Devi Dharam Yatra",
+              name: "Maa Aasho Devi Tours",
               url: "https://maaaashodevidharmayatra.in",
             },
           },
@@ -173,7 +179,7 @@ const UpcomingPlans: React.FC = () => {
                 name: "Can families request a custom pilgrimage package?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. Travellers can contact Maa Asho Devi Dharam Yatra for a custom route, date, or family-oriented pilgrimage plan.",
+                  text: "Yes. Travellers can contact Maa Aasho Devi Tours for a custom route, date, or family-oriented pilgrimage plan.",
                 },
               },
             ],
@@ -273,10 +279,10 @@ const UpcomingPlans: React.FC = () => {
                       </div>
 
                       <Link
-                        to="/contact"
+                        to={getPackagePathForTitle(trip.title) || "/contact"}
                         className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
                       >
-                        Book Now
+                        {getPackagePathForTitle(trip.title) ? "Open Package Page" : "Book Now"}
                       </Link>
                       {getGuideForTourTitle(trip.title) ? (
                         <Link
@@ -390,10 +396,10 @@ const UpcomingPlans: React.FC = () => {
                       </div>
 
                       <Link
-                        to="/contact"
+                        to={getPackagePathForTitle(trip.title) || "/contact"}
                         className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
                       >
-                        Book Now
+                        {getPackagePathForTitle(trip.title) ? "Open Package Page" : "Book Now"}
                       </Link>
                       {getGuideForTourTitle(trip.title) ? (
                         <Link
@@ -411,6 +417,32 @@ const UpcomingPlans: React.FC = () => {
           </section>
 
           <section className="mt-16 rounded-3xl bg-white p-8 shadow-sm">
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold">Popular Package Pages</h3>
+              <p className="mt-2 max-w-2xl text-gray-600">
+                These core package pages stay crawlable even before live
+                departure data finishes loading, which makes your main
+                pilgrimage offers easier to discover.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {packagePages.map((pkg) => (
+                <Link
+                  key={pkg.slug}
+                  to={`/${pkg.slug}`}
+                  className="rounded-2xl border border-gray-200 bg-gray-50 p-5 transition-colors hover:border-primary hover:bg-primary/5"
+                >
+                  <h4 className="font-semibold text-gray-900">{pkg.title}</h4>
+                  <p className="mt-2 text-sm text-gray-600">{pkg.summary}</p>
+                  <span className="mt-4 inline-flex items-center text-sm font-medium text-primary">
+                    Open package page <ArrowRight size={14} className="ml-1" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-8 rounded-3xl bg-white p-8 shadow-sm">
             <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <h3 className="text-2xl font-bold">Plan With Destination Guides</h3>
@@ -438,6 +470,12 @@ const UpcomingPlans: React.FC = () => {
                 </Link>
               ))}
             </div>
+            <Link
+              to="/sitemap"
+              className="mt-6 inline-flex items-center text-primary font-medium hover:underline"
+            >
+              Browse the full HTML sitemap <ArrowRight size={16} className="ml-1" />
+            </Link>
           </section>
 
           {/* Call to Action */}

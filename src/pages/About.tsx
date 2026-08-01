@@ -45,29 +45,31 @@ const About: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="About Our Bhopal Tour Operator | Maa Asho Devi Dharam Yatra"
-        description="Learn about Maa Asho Devi Dharam Yatra, a Bhopal tour operator focused on Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and spiritually meaningful group travel."
+        title="About Maa Aasho Devi Tours | Travel Agency Bhopal"
+        description="Learn about Maa Aasho Devi Tours, a travel agency in Bhopal focused on Char Dham Yatra Bhopal departures, Kedarnath tour package Bhopal planning and religious tour packages."
         path="/about"
         keywords={[
-          "about tour operator bhopal",
-          "bhopal tour operator",
+          "maa aasho devi dharma yatra",
+          "maa aasho devi tours",
+          "maa aasho devi bhopal",
+          "tour agency bhopal",
           "travel agency bhopal",
-          "religious tour operator bhopal",
-          "pilgrimage tour operator bhopal",
+          "religious tour package bhopal",
+          "char dham yatra bhopal",
           "char dham yatra package from bhopal",
-          "kedarnath tour package from bhopal",
-          "about maa asho devi dharam yatra",
+          "kedarnath tour package bhopal",
+          "about maa aasho devi tours",
         ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
-          name: "About Maa Asho Devi Dharam Yatra",
+          name: "About Maa Aasho Devi Tours",
           url: "https://maaaashodevidharmayatra.in/about",
           description:
-            "About page for Maa Asho Devi Dharam Yatra, a dharma yatra tour agency in Bhopal and Madhya Pradesh offering pilgrimage travel planning.",
+            "About page for Maa Aasho Devi Tours, a dharma yatra travel agency in Bhopal offering pilgrimage travel planning.",
           mainEntity: {
             "@type": ["TravelAgency", "LocalBusiness"],
-            name: "Maa Asho Devi Dharam Yatra",
+            name: "Maa Aasho Devi Dharma Yatra",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Om Shiva Nagar, Lal Ghati",
@@ -422,7 +424,7 @@ const About: React.FC = () => {
             >
               <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                The milestones that have shaped Maa Asho Devi Dharam Yatra
+                The milestones that have shaped Maa Aasho Devi Tours
               </p>
             </motion.div>
 

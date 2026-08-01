@@ -32,29 +32,32 @@ const Blog: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Bhopal Tour Operator Blog | Char Dham, Kedarnath & Pilgrimage Guides"
-        description="Explore Char Dham, Kedarnath and pilgrimage guides from a Bhopal tour operator offering religious tour packages from Bhopal and spiritual travel across India."
+        title="Maa Aasho Devi Tours Blog | Travel Agency Bhopal Guides"
+        description="Explore Char Dham Yatra Bhopal, Kedarnath tour package Bhopal and pilgrimage guides from Maa Aasho Devi Tours, a travel agency in Bhopal."
         path="/blog"
         type="blog"
         keywords={[
-          'tour operator bhopal',
-          'bhopal tour operator blog',
+          'maa aasho devi tours',
+          'maa aasho devi dharma yatra',
+          'maa aasho devi bhopal',
+          'tour agency bhopal',
           'religious tour packages from bhopal',
+          'religious tour package bhopal',
+          'travel agency bhopal',
+          'char dham yatra bhopal',
           'spiritual travel blog',
           'char dham yatra package from bhopal',
-          'kedarnath tour package from bhopal',
+          'kedarnath tour package bhopal',
           'pilgrimage travel tips',
           'char dham guide',
           'kedarnath travel guide',
-          'religious tour blog',
-          'maa asho devi dharam yatra',
         ]}
         schema={{
           '@context': 'https://schema.org',
           '@graph': [
             {
               '@type': 'Blog',
-              name: 'Maa Asho Devi Dharam Yatra Blog',
+              name: 'Maa Aasho Devi Tours Blog',
               url: 'https://maaaashodevidharmayatra.in/blog',
               description:
                 'Dharma yatra guides, destination articles and travel tips from a tour agency in Madhya Pradesh for spiritual journeys across India.',

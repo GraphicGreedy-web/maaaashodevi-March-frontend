@@ -14,7 +14,7 @@ interface SEOProps {
   schema?: SchemaValue;
 }
 
-const SITE_NAME = "Maa Asho Devi Dharam Yatra";
+const SITE_NAME = "Maa Aasho Devi Tours";
 const SITE_URL = "https://maaaashodevidharmayatra.in";
 const DEFAULT_IMAGE =
   "https://staticimg.amarujala.com/assets/images/2016/03/13/snowfall-in-kedarnath_1457875309.jpeg";

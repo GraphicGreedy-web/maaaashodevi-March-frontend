@@ -8,6 +8,8 @@ import PageTransition from "../components/PageTransition";
 import { getReviewsHook, getToursHook, useReviewHook } from "../hooks/fetchHooks.js";
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
+import { getPackagePathForTitle } from "../data/packagePages";
+import { servicePages } from "../data/servicePages";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
   const ratingFormRef = useRef<HTMLDivElement>(null);
@@ -77,13 +79,14 @@ const Home: React.FC = () => {
   const upcomingYatras = [
     {
       id: 1,
-      name: "kainchi dham",
+      name: "Kainchi Dham",
       image:
         "https://kainchidhamtours.com/assets/images/kainchi-dham_1687158479.webp",
-      description: "Seek blessings at the holy shrine of Mata Vaishno Devi.",
-      startDate: "20 March 2025",
+      description:
+        "Plan a calm Neem Karoli Baba pilgrimage with family-friendly coordination from Bhopal.",
+      startDate: "18 September 2026",
       duration: "5 Days",
-      link: "/upcoming-plans#kainchi dham",
+      link: "/upcoming-plans",
     },
     {
       id: 2,
@@ -92,19 +95,20 @@ const Home: React.FC = () => {
         "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
       description:
         "Complete pilgrimage to the four sacred sites in the Himalayas.",
-      startDate: "15 May, 1 June, 17 June 2025",
+      startDate: "18 September 2026 and 3 October 2026",
       duration: "13 Days",
-      link: "/upcoming-plans#North",
+      link: "/char-dham-yatra-from-bhopal",
     },
     {
       id: 3,
       name: "Jagannath Puri",
       image:
         "https://cdn.shopify.com/s/files/1/1657/2397/files/Puri-Yatra-PTI.jpg?v=1531550373",
-      description: "Experience the divine aura of Lord Shiva in Varanasi.",
-      startDate: "15 Aug 2025",
+      description:
+        "Travel for Jagannath darshan with an organised group route and clear support from Bhopal.",
+      startDate: "24 October 2026",
       duration: "6 Days",
-      link: "/upcoming-plans#kashi",
+      link: "/upcoming-plans",
     },
   ];
 
@@ -112,9 +116,9 @@ const Home: React.FC = () => {
     {
       id: 1,
       name: "Mitish",
-      location: "Jaipure",
+      location: "Jaipur",
       quote:
-        "n amazing journey! The entire tour felt like a family experience. Our tour operator, Neha Gupta, was incredibly benevolent and ensured everything possible was done for our comfort.",
+        "An amazing journey. The entire tour felt like a family experience. Neha Gupta made sure we were comfortable throughout the trip.",
       rating: 5,
     },
     {
@@ -130,12 +134,13 @@ const Home: React.FC = () => {
       name: "Amit Singh",
       location: "Jaipur",
       quote:
-        "Highly professional and caring service! Felt safe and blessed throughout the tour. Will definitely book again!.",
+        "Highly professional and caring service. We felt safe and blessed throughout the tour and would gladly book again.",
       rating: 5,
     },
   ];
 
   const testimonials = reviews.length > 0 ? reviews : defaultTestimonials;
+  const localServiceLinks = servicePages.slice(0, 4);
 
   useEffect(() => {
     const openRatingForm = () => {
@@ -230,38 +235,44 @@ const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Tour Operator in Bhopal for Char Dham, Kedarnath & Religious Tours | Maa Asho Devi Dharam Yatra"
-        description="Maa Asho Devi Dharam Yatra is a Bhopal tour operator for Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages, pilgrimage travel and family spiritual journeys across India."
+        title="Maa Aasho Devi Tours | Tour Agency Bhopal for Char Dham & Kedarnath"
+        description="Maa Aasho Devi Tours is a travel agency in Bhopal for Char Dham Yatra Bhopal departures, Kedarnath tour package Bhopal bookings, religious tour packages and family pilgrimage journeys."
         path="/"
         keywords={[
-          "tour operator bhopal",
-          "tour operator in bhopal",
-          "bhopal tour operator",
+          "maa aasho devi dharma yatra",
+          "maa aasho devi tours",
+          "maa aasho devi bhopal",
+          "tour agency bhopal",
           "travel agency bhopal",
-          "best tour operator in bhopal",
+          "travel agency in bhopal",
+          "tour operator bhopal",
           "best travel agency in bhopal",
+          "char dham yatra bhopal",
+          "char dham yatra from bhopal",
+          "char dham yatra package from bhopal",
+          "kedarnath tour package bhopal",
+          "kedarnath tour package from bhopal",
+          "religious tour package bhopal",
           "religious tour packages from bhopal",
           "pilgrimage tour operator bhopal",
           "spiritual tour operator bhopal",
-          "tour operator madhya pradesh",
-          "tour operator in mp",
-          "char dham yatra package from bhopal",
-          "char dham yatra from bhopal",
-          "kedarnath tour package from bhopal",
           "ujjain tour package from bhopal",
           "vrindavan tour package from bhopal",
           "family pilgrimage tours",
-          "maa asho devi dharam yatra",
         ]}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": ["TravelAgency", "LocalBusiness"],
-            name: "Maa Asho Devi Dharam Yatra",
-            alternateName: "Maa Aasho Devi Dharam Yatra",
+            name: "Maa Aasho Devi Dharma Yatra",
+            alternateName: [
+              "Maa Aasho Devi Tours",
+              "Maa Aasho Devi",
+              "Maa Shri Devi Dharma Yatra",
+            ],
             url: "https://maaaashodevidharmayatra.in",
             description:
-              "Bhopal-based tour operator offering Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and spiritual journeys across India.",
+              "Bhopal-based travel agency offering Char Dham Yatra Bhopal departures, Kedarnath tour packages, religious tour packages and spiritual journeys across India.",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
             image:
@@ -294,34 +305,34 @@ const Home: React.FC = () => {
               "https://wa.me/message/AGFJTGPLJOE7N1",
             ],
             serviceType: [
-              "Tour Operator",
+              "Tour Agency",
               "Travel Agency",
               "Pilgrimage Tour Packages",
               "Char Dham Yatra Packages",
               "Religious Tour Packages",
             ],
             knowsAbout: [
-              "Tour Operator in Bhopal",
+              "Maa Aasho Devi Dharma Yatra",
+              "Maa Aasho Devi Tours",
+              "Maa Aasho Devi Bhopal",
+              "Tour Agency Bhopal",
               "Travel Agency in Bhopal",
+              "Religious Tour Package Bhopal",
               "Religious Tour Packages from Bhopal",
-              "Pilgrimage Tour Operator Bhopal",
-              "Maa Asho Devi Dharam Yatra",
-              "Tour Operator in Madhya Pradesh",
-              "Char Dham Yatra",
+              "Char Dham Yatra Bhopal",
               "Char Dham Yatra from Bhopal",
               "Char Dham Yatra Package from Bhopal",
-              "Kedarnath Yatra",
+              "Kedarnath Tour Package Bhopal",
               "Kedarnath Tour Package from Bhopal",
               "Ujjain Tour Package from Bhopal",
               "Vrindavan Tour Package from Bhopal",
               "Pilgrimage Tours",
-              "Religious Tour Packages",
             ],
           },
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Maa Asho Devi Dharam Yatra",
+            name: "Maa Aasho Devi Tours",
             url: "https://maaaashodevidharmayatra.in",
             inLanguage: "en-IN",
             potentialAction: {
@@ -339,7 +350,7 @@ const Home: React.FC = () => {
                 name: "Which pilgrimage packages can travellers book from Bhopal?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Maa Asho Devi Dharam Yatra offers spiritual journeys from Bhopal including Char Dham, Kedarnath, Ujjain, Vrindavan, Nepal and other family-oriented religious tours.",
+                  text: "Maa Aasho Devi Tours offers spiritual journeys from Bhopal including Char Dham, Kedarnath, Ujjain, Vrindavan, Nepal and other family-oriented religious tours.",
                 },
               },
               {
@@ -377,7 +388,7 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl md:text-6xl font-bold mb-6"
             >
-              Maa Aashodevi <span className="gradient-text">Dharma Yatra</span>
+              Maa Aasho Devi <span className="gradient-text">Tours</span>
             </motion.h1>
 
             <motion.p
@@ -386,9 +397,10 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-md md:text-md mb-8 max-w-3xl mx-auto"
             >
-              <b style={{ color: "#1f1f1f" }}>Book</b> Char Dham Yatra packages
-              from Bhopal, Kedarnath tours, Ujjain, Vrindavan and other{" "}
-              <b style={{ color: "#1f1f1f" }}>religious tour packages across India</b>
+              <b style={{ color: "#1f1f1f" }}>Book</b> Char Dham Yatra Bhopal
+              departures, Kedarnath tour package Bhopal plans, Ujjain,
+              Vrindavan and other{" "}
+              <b style={{ color: "#1f1f1f" }}>religious tour packages from Bhopal</b>
             </motion.p>
 
             <motion.div
@@ -488,7 +500,7 @@ const Home: React.FC = () => {
                       {destination.description}
                     </p>
                     <Link
-                      to="/upcoming-plans"
+                      to={getPackagePathForTitle(destination.name) || "/upcoming-plans"}
                       className="inline-flex items-center text-primary font-medium hover:underline"
                     >
                       Explore More <ArrowRight size={16} className="ml-1" />
@@ -549,10 +561,10 @@ const Home: React.FC = () => {
                       <span>Starting: {yatra.startDate}</span>
                     </div>
                     <Link
-                      to="/contact"
+                      to={yatra.link}
                       className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
                     >
-                      Book Now
+                      Explore Package
                     </Link>
                   </div>
                 </AnimatedCard>
@@ -571,6 +583,57 @@ const Home: React.FC = () => {
           </div>
         </section>
 
+        <section className="bg-amber-50 py-20">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.6 }}
+                className="text-3xl font-bold text-gray-900 md:text-4xl"
+              >
+                Bhopal Service <span className="text-primary">Coverage</span>
+              </motion.h2>
+              <motion.p
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mt-4 text-gray-600"
+              >
+                These pages help travellers who search for a tour agency, travel agency,
+                family operator, or religious package support in Bhopal before they pick a
+                destination.
+              </motion.p>
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {localServiceLinks.map((service, index) => (
+                <AnimatedCard key={service.slug} delay={index * 0.1}>
+                  <div className="flex h-full flex-col rounded-3xl border border-amber-100 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      Bhopal Intent
+                    </p>
+                    <h3 className="mt-3 text-xl font-bold text-gray-900">{service.title}</h3>
+                    <p className="mt-3 flex-grow text-sm leading-6 text-gray-600">
+                      {service.summary}
+                    </p>
+                    <Link
+                      to={`/${service.slug}`}
+                      className="mt-5 inline-flex items-center font-medium text-primary hover:underline"
+                    >
+                      Explore page <ArrowRight size={16} className="ml-1" />
+                    </Link>
+                  </div>
+                </AnimatedCard>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Why Choose Us */}
         <section ref={whyChooseUsRef} className="py-20" id="why-choose-us">
           <div className="container mx-auto px-4">
@@ -583,8 +646,8 @@ const Home: React.FC = () => {
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
                   Why Choose{" "}
-                  <span className="text-primary">Maa Aaasho Devi</span> for Your
-                  Dharmic Yatra
+                  <span className="text-primary">Maa Aasho Devi Tours</span> for
+                  Your Dharmic Yatra
                 </h2>
                 <p className="text-gray-600 mb-8">
                   <b>With 10+ Years of Trusted Pilgrimage Experience,</b> we

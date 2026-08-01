@@ -238,12 +238,16 @@ const Gallery: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Yatra Photo Gallery | Pilgrimage Journey Moments"
-        description="Browse Maa Asho Devi Dharam Yatra gallery photos from Kedarnath, Kainchi Dham, Nainital and other pilgrimage journeys across India."
+        title="Maa Aasho Devi Tours Gallery | Religious Tours from Bhopal"
+        description="Browse Maa Aasho Devi Tours gallery photos from Char Dham, Kedarnath, Kainchi Dham and other religious tour packages from Bhopal."
         path="/gallery"
         keywords={[
+          "maa aasho devi tours",
+          "maa aasho devi dharma yatra",
+          "maa aasho devi bhopal",
           "yatra gallery",
           "pilgrimage photos",
+          "religious tour package bhopal",
           "kedarnath journey images",
           "spiritual travel gallery",
         ]}

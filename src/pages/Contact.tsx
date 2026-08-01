@@ -137,34 +137,34 @@ const Contact: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Contact Tour Operator in Bhopal | Char Dham & Religious Tour Booking"
-        description="Contact Maa Asho Devi Dharam Yatra, a tour operator in Bhopal, for Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and family pilgrimage booking support."
+        title="Contact Maa Aasho Devi Tours | Tour Agency Bhopal"
+        description="Contact Maa Aasho Devi Tours, a travel agency in Bhopal, for Char Dham Yatra Bhopal departures, Kedarnath tour package Bhopal support and religious tour booking help."
         path="/contact"
         keywords={[
-          "contact tour operator bhopal",
-          "tour operator in bhopal contact",
+          "maa aasho devi tours",
+          "maa aasho devi dharma yatra",
+          "contact maa aasho devi bhopal",
+          "tour agency bhopal",
           "travel agency bhopal contact",
-          "religious tour booking bhopal",
+          "religious tour package bhopal",
           "pilgrimage booking bhopal",
-          "dharma yatra from bhopal",
+          "char dham yatra bhopal",
           "char dham yatra package from bhopal",
-          "char dham yatra from bhopal",
-          "kedarnath tour package from bhopal",
-          "maa asho devi dharam yatra",
+          "kedarnath tour package bhopal",
         ]}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            name: "Contact Maa Asho Devi Dharam Yatra",
+            name: "Contact Maa Aasho Devi Tours",
             url: "https://maaaashodevidharmayatra.in/contact",
             description:
-              "Contact page for Maa Asho Devi Dharam Yatra, a Bhopal-based dharma yatra tour agency in Madhya Pradesh for pilgrimage travel.",
+              "Contact page for Maa Aasho Devi Tours, a Bhopal-based dharma yatra travel agency for pilgrimage travel.",
           },
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Maa Asho Devi Dharam Yatra",
+            name: "Maa Aasho Devi Dharma Yatra",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
             address: {
@@ -209,7 +209,7 @@ const Contact: React.FC = () => {
           className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
         >
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Chlo Chlte hein, apni info bhej dijiye
+            Share Your Travel Details With Us
           </h2>
           <form onSubmit={handleSubmit} className="flex justify-center">
             <div className="p-10 hover:shadow-lg hover:-translate-y-2 transition">
