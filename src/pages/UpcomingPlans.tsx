@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fetchAllTours } from "../frontRoutes/fetchRoutes.js";
+import { fetchAllTours, getCachedTours } from "../frontRoutes/fetchRoutes.js";
 import {
   Calendar,
   MapPin,
@@ -15,19 +15,24 @@ import AnimatedCard from "../components/AnimatedCard";
 import SEO from "../components/SEO";
 
 const UpcomingPlans: React.FC = () => {
+  const cachedTours = getCachedTours();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("all");
-  const [allTours, setAllTours] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [allTours, setAllTours] = useState<any[]>(cachedTours?.tours ?? []);
+  const [isLoading, setIsLoading] = useState(!cachedTours?.tours?.length);
 
   useEffect(() => {
     const loadTours = async () => {
       try {
-        const tours = await fetchAllTours();
+        const tours = await fetchAllTours({
+          forceRefresh: !cachedTours?.isFresh,
+        });
         setAllTours(tours ?? []);
       } catch (error) {
         // console.error("Failed to load tours", error);
-        setAllTours([]);
+        if (!cachedTours?.tours?.length) {
+          setAllTours([]);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -67,19 +72,20 @@ const UpcomingPlans: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Upcoming Yatra Plans | Pilgrimage Tour Departures"
-        description="Browse upcoming pilgrimage departures, featured yatra packages and spiritual tour plans across North, South, East and West India."
+        title="Upcoming Religious Tour Packages from Bhopal | Maa Asho Devi Dharam Yatra"
+        description="Browse upcoming religious tour packages from Bhopal, including Char Dham Yatra packages, Kedarnath tours and family pilgrimage departures across India."
         path="/upcoming-plans"
         keywords={[
-          "upcoming yatra plans",
-          "pilgrimage departures",
-          "religious tour packages",
-          "book yatra package",
+          "upcoming yatra plans from bhopal",
+          "religious tour packages from bhopal",
+          "char dham yatra package from bhopal",
+          "kedarnath tour package from bhopal",
+          "book pilgrimage package bhopal",
         ]}
       />
       <div className="min-h-screen bg-gray-50 py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +102,7 @@ const UpcomingPlans: React.FC = () => {
             >
               Plan your spiritual journey with our upcoming pilgrimage tours
             </motion.p>
-          </div>
+          </div> */}
 
           {/* Featured Packages Section */}
           <section className="mb-16">

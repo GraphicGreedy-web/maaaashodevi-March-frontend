@@ -14,6 +14,7 @@ const UpcomingPlans = lazy(() => import("./pages/UpcomingPlans"));
 const Contact = lazy(() => import("./pages/Contact"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
   const location = useLocation();
@@ -54,7 +55,7 @@ function App() {
             />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
-            {/* Add more routes as needed */}
+            <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
         </Suspense>

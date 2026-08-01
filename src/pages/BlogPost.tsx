@@ -282,6 +282,54 @@ const BlogPost: React.FC = () => {
                 </div>
               </div>
 
+              <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 className="text-xl font-bold mb-4">Popular Yatra Guides</h3>
+                <div className="space-y-3 text-sm">
+                  <Link
+                    to="/blog/tour-operator-in-bhopal-religious-tours"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Tour Operator in Bhopal for Religious Tours
+                  </Link>
+                  <Link
+                    to="/blog/kedarnath-tour-package-from-bhopal"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Kedarnath Tour Package from Bhopal
+                  </Link>
+                  <Link
+                    to="/blog/uttarakhand-tour-package-from-bhopal"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Uttarakhand Tour Package from Bhopal
+                  </Link>
+                  <Link
+                    to="/blog/nepal-tour-package-from-bhopal"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Nepal Tour Package from Bhopal
+                  </Link>
+                  <Link
+                    to="/blog/char-dham-yatra-package-from-bhopal"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Char Dham Yatra Package from Bhopal
+                  </Link>
+                  <Link
+                    to="/upcoming-plans"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Upcoming Religious Tour Packages from Bhopal
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="block text-gray-700 transition-colors hover:text-primary"
+                  >
+                    Contact Our Bhopal Tour Operator
+                  </Link>
+                </div>
+              </div>
+
               {/* Categories */}
               <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
                 <h3 className="text-xl font-bold mb-4">Categories</h3>

@@ -6,6 +6,7 @@ import ThreeJSBackground from "../components/ThreeJSBackground";
 import AnimatedCard from "../components/AnimatedCard";
 import PageTransition from "../components/PageTransition";
 import { getReviewsHook, getToursHook, useReviewHook } from "../hooks/fetchHooks.js";
+import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
@@ -34,8 +35,9 @@ const Home: React.FC = () => {
   };
   const allTour = getToursHook()
   const { reviews, setReviews } = getReviewsHook()
+  const navigate = useNavigate()
   const submitReview = useReviewHook();
-  const popularTour = allTour.filter((t)=>t.popular)
+  const popularTour = allTour.filter((t) => t.popular)
   // const destinations = [
   //   {
   //     id: 1,
@@ -228,25 +230,28 @@ const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Maa Asho Devi Dharam Yatra | Tour Agency in Bhopal and MP for Dharma Yatra"
-        description="Maa Asho Devi Dharam Yatra is a Bhopal-based tour agency in MP for dharma yatra, Char Dham Yatra packages from Bhopal, Kedarnath tours, Vrindavan, Ujjain and other pilgrimage journeys."
+        title="Tour Operator in Bhopal for Char Dham, Kedarnath & Religious Tours | Maa Asho Devi Dharam Yatra"
+        description="Maa Asho Devi Dharam Yatra is a Bhopal tour operator for Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages, pilgrimage travel and family spiritual journeys across India."
         path="/"
         keywords={[
-          "maa dhamra",
-          "maa dharma",
-          "maa dharam yatra",
-          "maa asho devi dharam yatra",
-          "tour agency in bhopal",
-          "tour agency in mp",
-          "tour agency in madhya pradesh",
-          "best tour agency in bhopal",
-          "dharma yatra",
-          "dharma yatra from bhopal",
+          "tour operator bhopal",
+          "tour operator in bhopal",
+          "bhopal tour operator",
+          "travel agency bhopal",
+          "best tour operator in bhopal",
+          "best travel agency in bhopal",
+          "religious tour packages from bhopal",
+          "pilgrimage tour operator bhopal",
+          "spiritual tour operator bhopal",
+          "tour operator madhya pradesh",
+          "tour operator in mp",
           "char dham yatra package from bhopal",
           "char dham yatra from bhopal",
-          "char dham package",
-          "kedarnath tour package",
-          "spiritual travel agency bhopal",
+          "kedarnath tour package from bhopal",
+          "ujjain tour package from bhopal",
+          "vrindavan tour package from bhopal",
+          "family pilgrimage tours",
+          "maa asho devi dharam yatra",
         ]}
         schema={[
           {
@@ -256,7 +261,7 @@ const Home: React.FC = () => {
             alternateName: "Maa Aasho Devi Dharam Yatra",
             url: "https://maaaashodevidharmayatra.in",
             description:
-              "Bhopal-based spiritual tour agency in Madhya Pradesh offering dharma yatra and pilgrimage packages across India.",
+              "Bhopal-based tour operator offering Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and spiritual journeys across India.",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
             image:
@@ -288,19 +293,27 @@ const Home: React.FC = () => {
               "https://www.facebook.com/share/p/1HG3z2Q8AX/",
               "https://wa.me/message/AGFJTGPLJOE7N1",
             ],
+            serviceType: [
+              "Tour Operator",
+              "Travel Agency",
+              "Pilgrimage Tour Packages",
+              "Char Dham Yatra Packages",
+              "Religious Tour Packages",
+            ],
             knowsAbout: [
-              "Dharma Yatra",
-              "Maa Dhamra",
-              "Maa Dharma",
-              "Maa Dharam Yatra",
+              "Tour Operator in Bhopal",
+              "Travel Agency in Bhopal",
+              "Religious Tour Packages from Bhopal",
+              "Pilgrimage Tour Operator Bhopal",
               "Maa Asho Devi Dharam Yatra",
-              "Tour Agency in MP",
-              "Tour Agency in Madhya Pradesh",
-              "Dharma Yatra from Bhopal",
+              "Tour Operator in Madhya Pradesh",
               "Char Dham Yatra",
               "Char Dham Yatra from Bhopal",
               "Char Dham Yatra Package from Bhopal",
               "Kedarnath Yatra",
+              "Kedarnath Tour Package from Bhopal",
+              "Ujjain Tour Package from Bhopal",
+              "Vrindavan Tour Package from Bhopal",
               "Pilgrimage Tours",
               "Religious Tour Packages",
             ],
@@ -322,26 +335,25 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-20"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
 
-          <div className="container mx-auto px-4 z-10 text-center">
+          <div className="container mx-auto px-4 z-10 text-center -translate-y-[5rem]">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl md:text-6xl font-bold mb-6"
             >
-              Discover Sacred <span className="gradient-text">स्थान</span>
+              Maa Aashodevi <span className="gradient-text">Dharma Yatra</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
+              className="text-md md:text-md mb-8 max-w-3xl mx-auto"
             >
-              <b style={{ color: "#1f1f1f" }}>Experience</b> spiritual
-              enlightenment <b style={{ color: "#1f1f1f" }}>with</b> our
-              carefully curated religious tours{" "}
-              <b style={{ color: "#1f1f1f" }}>across India</b>
+              <b style={{ color: "#1f1f1f" }}>Book</b> Char Dham Yatra packages
+              from Bhopal, Kedarnath tours, Ujjain, Vrindavan and other{" "}
+              <b style={{ color: "#1f1f1f" }}>religious tour packages across India</b>
             </motion.p>
 
             <motion.div
@@ -354,13 +366,13 @@ const Home: React.FC = () => {
                 to="/upcoming-plans"
                 className="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Start Your Journey
+                Explore Packages
               </Link>
               <button
-                onClick={scrollToWhyChooseUs}
+                onClick={()=>navigate("/contact")}
                 className="bg-transparent hover:bg-white/10 text-gray-800 font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg border border-gray-300"
               >
-                Explore Our Services
+                Contact Us
               </button>
             </motion.div>
           </div>
@@ -412,7 +424,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mr-2 ml-2">
-              {popularTour.map((destination, order:Number) => (
+              {popularTour.map((destination, order: Number) => (
                 <AnimatedCard key={destination._id} delay={order * 0.1}>
                   <div className="relative h-64 overflow-hidden">
                     <img
@@ -681,11 +693,10 @@ const Home: React.FC = () => {
             {reviewToast ? (
               <div className="mb-6 flex justify-center">
                 <div
-                  className={`rounded-xl px-4 py-3 text-sm font-medium shadow-lg ${
-                    reviewToast.type === "success"
+                  className={`rounded-xl px-4 py-3 text-sm font-medium shadow-lg ${reviewToast.type === "success"
                       ? "bg-green-50 text-green-800"
                       : "bg-red-50 text-red-800"
-                  }`}
+                    }`}
                 >
                   {reviewToast.message}
                 </div>
@@ -776,56 +787,56 @@ const Home: React.FC = () => {
                 </button>
               </div>
               {isRatingFormOpen ? (
-              <form onSubmit={handleReviewSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input
-                    type="text"
-                    name="name"
-                    value={reviewForm.name}
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <input
+                      type="text"
+                      name="name"
+                      value={reviewForm.name}
+                      onChange={handleReviewChange}
+                      placeholder="Your name"
+                      required
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                    />
+                    <input
+                      type="text"
+                      name="location"
+                      value={reviewForm.location}
+                      onChange={handleReviewChange}
+                      placeholder="Your city"
+                      required
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  <select
+                    name="rating"
+                    value={reviewForm.rating}
                     onChange={handleReviewChange}
-                    placeholder="Your name"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
+                  >
+                    <option value={5}>5 Stars</option>
+                    <option value={4}>4 Stars</option>
+                    <option value={3}>3 Stars</option>
+                    <option value={2}>2 Stars</option>
+                    <option value={1}>1 Star</option>
+                  </select>
+                  <textarea
+                    name="quote"
+                    value={reviewForm.quote}
+                    onChange={handleReviewChange}
+                    placeholder="Write your remark"
                     required
+                    rows={4}
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
                   />
-                  <input
-                    type="text"
-                    name="location"
-                    value={reviewForm.location}
-                    onChange={handleReviewChange}
-                    placeholder="Your city"
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <select
-                  name="rating"
-                  value={reviewForm.rating}
-                  onChange={handleReviewChange}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
-                >
-                  <option value={5}>5 Stars</option>
-                  <option value={4}>4 Stars</option>
-                  <option value={3}>3 Stars</option>
-                  <option value={2}>2 Stars</option>
-                  <option value={1}>1 Star</option>
-                </select>
-                <textarea
-                  name="quote"
-                  value={reviewForm.quote}
-                  onChange={handleReviewChange}
-                  placeholder="Write your remark"
-                  required
-                  rows={4}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-primary"
-                />
-                <button
-                  type="submit"
-                  disabled={isSubmittingReview}
-                  className="w-full rounded-full bg-primary py-3 font-medium text-white transition-all duration-300 hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
-                >
-                  {isSubmittingReview ? "Saving..." : "Submit Rating"}
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={isSubmittingReview}
+                    className="w-full rounded-full bg-primary py-3 font-medium text-white transition-all duration-300 hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
+                  >
+                    {isSubmittingReview ? "Saving..." : "Submit Rating"}
+                  </button>
+                </form>
               ) : (
                 <p className="text-gray-600">
                   Click the button above or use the navbar Rating button to open

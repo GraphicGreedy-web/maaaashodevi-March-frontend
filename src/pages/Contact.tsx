@@ -137,24 +137,20 @@ const Contact: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Contact Dharma Yatra Tour Agency in Bhopal and MP | Maa Asho Devi Dharam Yatra"
-        description="Contact Maa Asho Devi Dharam Yatra, a dharma yatra tour agency in Bhopal and MP, for dharma yatra from Bhopal, Char Dham Yatra package from Bhopal, and family pilgrimage booking support."
+        title="Contact Tour Operator in Bhopal | Char Dham & Religious Tour Booking"
+        description="Contact Maa Asho Devi Dharam Yatra, a tour operator in Bhopal, for Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and family pilgrimage booking support."
         path="/contact"
         keywords={[
-          "maa dhamra",
-          "maa dharma",
-          "maa dharam yatra",
-          "maa asho devi dharam yatra",
-          "tour agency in bhopal contact",
-          "tour agency in mp",
-          "tour agency in madhya pradesh",
-          "best tour agency in bhopal",
-          "dharma yatra",
-          "dharma yatra booking",
+          "contact tour operator bhopal",
+          "tour operator in bhopal contact",
+          "travel agency bhopal contact",
+          "religious tour booking bhopal",
+          "pilgrimage booking bhopal",
           "dharma yatra from bhopal",
           "char dham yatra package from bhopal",
           "char dham yatra from bhopal",
-          "char dham booking bhopal",
+          "kedarnath tour package from bhopal",
+          "maa asho devi dharam yatra",
         ]}
         schema={[
           {
@@ -189,11 +185,10 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
-              className={`flex max-w-sm items-start gap-3 rounded-xl border px-4 py-3 shadow-lg ${
-                toast.type === "success"
-                  ? "border-green-200 bg-green-50 text-green-800"
-                  : "border-red-200 bg-red-50 text-red-800"
-              }`}
+              className={`flex max-w-sm items-start gap-3 rounded-xl border px-4 py-3 shadow-lg ${toast.type === "success"
+                ? "border-green-200 bg-green-50 text-green-800"
+                : "border-red-200 bg-red-50 text-red-800"
+                }`}
             >
               {toast.type === "success" ? (
                 <CheckCircle className="mt-0.5 h-5 w-5 shrink-0" />
@@ -204,8 +199,253 @@ const Contact: React.FC = () => {
             </motion.div>
           </div>
         ) : null}
+        {/* Contact Form */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          id="contact-form"
+          className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Chlo Chlte hein, apni info bhej dijiye
+          </h2>
+          <form onSubmit={handleSubmit} className="flex justify-center">
+            <div className="p-10 hover:shadow-lg hover:-translate-y-2 transition">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Your Name <span className="text-[#ff6b6b]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                    placeholder="Enter your full name"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Email Address{" "}
+                    <span className="text-[#ff6b6b]">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                    placeholder="Enter your email"
+                  />
+                </motion.div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                >
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Phone Number <span className="text-[#ff6b6b]">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                >
+                  <label
+                    htmlFor="contactMethod"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Preferred Contact Method
+                  </label>
+                  <select
+                    id="contactMethod"
+                    name="contactMethod"
+                    value={formData.contactMethod}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                  >
+                    <option value="Email">Email</option>
+                    <option value="Phone">Phone</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                  </select>
+                </motion.div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                >
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Subject <span className="text-[#ff6b6b]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                    placeholder="Enter subject"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                >
+                  <label
+                    htmlFor="tour"
+                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                  >
+                    Interested in Tour
+                  </label>
+                  <select
+                    id="tour"
+                    name="tour"
+                    value={formData.tour}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                  >
+                    <option value="">Select a tour (optional)</option>
+                    <option value="Char Dham Yatra">
+                      Char Dham Yatra
+                    </option>
+                    <option value="Vaishno Devi & Amarnath">
+                      Vaishno Devi & Amarnath
+                    </option>
+                    <option value="Kashi Vishwanath">
+                      Kashi Vishwanath
+                    </option>
+                    <option value="Tirupati Balaji">
+                      Tirupati Balaji
+                    </option>
+                    <option value="Custom Tour">Custom Tour</option>
+                  </select>
+                </motion.div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.7 }}
+              >
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1 p-2"
+                >
+                  Your Message <span className="text-[#ff6b6b]">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
+                  placeholder="Enter your message here..."
+                ></textarea>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.8 }}
+                className="flex items-center"
+              >
+                <input
+                  id="privacy"
+                  name="privacy"
+                  type="checkbox"
+                  required
+                  className="h-4 w-4 text-[#ff6b6b] focus:ring-[#ff6b6b] border-gray-300 rounded"
+                />
+                <label
+                  htmlFor="privacy"
+                  className="ml-2 block text-sm text-gray-700 p-2"
+                >
+                  I agree to the{" "}
+                  <a
+                    href="/privacy-policy"
+                    className="text-[#ff6b6b] hover:underline"
+                  >
+                    privacy policy
+                  </a>{" "}
+                  and consent to being contacted.
+                </label>
+              </motion.div>
+
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.9 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-[#ff6b6b] to-[#ff8e8e] text-white py-3 px-6 rounded-lg font-medium hover:from-[#ff5b5b] hover:to-[#ff7e7e] transition duration-300 flex items-center justify-center disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}{" "}
+                <Send className="ml-2 h-4 w-4" />
+              </motion.button>
+            </div>
+          </form>
+        </motion.div>
         {/* Hero Section with Contact Us Title */}
-        <section className="py-20">
+        {/* <section className="py-5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -213,48 +453,24 @@ const Contact: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                Contact <span className="text-[#ff6b6b]">Us</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-20">
-                We're here to help you plan your spiritual journey. Reach out to
-                us with any questions or to book a tour.
-              </p>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex justify-center space-x-4"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="max-w-3xl mx-auto text-center"
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-120">
+                <a
+                  href="https://forms.gle/M13mFhbbfsNqJrpf6"
+                  target="_blank"
+                  className="bg-[#ff6b6b] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#ff5b5b] transition duration-300 flex items-center"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-120">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                      Contact <span className="text-[#000000]">Form</span>
-                    </h1>
-
-                    <a
-                      href="https://forms.gle/M13mFhbbfsNqJrpf6"
-                      className="bg-[#ff6b6b] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#ff5b5b] transition duration-300 flex items-center"
-                    >
-                      <p className="align-centre">
-                        CLICK HERE --{" "}
-                        <span className="text-[#000000]">
-                          https://forms.gle/M13mFhbbfsNqJrpf6{" "}
-                        </span>
-                      </p>
-                      <button></button>
-                    </a>
-                  </div>
-                </motion.div>
-              </motion.div>
+                  <p className="align-centre">
+                    CLICK HERE --{" "}
+                    <span className="text-[#000000]">
+                      https://forms.gle/M13mFhbbfsNqJrpf6{" "}
+                    </span>
+                  </p>
+                  <button></button>
+                </a>
+              </div>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         {/* Main Content */}
         <section className="py-16 bg-white">
@@ -266,15 +482,10 @@ const Contact: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                className="bg-gradient-to-br from-[#ff6b6b] to-[#ff8e8e] rounded-2xl p-8 text-white shadow-xl"
+                className="bg-gradient-to-br from-[#ff6b6b] to-[#ff8e8e] rounded-2xl p-8 text-white shadow-xl lg:w-[50rem] mx-auto sm:w-full"
               >
                 <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
-                <p className="text-white/90 mb-10">
-                  We would love to hear from you. Our team of experts is always
-                  ready to assist you with your spiritual journey needs and help
-                  you plan a memorable pilgrimage.
-                </p>
-
+                
                 <div className="space-y-6">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -289,7 +500,7 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-semibold text-lg">Our Location</h3>
                       <p className="text-white/90">
-                        Om Shiva Nagar, Lal Ghati, Bhopal (MP)1
+                        Om Shiva Nagar, Lal Ghati, Bhopal, MP
                       </p>
                     </div>
                   </motion.div>
@@ -362,6 +573,7 @@ const Contact: React.FC = () => {
                     <a
                       href="https://www.facebook.com/share/p/1HG3z2Q8AX/"
                       className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
+                      target="_blank"
                     >
                       <svg
                         className="h-5 w-5"
@@ -374,6 +586,7 @@ const Contact: React.FC = () => {
                     <a
                       href="https://wa.me/message/AGFJTGPLJOE7N1"
                       className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
+                      target="_blank"
                     >
                       <svg
                         className="h-5 w-5"
@@ -394,250 +607,7 @@ const Contact: React.FC = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Contact Form */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                id="contact-form"
-                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
-              >
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                  Send Us a Message
-                </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.1 }}
-                      >
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Your Name <span className="text-[#ff6b6b]">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                          placeholder="Enter your full name"
-                        />
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.2 }}
-                      >
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Email Address{" "}
-                          <span className="text-[#ff6b6b]">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                          placeholder="Enter your email"
-                        />
-                      </motion.div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.3 }}
-                      >
-                        <label
-                          htmlFor="phone"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Phone Number <span className="text-[#ff6b6b]">*</span>
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                          placeholder="Enter your phone number"
-                          required
-                        />
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.4 }}
-                      >
-                        <label
-                          htmlFor="contactMethod"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Preferred Contact Method
-                        </label>
-                        <select
-                          id="contactMethod"
-                          name="contactMethod"
-                          value={formData.contactMethod}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                        >
-                          <option value="Email">Email</option>
-                          <option value="Phone">Phone</option>
-                          <option value="WhatsApp">WhatsApp</option>
-                        </select>
-                      </motion.div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.5 }}
-                      >
-                        <label
-                          htmlFor="subject"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Subject <span className="text-[#ff6b6b]">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                          placeholder="Enter subject"
-                        />
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.6 }}
-                      >
-                        <label
-                          htmlFor="tour"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Interested in Tour
-                        </label>
-                        <select
-                          id="tour"
-                          name="tour"
-                          value={formData.tour}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                        >
-                          <option value="">Select a tour (optional)</option>
-                          <option value="Char Dham Yatra">
-                            Char Dham Yatra
-                          </option>
-                          <option value="Vaishno Devi & Amarnath">
-                            Vaishno Devi & Amarnath
-                          </option>
-                          <option value="Kashi Vishwanath">
-                            Kashi Vishwanath
-                          </option>
-                          <option value="Tirupati Balaji">
-                            Tirupati Balaji
-                          </option>
-                          <option value="Custom Tour">Custom Tour</option>
-                        </select>
-                      </motion.div>
-                    </div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.7 }}
-                    >
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Message <span className="text-[#ff6b6b]">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                        placeholder="Enter your message here..."
-                      ></textarea>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.8 }}
-                      className="flex items-center"
-                    >
-                      <input
-                        id="privacy"
-                        name="privacy"
-                        type="checkbox"
-                        required
-                        className="h-4 w-4 text-[#ff6b6b] focus:ring-[#ff6b6b] border-gray-300 rounded"
-                      />
-                      <label
-                        htmlFor="privacy"
-                        className="ml-2 block text-sm text-gray-700"
-                      >
-                        I agree to the{" "}
-                        <a
-                          href="/privacy-policy"
-                          className="text-[#ff6b6b] hover:underline"
-                        >
-                          privacy policy
-                        </a>{" "}
-                        and consent to being contacted.
-                      </label>
-                    </motion.div>
-
-                      <motion.button
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.9 }}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-[#ff6b6b] to-[#ff8e8e] text-white py-3 px-6 rounded-lg font-medium hover:from-[#ff5b5b] hover:to-[#ff7e7e] transition duration-300 flex items-center justify-center disabled:cursor-not-allowed disabled:opacity-70"
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}{" "}
-                      <Send className="ml-2 h-4 w-4" />
-                    </motion.button>
-                  </form>
-              </motion.div>
             </div>
           </div>
         </section>
@@ -655,10 +625,7 @@ const Contact: React.FC = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 Our Locations
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Visit us at one of our office locations or schedule a virtual
-                meeting from anywhere in India.
-              </p>
+              
             </motion.div>
 
             <motion.div

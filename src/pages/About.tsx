@@ -45,23 +45,17 @@ const About: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="About Maa Asho Devi Dharam Yatra | Dharma Yatra Tour Agency in Bhopal"
-        description="Learn about Maa Asho Devi Dharam Yatra, a dharma yatra tour agency in Bhopal focused on dharma yatra from Bhopal, Char Dham Yatra packages from Bhopal and spiritually meaningful group tours."
+        title="About Our Bhopal Tour Operator | Maa Asho Devi Dharam Yatra"
+        description="Learn about Maa Asho Devi Dharam Yatra, a Bhopal tour operator focused on Char Dham Yatra packages from Bhopal, Kedarnath tours, religious tour packages and spiritually meaningful group travel."
         path="/about"
         keywords={[
-          "maa dhamra",
-          "maa dharma",
-          "maa dharam yatra",
-          "maa asho devi dharam yatra",
-          "about pilgrimage company",
-          "tour agency in bhopal",
-          "tour agency in mp",
-          "tour agency in madhya pradesh",
-          "best tour agency in bhopal",
-          "dharma yatra",
-          "dharma yatra operator",
-          "dharma yatra from bhopal",
+          "about tour operator bhopal",
+          "bhopal tour operator",
+          "travel agency bhopal",
+          "religious tour operator bhopal",
+          "pilgrimage tour operator bhopal",
           "char dham yatra package from bhopal",
+          "kedarnath tour package from bhopal",
           "about maa asho devi dharam yatra",
         ]}
         schema={{

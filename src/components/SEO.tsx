@@ -44,7 +44,7 @@ const SEO = ({
   type = "website",
   author = SITE_NAME,
   keywords = [],
-  robots = "index, follow",
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   schema,
 }: SEOProps) => {
   useEffect(() => {
@@ -53,6 +53,7 @@ const SEO = ({
 
     upsertMetaTag('meta[name="description"]', "name", "description", description);
     upsertMetaTag('meta[name="robots"]', "name", "robots", robots);
+    upsertMetaTag('meta[name="googlebot"]', "name", "googlebot", robots);
     upsertMetaTag('meta[name="author"]', "name", "author", author);
 
     if (keywords.length > 0) {
