@@ -18,11 +18,11 @@ export const packagePages: PackagePageContent[] = [
   {
     slug: "char-dham-yatra-from-bhopal",
     title: "Char Dham Yatra from Bhopal",
-    metaTitle: "Char Dham Yatra from Bhopal | Departure Dates, Inclusions and Booking Help",
+    metaTitle: "Char Dham Yatra from Bhopal | Package Dates, Route Highlights and Booking Help",
     metaDescription:
-      "Explore Char Dham Yatra from Bhopal with departure dates, inclusions, exclusions, cancellation details and family-friendly pilgrimage support.",
+      "Explore Char Dham Yatra from Bhopal with package dates, route highlights, inclusions, exclusions and family-friendly pilgrimage support.",
     summary:
-      "A long-route Himalayan pilgrimage for families looking for route clarity, support for elders, and clear package guidance from Bhopal.",
+      "A high-intent Char Dham page for Bhopal travellers who want clear route planning, upcoming departure dates, and confident family pilgrimage support.",
     blogSlug: "char-dham-yatra-package-from-bhopal",
     departureDates: ["18 September 2026", "3 October 2026", "14 May 2027"],
     routeHighlights: ["Haridwar", "Yamunotri", "Gangotri", "Kedarnath", "Badrinath"],
@@ -54,11 +54,11 @@ export const packagePages: PackagePageContent[] = [
   {
     slug: "kedarnath-tour-package-from-bhopal",
     title: "Kedarnath Tour Package from Bhopal",
-    metaTitle: "Kedarnath Tour Package from Bhopal | Dates, Route and Family Support",
+    metaTitle: "Kedarnath Tour Package from Bhopal | Dates, Route Details and Booking Support",
     metaDescription:
-      "Check Kedarnath tour package details from Bhopal with departure dates, package inclusions, FAQs and route planning guidance.",
+      "Check Kedarnath tour package from Bhopal with departure dates, route details, package inclusions, FAQs and family booking guidance.",
     summary:
-      "A focused Kedarnath pilgrimage page for travellers who want practical route details, booking expectations, and family comfort signals.",
+      "A focused Kedarnath package page for Bhopal pilgrims who want practical route details, booking expectations, and comfort guidance before they enquire.",
     blogSlug: "kedarnath-tour-package-from-bhopal",
     departureDates: ["12 September 2026", "26 September 2026", "22 May 2027"],
     routeHighlights: ["Haridwar", "Guptkashi", "Sonprayag", "Kedarnath"],
@@ -92,9 +92,9 @@ export const packagePages: PackagePageContent[] = [
     title: "Ujjain Tour Package from Bhopal",
     metaTitle: "Ujjain Tour Package from Bhopal | Mahakal Darshan Planning and Booking",
     metaDescription:
-      "View Ujjain tour package information from Bhopal with Mahakal-focused travel help, inclusions, exclusions and support details.",
+      "View Ujjain tour package from Bhopal with Mahakal darshan planning, travel support, inclusions, exclusions and family-friendly booking help.",
     summary:
-      "A short-route Mahakal pilgrimage page for families who want a manageable spiritual journey with simple logistics from Bhopal.",
+      "A short-route Ujjain package page for Bhopal families who want a manageable Mahakal journey with simple logistics and clear darshan planning.",
     blogSlug: "ujjain-tour-package-from-bhopal",
     departureDates: ["17 August 2026", "7 September 2026", "5 October 2026"],
     routeHighlights: ["Bhopal", "Ujjain", "Mahakaleshwar Temple"],
@@ -198,11 +198,11 @@ export const packagePages: PackagePageContent[] = [
   {
     slug: "pashupatinath-tour-package-from-bhopal",
     title: "Pashupatinath Tour Package from Bhopal",
-    metaTitle: "Pashupatinath Tour Package from Bhopal | Nepal Temple Route Planning",
+    metaTitle: "Pashupatinath Tour Package from Bhopal | Nepal Darshan Route and Booking Help",
     metaDescription:
-      "Explore Pashupatinath tour package details from Bhopal with route clarity, FAQs, inclusions and family support signals.",
+      "Explore Pashupatinath tour package from Bhopal with Nepal darshan route clarity, inclusions, FAQs and family booking support.",
     summary:
-      "A focused Nepal temple page for devotees who want a Pashupatinath-first route instead of a general multi-purpose travel package.",
+      "A focused Pashupatinath page for Bhopal devotees who want a temple-first Nepal route instead of a broad general travel package.",
     blogSlug: "pashupatinath-tour-package-from-bhopal",
     departureDates: ["15 October 2026", "28 December 2026", "16 April 2027"],
     routeHighlights: ["Bhopal departure support", "Kathmandu", "Pashupatinath darshan"],

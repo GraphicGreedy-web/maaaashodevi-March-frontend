@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import { getPackagePathForTitle } from "../data/packagePages";
 import { servicePages } from "../data/servicePages";
+import { companyProfile } from "../data/companyProfile";
 const Home: React.FC = () => {
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
   const ratingFormRef = useRef<HTMLDivElement>(null);
@@ -112,35 +113,9 @@ const Home: React.FC = () => {
     },
   ];
 
-  const defaultTestimonials = [
-    {
-      id: 1,
-      name: "Mitish",
-      location: "Jaipur",
-      quote:
-        "An amazing journey. The entire tour felt like a family experience. Neha Gupta made sure we were comfortable throughout the trip.",
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "Mitra",
-      location: "Bengal",
-      quote:
-        "From transportation to accommodation, everything was perfect. The warmth and hospitality made the trip unforgettable!",
-      rating: 4,
-    },
-    {
-      id: 3,
-      name: "Amit Singh",
-      location: "Jaipur",
-      quote:
-        "Highly professional and caring service. We felt safe and blessed throughout the tour and would gladly book again.",
-      rating: 5,
-    },
-  ];
-
-  const testimonials = reviews.length > 0 ? reviews : defaultTestimonials;
+  const testimonials = reviews;
   const localServiceLinks = servicePages.slice(0, 4);
+  const proofHighlights = companyProfile.departureProof.slice(0, 3);
 
   useEffect(() => {
     const openRatingForm = () => {
@@ -235,8 +210,8 @@ const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Maa Aasho Devi Tours | Tour Agency Bhopal for Char Dham & Kedarnath"
-        description="Maa Aasho Devi Tours is a travel agency in Bhopal for Char Dham Yatra Bhopal departures, Kedarnath tour package Bhopal bookings, religious tour packages and family pilgrimage journeys."
+        title="Maa Aasho Devi Tours | Char Dham, Kedarnath, Ujjain and Pashupatinath from Bhopal"
+        description="Maa Aasho Devi Tours helps travellers book Char Dham Yatra from Bhopal, Kedarnath tour packages, religious tour packages, Ujjain trips and Pashupatinath journeys."
         path="/"
         keywords={[
           "maa aasho devi dharma yatra",
@@ -246,7 +221,6 @@ const Home: React.FC = () => {
           "travel agency bhopal",
           "travel agency in bhopal",
           "tour operator bhopal",
-          "best travel agency in bhopal",
           "char dham yatra bhopal",
           "char dham yatra from bhopal",
           "char dham yatra package from bhopal",
@@ -254,9 +228,10 @@ const Home: React.FC = () => {
           "kedarnath tour package from bhopal",
           "religious tour package bhopal",
           "religious tour packages from bhopal",
+          "ujjain tour package from bhopal",
+          "pashupatinath tour package from bhopal",
           "pilgrimage tour operator bhopal",
           "spiritual tour operator bhopal",
-          "ujjain tour package from bhopal",
           "vrindavan tour package from bhopal",
           "family pilgrimage tours",
         ]}
@@ -272,7 +247,7 @@ const Home: React.FC = () => {
             ],
             url: "https://maaaashodevidharmayatra.in",
             description:
-              "Bhopal-based travel agency offering Char Dham Yatra Bhopal departures, Kedarnath tour packages, religious tour packages and spiritual journeys across India.",
+              "Bhopal-based travel agency offering Char Dham Yatra from Bhopal, Kedarnath tour packages, Ujjain trips, Pashupatinath journeys and religious tour packages.",
             telephone: "+91 9131714171",
             email: "maaaashodevidharmayatra@gmail.com",
             image:
@@ -325,6 +300,7 @@ const Home: React.FC = () => {
               "Kedarnath Tour Package Bhopal",
               "Kedarnath Tour Package from Bhopal",
               "Ujjain Tour Package from Bhopal",
+              "Pashupatinath Tour Package from Bhopal",
               "Vrindavan Tour Package from Bhopal",
               "Pilgrimage Tours",
             ],
@@ -350,7 +326,7 @@ const Home: React.FC = () => {
                 name: "Which pilgrimage packages can travellers book from Bhopal?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Maa Aasho Devi Tours offers spiritual journeys from Bhopal including Char Dham, Kedarnath, Ujjain, Vrindavan, Nepal and other family-oriented religious tours.",
+                  text: "Maa Aasho Devi Tours offers spiritual journeys from Bhopal including Char Dham, Kedarnath, Ujjain, Pashupatinath, Nepal and other family-oriented religious tours.",
                 },
               },
               {
@@ -358,7 +334,15 @@ const Home: React.FC = () => {
                 name: "Are the tours suitable for families and senior citizens?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. The company focuses on family-friendly pilgrimage planning with support for elders, route guidance, and organized travel assistance.",
+                  text: "Yes. The company focuses on family-friendly pilgrimage planning with support for elders, route guidance, organized departures, and pre-booking clarity from its Bhopal office.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What happens after booking a yatra from Bhopal?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Travellers can discuss dates, route fit, booking amount, inclusions, exclusions, and pre-departure coordination with the Bhopal team before and after confirmation.",
                 },
               },
               {
@@ -366,7 +350,7 @@ const Home: React.FC = () => {
                 name: "How can travellers ask for a custom yatra plan?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Travellers can use the contact page to discuss dates, destinations, and customized religious tour packages from Bhopal.",
+                  text: "Travellers can use the contact page, phone, or WhatsApp to discuss dates, destinations, and customized religious tour packages from Bhopal.",
                 },
               },
             ],
@@ -397,10 +381,10 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-md md:text-md mb-8 max-w-3xl mx-auto"
             >
-              <b style={{ color: "#1f1f1f" }}>Book</b> Char Dham Yatra Bhopal
-              departures, Kedarnath tour package Bhopal plans, Ujjain,
-              Vrindavan and other{" "}
-              <b style={{ color: "#1f1f1f" }}>religious tour packages from Bhopal</b>
+              Founded in {companyProfile.foundedYear} in Lal Ghati, Bhopal, we
+              help families book Char Dham, Kedarnath, Ujjain, Pashupatinath,
+              and other <b style={{ color: "#1f1f1f" }}>religious tour packages from Bhopal</b>
+              {" "}with clear booking guidance and family support.
             </motion.p>
 
             <motion.div
@@ -605,8 +589,8 @@ const Home: React.FC = () => {
                 className="mt-4 text-gray-600"
               >
                 These pages help travellers who search for a tour agency, travel agency,
-                family operator, or religious package support in Bhopal before they pick a
-                destination.
+                family operator, or religious package support in Bhopal and then move into
+                higher-intent routes like Char Dham, Kedarnath, Ujjain, and Pashupatinath.
               </motion.p>
             </div>
 
@@ -650,9 +634,9 @@ const Home: React.FC = () => {
                   Your Dharmic Yatra
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  <b>With 10+ Years of Trusted Pilgrimage Experience,</b> we
-                  have been Serving devotees with well-organized religious tours
-                  for over a decade.
+                  <b>{companyProfile.yearsOfOperationLabel} of pilgrimage planning from Bhopal</b> is now backed by
+                  clearer proof on the site: a founded year, a Lal Ghati office, repeated departures across major yatra
+                  circuits, and published booking terms before families confirm seats.
                 </p>
 
                 <div className="space-y-6">
@@ -664,14 +648,11 @@ const Home: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">
-                        Purely Spiritual and Family-Friendly Journeys
+                        Family-Friendly Support Before and After Booking
                       </h3>
                       <p>
-                        {" "}
-                        <b className="text-xl font-light mb-2">
-                          safe, peaceful, and devotional
-                        </b>{" "}
-                        experience for families.
+                        Families can call, WhatsApp, or visit the Bhopal office to discuss route fit, elder support,
+                        rooming preferences, and what to expect after booking.
                       </p>
                     </div>
                   </div>
@@ -684,23 +665,11 @@ const Home: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">
-                        Pan-India Religious Destinations
+                        Repeated Departures Across Proven Routes
                       </h3>
                       <p>
-                        From
-                        <b className="text-xl font-light mb-2">
-                          {" "}
-                          Kashmir to Kanyakumari
-                        </b>{" "}
-                        we cover all major
-                        <b className="text-xl font-light mb-2">
-                          {" "}
-                          temples, shrines, and sacred places.
-                        </b>
-                        providing a{" "}
-                        <b className="text-xl font-light mb-2">
-                          diverse spiritual experience.
-                        </b>
+                        The current site already reflects completed Char Dham, Ujjain Mahakal, Vrindavan, Nepal,
+                        Jagannath, Somnath, and Dakshin departures instead of relying only on broad marketing claims.
                       </p>
                     </div>
                   </div>
@@ -713,20 +682,11 @@ const Home: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">
-                        Affordable and Family-Friendly Packages
+                        Clear Value, Deposit, and Booking Terms
                       </h3>
                       <p>
-                        Our tours are
-                        <b className="text-xl font-light mb-2">
-                          {" "}
-                          budget-friendly
-                        </b>{" "}
-                        offering
-                        <b className="text-xl font-light mb-2">
-                          {" "}
-                          comfortable travel, pure vegetarian meals, and special
-                          care for elders and children.
-                        </b>
+                        Travellers can review the booking amount of {companyProfile.bookingDeposit}, cancellation terms,
+                        package inclusions, and route expectations before final confirmation.
                       </p>
                     </div>
                   </div>
@@ -746,38 +706,20 @@ const Home: React.FC = () => {
                   className="rounded-lg shadow-xl w-full"
                 />
                 <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-lg shadow-lg max-w-xs hidden md:block">
-                  <div className="flex items-center mb-3">
-                    <Star
-                      size={20}
-                      className="text-yellow-500 mr-1"
-                      fill="#FBBF24"
-                    />
-                    <Star
-                      size={20}
-                      className="text-yellow-500 mr-1"
-                      fill="#FBBF24"
-                    />
-                    <Star
-                      size={20}
-                      className="text-yellow-500 mr-1"
-                      fill="#FBBF24"
-                    />
-                    <Star
-                      size={20}
-                      className="text-yellow-500 mr-1"
-                      fill="#FBBF24"
-                    />
-                    <Star
-                      size={20}
-                      className="text-yellow-500 mr-1"
-                      fill="#FBBF24"
-                    />
-                  </div>
-                  <p className="text-gray-700 italic">
-                    "The best spiritual tour operator I've ever experienced.
-                    Truly life-changing journeys."
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    Business Proof
                   </p>
-                  <div className="mt-3 font-medium">- Arti, Bhopal</div>
+                  <div className="mt-4 space-y-3">
+                    {proofHighlights.map((item) => (
+                      <div key={item.label}>
+                        <p className="text-2xl font-bold text-gray-900">{item.value}</p>
+                        <p className="text-sm text-gray-600">{item.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 border-t border-gray-100 pt-4 text-sm text-gray-600">
+                    Founded in {companyProfile.foundedYear} with office support in Lal Ghati, Bhopal.
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -819,48 +761,59 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-gray-300 max-w-2xl mx-auto"
               >
-                Hear from those who have experienced spiritual transformation
-                through our guided tours
+                Real traveller reviews matter more than generic praise, so this section highlights submitted ratings and
+                keeps the review form open for future pilgrims from Bhopal and beyond.
               </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <AnimatedCard
-                  key={testimonial._id || testimonial.id}
-                  delay={index * 0.1}
-                  className="bg-white/95"
-                >
-                  <div className="p-6">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={18}
-                          className="text-yellow-500 mr-1"
-                          fill="#FBBF24"
-                        />
-                      ))}
-                    </div>
-                    <p
-                      className="text-gray-700 italic mb-4"
-                      dangerouslySetInnerHTML={{ __html: testimonial.quote }}
-                    ></p>
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-3">
-                        {testimonial.name.charAt(0)}
+            {testimonials.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {testimonials.map((testimonial, index) => (
+                  <AnimatedCard
+                    key={testimonial._id || testimonial.id}
+                    delay={index * 0.1}
+                    className="bg-white/95"
+                  >
+                    <div className="p-6">
+                      <div className="flex mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={18}
+                            className="text-yellow-500 mr-1"
+                            fill="#FBBF24"
+                          />
+                        ))}
                       </div>
-                      <div>
-                        <h4 className="font-semibold">{testimonial.name}</h4>
-                        <p className="text-gray-600 text-sm">
-                          {testimonial.location}
-                        </p>
+                      <p
+                        className="text-gray-700 italic mb-4"
+                        dangerouslySetInnerHTML={{ __html: testimonial.quote }}
+                      ></p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div>
+                          <h4 className="font-semibold">{testimonial.name}</h4>
+                          <p className="text-gray-600 text-sm">
+                            {testimonial.location}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </AnimatedCard>
-              ))}
-            </div>
+                  </AnimatedCard>
+                ))}
+              </div>
+            ) : (
+              <div className="mx-auto max-w-3xl rounded-3xl bg-white/95 p-8 text-center shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-900">Review collection is active on the site</h3>
+                <p className="mt-4 text-gray-600">
+                  Travellers can already submit ratings here. Until more published reviews are added, the strongest proof
+                  on the site comes from the Bhopal office details, founded year, route history, booking process, and
+                  package transparency shown across the homepage and about page.
+                </p>
+              </div>
+            )}
 
             <motion.div
               initial="hidden"

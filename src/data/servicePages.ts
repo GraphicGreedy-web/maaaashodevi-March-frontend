@@ -19,13 +19,13 @@ export const servicePages: ServicePageContent[] = [
     slug: "tour-agency-in-bhopal",
     title: "Tour Agency in Bhopal for Religious and Family Travel",
     metaTitle:
-      "Tour Agency in Bhopal | Religious Tours, Family Trips and Booking Support",
+      "Tour Agency in Bhopal | Char Dham, Kedarnath, Ujjain and Religious Tours",
     metaDescription:
-      "Looking for a tour agency in Bhopal? Explore family-friendly religious tours, route support, departure guidance and package planning with Maa Aasho Devi Tours.",
+      "Looking for a tour agency in Bhopal? Explore Char Dham Yatra from Bhopal, Kedarnath tour packages, Ujjain trips and family-friendly religious travel support.",
     summary:
-      "A local-intent page for travellers who want a Bhopal-based tour agency with clear guidance for pilgrimage travel and family group coordination.",
+      "A Bhopal tour-agency page built to funnel high-intent pilgrims toward Char Dham, Kedarnath, Ujjain, and other religious tour packages from Bhopal.",
     intro:
-      "Many people searching for a tour agency in Bhopal want a team they can call locally, discuss routes with clearly, and trust for family travel. Maa Aasho Devi Tours focuses on devotional journeys, practical package planning, and route guidance from Bhopal to major pilgrimage destinations.",
+      "Many people searching for a tour agency in Bhopal are really trying to find the right pilgrimage route, not just a generic travel seller. Maa Aasho Devi Tours is strongest where that intent becomes specific: Char Dham Yatra from Bhopal, Kedarnath tour package from Bhopal, Ujjain tour package from Bhopal, and other religious journeys planned with local support.",
     serviceHighlights: [
       "Bhopal-based phone and WhatsApp support before departure",
       "Package guidance for Char Dham, Kedarnath, Ujjain, Vrindavan, and Nepal routes",
@@ -65,13 +65,13 @@ export const servicePages: ServicePageContent[] = [
     slug: "travel-agency-in-bhopal",
     title: "Travel Agency in Bhopal for Pilgrimage Route Planning",
     metaTitle:
-      "Travel Agency in Bhopal | Pilgrimage Packages, Route Help and Family Support",
+      "Travel Agency in Bhopal | Religious Tour Packages and Yatra Planning",
     metaDescription:
-      "Find a travel agency in Bhopal for religious packages, destination comparison, family-friendly route planning and departure support.",
+      "Find a travel agency in Bhopal for religious tour packages, Char Dham planning, Kedarnath routes, Ujjain trips and family-friendly departure support.",
     summary:
-      "A travel-agency landing page aimed at broader Bhopal searches while staying tightly aligned with the site's devotional travel focus.",
+      "A broader Bhopal travel-agency page that stays anchored to the site's real strength: destination-led pilgrimage demand rather than generic agency claims.",
     intro:
-      "Searches for a travel agency in Bhopal often include families that are still deciding between destinations. This page helps that audience understand where Maa Aasho Devi Tours fits best: pilgrimage packages, spiritual routes, and family-friendly planning support from Bhopal.",
+      "Searches for a travel agency in Bhopal often come from families who are still choosing between destinations. This page helps them move quickly toward the journeys Maa Aasho Devi Tours can serve best: religious tour packages from Bhopal, Char Dham, Kedarnath, Ujjain, Nepal, and Pashupatinath-focused planning.",
     serviceHighlights: [
       "Destination comparison for mountain yatras and shorter darshan trips",
       "Bhopal departure guidance with package-first planning",
@@ -111,13 +111,13 @@ export const servicePages: ServicePageContent[] = [
     slug: "religious-tour-packages-from-bhopal",
     title: "Religious Tour Packages from Bhopal for Families and Devotees",
     metaTitle:
-      "Religious Tour Packages from Bhopal | Char Dham, Kedarnath, Ujjain and More",
+      "Religious Tour Packages from Bhopal | Char Dham, Kedarnath, Ujjain, Pashupatinath",
     metaDescription:
-      "Browse religious tour packages from Bhopal for Char Dham, Kedarnath, Ujjain, Vrindavan, Nepal and other family-friendly pilgrimage journeys.",
+      "Browse religious tour packages from Bhopal for Char Dham Yatra, Kedarnath, Ujjain, Pashupatinath, Nepal and other family-friendly pilgrimage journeys.",
     summary:
-      "A high-intent local landing page that pulls together the site's strongest Bhopal-plus-pilgrimage keyword cluster.",
+      "A high-intent Bhopal landing page centered on the site's most winnable pilgrimage keywords and strongest service-fit routes.",
     intro:
-      "People searching for religious tour packages from Bhopal usually already know they want devotional travel. What they still need is destination fit, route confidence, and a local operator that explains the journey clearly. Maa Aasho Devi Tours is positioned around that exact need.",
+      "People searching for religious tour packages from Bhopal usually already know they want devotional travel. What they still need is the right destination match, route confidence, and a local operator that explains the journey clearly. Maa Aasho Devi Tours is best positioned for exactly that need across Char Dham Yatra from Bhopal, Kedarnath tour package from Bhopal, Ujjain tour package from Bhopal, and Pashupatinath-focused Nepal travel.",
     serviceHighlights: [
       "Package options across major temple and pilgrimage destinations",
       "Departure-focused planning from Bhopal for families and groups",
@@ -126,7 +126,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     coveragePoints: [
       "Char Dham and Kedarnath for longer Himalayan yatra intent",
-      "Ujjain for shorter Mahakal-focused trips",
+      "Ujjain for shorter Mahakal-focused trips from Bhopal",
       "Vrindavan for devotional family travel",
       "Nepal and Pashupatinath for cross-border spiritual journeys",
     ],
@@ -139,13 +139,14 @@ export const servicePages: ServicePageContent[] = [
       "char-dham-yatra-from-bhopal",
       "kedarnath-tour-package-from-bhopal",
       "ujjain-tour-package-from-bhopal",
+      "pashupatinath-tour-package-from-bhopal",
       "vrindavan-tour-package-from-bhopal",
     ],
     faqs: [
       {
         question: "Which religious tour packages from Bhopal are most searched?",
         answer:
-          "Char Dham, Kedarnath, Ujjain, Vrindavan, and Nepal-focused journeys are among the strongest local-intent pilgrimage searches covered on the site.",
+          "Char Dham Yatra from Bhopal, Kedarnath tour package from Bhopal, Ujjain tour package from Bhopal, and Pashupatinath tour package from Bhopal are among the strongest local-intent searches covered on the site.",
       },
       {
         question: "Can travellers compare short and long routes before booking?",

@@ -7,6 +7,50 @@ export const companyProfile = {
   city: "Bhopal",
   region: "Madhya Pradesh",
   foundedYear: "2014",
+  yearsOfOperationLabel: "10+ years",
+  establishedProof:
+    "Founded in 2014 and operating from Lal Ghati, Bhopal for pilgrimage planning and family tour coordination.",
+  serviceAreaLabel: "Bhopal departures across major pilgrimage circuits in India and Nepal",
+  routeCoverage: [
+    "Char Dham",
+    "Kedarnath",
+    "Ujjain Mahakal",
+    "Vrindavan",
+    "Jagannath Puri",
+    "Somnath",
+    "Dakshin Yatra",
+    "Nepal",
+  ],
+  departureProof: [
+    { label: "Char Dham yatras completed", value: "10+" },
+    { label: "Vrindavan yatras completed", value: "20+" },
+    { label: "Dakshin yatras completed", value: "10+" },
+    { label: "Nepal yatras completed", value: "5+" },
+    { label: "Somnath yatras completed", value: "10+" },
+    { label: "Jagannath yatras completed", value: "5+" },
+    { label: "Ujjain Mahakal yatras completed", value: "25+" },
+  ],
+  departureProofSummary:
+    "The current site content already points to 85+ completed departures across Char Dham, Ujjain, Vrindavan, Nepal, Somnath, Jagannath, and Dakshin circuits.",
+  bookingDeposit: "Rs. 3000",
+  pricingGuidance: [
+    "Short routes like Ujjain are usually easier for families comparing time and budget.",
+    "Long Himalayan routes such as Kedarnath and Char Dham need a higher budget because of distance, stay duration, and route conditions.",
+    "Final package value depends on route, travel dates, stay type, transport plan, and group requirements.",
+    "A booking amount of Rs. 3000 is mentioned on the site before final coordination and balance guidance.",
+  ],
+  bookingJourney: [
+    "Call, WhatsApp, or use the contact form to discuss route, dates, and traveller requirements.",
+    "Get clarity on package inclusions, exclusions, travel pace, and whether the route suits elders or first-time pilgrims.",
+    "Reserve seats with the booking amount and receive confirmation support from the Bhopal team.",
+    "Receive pre-departure guidance on reporting, packing, timing, and the remaining payment process.",
+  ],
+  postBookingSupport: [
+    "Seat confirmation and basic trip coordination after booking",
+    "Route, timing, and reporting-point guidance before departure",
+    "Clarification on inclusions, exclusions, and cancellation policy",
+    "Phone and WhatsApp support for family coordinators and elders",
+  ],
   officePhotos: [
     "https://media-hosting.imagekit.io//fe46cbe443f14dc8/1678951721583.jpg?Expires=1835989014&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=j-9kzbMgh3wCq-bKkDy4dC8668zGGrIhgbEPQ6-Z~3FnZaFq6nfT8UpGe0bnH7TENeQAxe6pE2pd~JSQNY9ykHPoNa~D4efpARIwj9KId9NmTSY-xe6NsC5Q8mnpaHngy76pyP15whCtoHvuyL1K~IAw2ZYlJIu8eRCVp69oEX81Ja83HgJRVLpzZQ3yUz0JXJtqKeQ-NpAeWvRAch6Ri3JiGd54QKx8VQhc82xjooF0xQfuU0af2~YozIKIpP83jFgZRK1VRPkj-Q~YgoPTW6Jwwy~nPW0CYsKhiFcOUrUcuwRtoqrpen01yZs62h0vjcZjN9V-pOus4XPANjQsYA__",
     "https://media-hosting.imagekit.io//4390027224a24a12/photo_6226378170655948932_y.jpg?Expires=1836092040&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dNICFOmQaROgcFKtIiHlCWPfLjtaYkGX53wqxFfcoC0WWKPPp-YZxXe5rxoBXzrmdL9wa1Tc3vxsQH82DJWINBm54Lpdg9KPAbip2x3s2r07INakuVilfJEvAhWyeiFH1WwX~j~TmGqG2F~00eSIoeJ75JFL7871d-ubch7yIZr8VqnoTdKY70VPov3wAEKeJ3xtB7iR~9s4Ae4Y8TLFP5YiMAOhRwUZrTmDFNymS6jf9BDOOxMRhJVi0pZoRVvudo09PX~9IcTVRASHH9LK1aTjDgaeQ7htPQMDu4p1TSp6FN~NeclkpRtavpkflHLyh0Q6rhCx8MLXaetO5~VIow__",
@@ -20,9 +64,11 @@ export const companyProfile = {
     },
   ],
   trustPoints: [
+    "Founded in 2014 with a listed office in Lal Ghati, Bhopal",
     "Bhopal-based support team for phone, WhatsApp, and in-person coordination",
+    "85+ departures reflected across Char Dham, Ujjain, Vrindavan, Nepal, Somnath, Jagannath, and Dakshin site content",
     "Family-friendly departures with guidance for elders and first-time pilgrims",
-    "Published cancellation terms and package inclusions before booking",
+    "Published cancellation terms, package inclusions, and booking deposit guidance before confirmation",
     "Support for group planning, rooming preferences, and spiritual travel logistics",
   ],
   cancellationSummary: [
