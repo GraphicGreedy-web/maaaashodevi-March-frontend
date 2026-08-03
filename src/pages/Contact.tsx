@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   MapPin,
   Phone,
@@ -78,6 +80,8 @@ const Contact: React.FC = () => {
     type: "success" | "error";
     message: string;
   } | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -102,6 +106,7 @@ const Contact: React.FC = () => {
         return {
           type: "success" as const,
           message: "Your message and confirmation email were sent successfully.",
+          showModal: true,
         };
       }
 
@@ -110,6 +115,7 @@ const Contact: React.FC = () => {
           type: "error" as const,
           message:
             "Your message was saved, but the confirmation email could not be sent. Our team can still contact you directly.",
+          showModal: false,
         };
       }
     }
@@ -118,8 +124,29 @@ const Contact: React.FC = () => {
       type: "success" as const,
       message:
         "Your message was submitted. Email delivery is still processing and may take a little longer.",
+      showModal: false,
     };
   };
+
+  const handleSuccessRedirect = (path: string) => {
+    setShowSuccessModal(false);
+    navigate(path);
+  };
+
+  useEffect(() => {
+    if (!showSuccessModal) {
+      return undefined;
+    }
+
+    const redirectTimer = window.setTimeout(() => {
+      setShowSuccessModal(false);
+      navigate("/upcoming-plans");
+    }, 8000);
+
+    return () => {
+      window.clearTimeout(redirectTimer);
+    };
+  }, [navigate, showSuccessModal]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -133,6 +160,7 @@ const Contact: React.FC = () => {
         if (response?.contactId) {
           const emailToast = await monitorContactEmailStatus(response.contactId);
           setToast(emailToast);
+          setShowSuccessModal(emailToast.showModal === true);
         } else {
           setToast({
             type: "success",
@@ -220,6 +248,44 @@ const Contact: React.FC = () => {
           faqSchema,
         ]}
       />
+      {showSuccessModal && typeof document !== "undefined"
+        ? createPortal(
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl"
+            >
+              <h3 className="text-2xl font-bold text-gray-900">
+                Mail Sent Successfully
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-gray-600">
+                Your message and confirmation email have been sent successfully.
+              </p>
+              <p className="mt-2 text-sm text-gray-500">
+                If you do not choose an option, we will redirect you to Upcoming Plans in 8 seconds.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => handleSuccessRedirect("/")}
+                  className="flex-1 rounded-lg border border-gray-300 px-4 py-3 font-medium text-gray-700 transition hover:bg-gray-50"
+                >
+                  Return to Home Page
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSuccessRedirect("/upcoming-plans")}
+                  className="flex-1 rounded-lg bg-primary px-4 py-3 font-medium text-white transition hover:bg-primary/90"
+                >
+                  Explore More Plan
+                </button>
+              </div>
+            </motion.div>
+          </div>,
+          document.body,
+        )
+        : null}
       <div className="min-h-screen bg-gray-50 font-sans">
         {toast ? (
           <div className="fixed right-4 top-4 z-50">
