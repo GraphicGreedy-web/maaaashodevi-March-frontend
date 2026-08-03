@@ -28,7 +28,4 @@ export default defineConfig({
       dynamicRoutes: [...staticRoutes, ...blogRoutes, ...packageRoutes, ...serviceRoutes],
     }),
   ],
-  optimizeDeps: {
-    exclude: ["lucide-react"],
-  },
 });

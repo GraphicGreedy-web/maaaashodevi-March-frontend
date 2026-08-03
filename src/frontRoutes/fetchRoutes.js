@@ -1,4 +1,10 @@
-import { getAllTours, getReviewsRoute, submitContactRoute, submitReviewRoute } from "../api.js"
+import {
+    getAllTours,
+    getContactStatusRoute,
+    getReviewsRoute,
+    submitContactRoute,
+    submitReviewRoute,
+} from "../api.js"
 
 const TOURS_CACHE_KEY = "tour-booking:tours-cache";
 const TOURS_CACHE_TTL_MS = 1000 * 60 * 30;
@@ -55,6 +61,10 @@ export const fetchAllTours = async ({ forceRefresh = false } = {}) => {
 };
 export const fetchContact = async (formData) => {
     const res = await submitContactRoute(formData);
+    return res?.data;
+}
+export const fetchContactStatus = async (contactId) => {
+    const res = await getContactStatusRoute(contactId);
     return res?.data;
 }
 export const fetchReviews = async () => {

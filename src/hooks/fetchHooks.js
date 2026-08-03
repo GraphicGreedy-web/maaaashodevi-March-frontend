@@ -1,5 +1,11 @@
 import { useEffect } from "react";
-import { fetchAllTours, fetchContact, fetchReviews, fetchSubmitReview } from "../frontRoutes/fetchRoutes.js";
+import {
+  fetchAllTours,
+  fetchContact,
+  fetchContactStatus,
+  fetchReviews,
+  fetchSubmitReview,
+} from "../frontRoutes/fetchRoutes.js";
 import { useState } from 'react';
 export const getToursHook = () => {
   const [tours, setTours] = useState([]);
@@ -14,6 +20,13 @@ export const useContactHook = () => {
     return await fetchContact(formData)
   };
   return submitContact;
+}
+export const useContactStatusHook = () => {
+  const fetchStatus = async (contactId) => {
+    return await fetchContactStatus(contactId);
+  };
+
+  return fetchStatus;
 }
 export const getReviewsHook = () => {
   const [reviews, setReviews] = useState([]);

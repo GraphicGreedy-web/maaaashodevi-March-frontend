@@ -14,7 +14,7 @@ import {
   XCircle,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
-import { useContactHook } from "../hooks/fetchHooks";
+import { useContactHook, useContactStatusHook } from "../hooks/fetchHooks";
 import SEO from "../components/SEO";
 
 const initialFormData = {
@@ -26,6 +26,11 @@ const initialFormData = {
   tour: "",
   message: "",
 };
+
+const wait = (ms: number) =>
+  new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -83,6 +88,38 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
   const submitContact = useContactHook();
+  const fetchContactStatus = useContactStatusHook();
+
+  const monitorContactEmailStatus = async (contactId: string) => {
+    const maxPollAttempts = 6;
+
+    for (let attempt = 0; attempt < maxPollAttempts; attempt += 1) {
+      await wait(attempt === 0 ? 1500 : 3000);
+
+      const status = await fetchContactStatus(contactId);
+
+      if (status?.emailStatus === "sent") {
+        return {
+          type: "success" as const,
+          message: "Your message and confirmation email were sent successfully.",
+        };
+      }
+
+      if (status?.emailStatus === "failed") {
+        return {
+          type: "error" as const,
+          message:
+            "Your message was saved, but the confirmation email could not be sent. Our team can still contact you directly.",
+        };
+      }
+    }
+
+    return {
+      type: "success" as const,
+      message:
+        "Your message was submitted. Email delivery is still processing and may take a little longer.",
+    };
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,12 +130,17 @@ const Contact: React.FC = () => {
 
       if (response?.success === true) {
         setFormData(initialFormData);
-        setToast({
-          type: "success",
-          message:
-            response.message ||
-            "Your message was sent successfully. We'll contact you soon.",
-        });
+        if (response?.contactId) {
+          const emailToast = await monitorContactEmailStatus(response.contactId);
+          setToast(emailToast);
+        } else {
+          setToast({
+            type: "success",
+            message:
+              response.message ||
+              "Your message was submitted successfully. We'll contact you soon.",
+          });
+        }
       } else {
         setToast({
           type: "error",
