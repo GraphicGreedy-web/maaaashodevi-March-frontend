@@ -579,198 +579,188 @@ const Contact: React.FC = () => {
             </motion.div>
           </div>
         </section> */}
-
-        {/* Main Content */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid-cols-1 lg:grid-cols-2 gap-120">
-              {/* Contact Information */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className="bg-gradient-to-br from-[#ff6b6b] to-[#ff8e8e] rounded-2xl p-8 text-white shadow-xl lg:w-[50rem] mx-auto sm:w-full"
-              >
-                <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
-                
-                <div className="space-y-6">
+        <div className="w-full h-auto border flex justify-center shadow=lg bg-white">
+          <div className="w-full h-[80%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            {/* Main Content */}
+            <section className="py-16 bg-white col-span-1">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid-cols-1 lg:grid-cols-2 gap-5">
+                  {/* Contact Information */}
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="flex items-start"
+                    variants={fadeInUp}
+                    className="bg-gradient-to-br from-[#ff6b6b] to-[#ff8e8e] rounded-2xl p-8 text-white shadow-xl lg:w-[50rem] mx-auto sm:w-full"
                   >
-                    <div className="bg-white/20 p-3 rounded-full mr-4">
-                      <MapPin className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Our Location</h3>
-                      <p className="text-white/90">
-                        Om Shiva Nagar, Lal Ghati, Bhopal, MP
-                      </p>
-                    </div>
-                  </motion.div>
+                    <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="flex items-start"
-                  >
-                    <div className="bg-white/20 p-3 rounded-full mr-4">
-                      <Phone className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Phone Number</h3>
-                      <p className="text-white/90">+91 9131714171</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="flex items-start"
-                  >
-                    <div className="bg-white/20 p-3 rounded-full mr-4">
-                      <Mail className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Email Address</h3>
-                      <p className="text-white/90">
-                        Maaaashodevidharmayatra@gmail.com
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex items-start"
-                  >
-                    <div className="bg-white/20 p-3 rounded-full mr-4">
-                      <Clock className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Business Hours</h3>
-                      <p className="text-white/90">
-                        Monday - Saturday: 9:00 AM - 9:00 PM
-                      </p>
-                      <p className="text-white/90">Sunday: OFF</p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="mt-12"
-                >
-                  <h3 className="font-semibold text-lg mb-4">
-                    Connect With Us
-                  </h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://www.facebook.com/share/p/1HG3z2Q8AX/"
-                      className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
-                      target="_blank"
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+                    <div className="space-y-6">
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="flex items-start"
                       >
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                      </svg>
-                    </a>
-                    <a
-                      href="https://wa.me/message/AGFJTGPLJOE7N1"
-                      className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
-                      target="_blank"
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+                        <div className="bg-white/20 p-3 rounded-full mr-4">
+                          <MapPin className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Our Location</h3>
+                          <p className="text-white/90">
+                            Om Shiva Nagar, Lal Ghati, Bhopal, MP
+                          </p>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="flex items-start"
                       >
-                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.548 4.048 1.507 5.744L.048 23.872l6.273-1.644A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.69 16.365c-.243.684-1.205 1.333-1.655 1.41-.432.074-.99.106-1.611-.102-.372-.117-.852-.277-1.467-.547-2.587-1.109-4.273-3.71-4.403-3.875-.13-.165-1.055-1.4-1.055-2.678 0-1.28.666-1.908.904-2.164.243-.256.53-.32.706-.32h.51c.16 0 .384-.038.596.457.228.523.78 1.81.848 1.94.064.128.106.277.021.448-.085.17-.128.277-.256.426-.133.16-.27.355-.385.476-.128.128-.262.27-.112.53.149.256.665 1.097 1.426 1.774.981.872 1.81 1.146 2.069 1.28.256.128.426.106.586-.064.16-.17.677-.79.857-1.066.181-.277.363-.235.607-.149.242.085 1.556.735 1.825.87.267.128.448.192.512.298.064.107.064.642-.18 1.326z" />
-                      </svg>
-                    </a>
-                    {/* <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300">
+                        <div className="bg-white/20 p-3 rounded-full mr-4">
+                          <Phone className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Phone Number</h3>
+                          <p className="text-white/90">+91 9131714171</p>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="flex items-start"
+                      >
+                        <div className="bg-white/20 p-3 rounded-full mr-4">
+                          <Mail className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Email Address</h3>
+                          <p className="text-white/90">
+                            Maaaashodevidharmayatra@gmail.com
+                          </p>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="flex items-start"
+                      >
+                        <div className="bg-white/20 p-3 rounded-full mr-4">
+                          <Clock className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Business Hours</h3>
+                          <p className="text-white/90">
+                            Monday - Saturday: 9:00 AM - 9:00 PM
+                          </p>
+                          <p className="text-white/90">Sunday: OFF</p>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      className="mt-12"
+                    >
+                      <h3 className="font-semibold text-lg mb-4">
+                        Connect With Us
+                      </h3>
+                      <div className="flex space-x-4">
+                        <a
+                          href="https://www.facebook.com/share/p/1HG3z2Q8AX/"
+                          className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
+                          target="_blank"
+                        >
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://wa.me/message/AGFJTGPLJOE7N1"
+                          className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300"
+                          target="_blank"
+                        >
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.548 4.048 1.507 5.744L.048 23.872l6.273-1.644A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.69 16.365c-.243.684-1.205 1.333-1.655 1.41-.432.074-.99.106-1.611-.102-.372-.117-.852-.277-1.467-.547-2.587-1.109-4.273-3.71-4.403-3.875-.13-.165-1.055-1.4-1.055-2.678 0-1.28.666-1.908.904-2.164.243-.256.53-.32.706-.32h.51c.16 0 .384-.038.596.457.228.523.78 1.81.848 1.94.064.128.106.277.021.448-.085.17-.128.277-.256.426-.133.16-.27.355-.385.476-.128.128-.262.27-.112.53.149.256.665 1.097 1.426 1.774.981.872 1.81 1.146 2.069 1.28.256.128.426.106.586-.064.16-.17.677-.79.857-1.066.181-.277.363-.235.607-.149.242.085 1.556.735 1.825.87.267.128.448.192.512.298.064.107.064.642-.18 1.326z" />
+                          </svg>
+                        </a>
+                        {/* <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300">
                       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                       </svg>
                     </a> */}
-                    {/* <a 
+                        {/* <a 
                     </a> */}
-                  </div>
-                </motion.div>
-              </motion.div>
-
-
-            </div>
-          </div>
-        </section>
-
-        {/* Map Section */}
-        <section id="locations" className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                Our Locations
-              </h2>
-              
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-gray-200 rounded-xl overflow-hidden h-96 shadow-lg"
-            >
-              {/* This would be replaced with an actual map component in a real application */}
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center relative">
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="bg-white p-6 rounded-lg shadow-lg max-w-md"
-                  >
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                      Headquarters
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      lal Ghati, Bhopal (MP) India{" "}
-                    </p>
-                    <a
-                      href="#"
-                      className="text-[#ff6b6b] font-medium hover:underline flex items-center"
-                    >
-                      Get Directions <ArrowRight className="ml-1 h-4 w-4" />
-                    </a>
+                      </div>
+                    </motion.div>
                   </motion.div>
+
+
                 </div>
               </div>
-            </motion.div>
+            </section>
 
-            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {/* Map Section */}
+            <section id="locations" className="py-16 bg-white col-span-1">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="bg-gray-200 rounded-xl overflow-hidden h-96 shadow-lg"
+                >
+                  {/* This would be replaced with an actual map component in a real application */}
+                  <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center relative">
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="bg-white p-6 rounded-lg shadow-lg max-w-md"
+                      >
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                          Headquarters
+                        </h3>
+                        <p className="text-gray-600 mb-4">
+                          lal Ghati, Bhopal (MP) India{" "}
+                        </p>
+                        <a
+                          href="#"
+                          className="text-[#ff6b6b] font-medium hover:underline flex items-center"
+                        >
+                          Get Directions <ArrowRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -813,8 +803,11 @@ const Contact: React.FC = () => {
                 <p className="text-gray-600">haridwar@maaashodevi.com</p>
               </motion.div>
             </div> */}
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
+
 
         {/* Features Section */}
         <section className="py-16 bg-gray-50">
