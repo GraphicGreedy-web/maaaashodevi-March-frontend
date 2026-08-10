@@ -186,8 +186,8 @@ const UpcomingPlans: React.FC = () => {
           },
         ]}
       />
-      <div className="min-h-screen bg-gray-50 py-20">
-        <div className="container mx-auto px-4">
+      <div className="min-h-screen bg-gray-50 pb-20 pt-5">
+        <div className="container mx-auto px-1">
           {/* <div className="text-center mb-12">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
@@ -214,7 +214,7 @@ const UpcomingPlans: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="text-2xl font-bold mb-8"
+              className="text-2xl font-bold mb-8 mx-[1rem]"
             >
               Featured Packages
             </motion.h2>
@@ -224,7 +224,7 @@ const UpcomingPlans: React.FC = () => {
                 <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[2rem]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-[1rem]">
                 {featuredTrips.map((trip, order: number) => (
                   <AnimatedCard key={trip._id} delay={order * 0.1}>
                     <div
@@ -241,7 +241,7 @@ const UpcomingPlans: React.FC = () => {
                         Featured
                       </div>
                     </div>
-                    <div className="p-6">
+                    <div className="p-3">
                       <h3 className="text-xl font-bold mb-2">
                         {trip.title.includes("Yatra") ? (
                           <>
