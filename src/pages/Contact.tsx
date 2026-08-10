@@ -314,13 +314,13 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
           id="contact-form"
-          className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+          className="bg-white rounded-2xl py-8 px-4 shadow-lg border border-gray-100"
         >
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
             Share Your Travel Details With Us
           </h2>
           <form onSubmit={handleSubmit} className="flex justify-center">
-            <div className="p-10 hover:shadow-lg hover:-translate-y-2 transition">
+            <div className="py-10 px-5 hover:shadow-lg hover:-translate-y-2 transition sm:w-full  md:max-w-[50rem] lg:max-w-[50rem]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
