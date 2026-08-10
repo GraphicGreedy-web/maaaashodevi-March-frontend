@@ -317,7 +317,7 @@ const Contact: React.FC = () => {
           className="bg-white rounded-2xl py-8 px-4 shadow-lg border border-gray-100"
         >
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Share Your Travel Details With Us
+            Share Your Travel Details
           </h2>
           <form onSubmit={handleSubmit} className="flex justify-center">
             <div className="py-10 px-5 hover:shadow-lg hover:-translate-y-2 transition sm:w-full  md:max-w-[50rem] lg:max-w-[50rem]">
