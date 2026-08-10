@@ -96,7 +96,7 @@ const Home: React.FC = () => {
         "https://sanjeevnitoday.com/wp-content/uploads/2024/05/Char-Dham-Yatra-Tour-Package.jpg",
       description:
         "Complete pilgrimage to the four sacred sites in the Himalayas.",
-      startDate: "18 September 2026 and 3 October 2026",
+      startDate: "18 Sep 2026 and 3 October 2026",
       duration: "13 Days",
       link: "/char-dham-yatra-from-bhopal",
     },
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
         "https://cdn.shopify.com/s/files/1/1657/2397/files/Puri-Yatra-PTI.jpg?v=1531550373",
       description:
         "Travel for Jagannath darshan with an organised group route and clear support from Bhopal.",
-      startDate: "24 October 2026",
+      startDate: "24 October 2027",
       duration: "6 Days",
       link: "/upcoming-plans",
     },
@@ -523,7 +523,7 @@ const Home: React.FC = () => {
               </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {upcomingYatras.map((yatra, index) => (
                 <AnimatedCard key={yatra.id} delay={index * 0.1}>
                   <div className="relative h-64 overflow-hidden">
@@ -553,7 +553,7 @@ const Home: React.FC = () => {
                   </div>
                 </AnimatedCard>
               ))}
-            </div>
+            </div> */}
 
             <div className="text-center mt-8">
               <Link
