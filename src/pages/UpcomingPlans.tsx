@@ -6,6 +6,7 @@ import {
   Calendar,
   MapPin,
   Clock,
+  Users,
   ArrowRight,
   Search,
   Share2,
@@ -24,13 +25,30 @@ const getTourShareSlug = (title: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+interface TourCardData {
+  _id?: string;
+  id?: string;
+  title: string;
+  image: string;
+  description: string;
+  locations: string[];
+  state: string;
+  region: string;
+  duration: string;
+  groupSize?: string;
+  startDate: string;
+  price: string;
+  featured?: boolean;
+}
+
 const UpcomingPlans: React.FC = () => {
   const location = useLocation();
   const cachedTours = getCachedTours();
+  const hasCachedTours = Boolean(cachedTours?.tours?.length);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("all");
-  const [allTours, setAllTours] = useState<any[]>(cachedTours?.tours ?? []);
-  const [isLoading, setIsLoading] = useState(!cachedTours?.tours?.length);
+  const [allTours, setAllTours] = useState<TourCardData[]>(cachedTours?.tours ?? []);
+  const [isLoading, setIsLoading] = useState(!hasCachedTours);
   const [shareToast, setShareToast] = useState<string | null>(null);
   const [activeSharedTourSlug, setActiveSharedTourSlug] = useState<string | null>(null);
   const tourCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -44,9 +62,9 @@ const UpcomingPlans: React.FC = () => {
         if (isMounted) {
           setAllTours(tours ?? []);
         }
-      } catch (error) {
+      } catch {
         // console.error("Failed to load tours", error);
-        if (isMounted && !cachedTours?.tours?.length) {
+        if (isMounted && !hasCachedTours) {
           setAllTours([]);
         }
       } finally {
@@ -61,7 +79,7 @@ const UpcomingPlans: React.FC = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [hasCachedTours]);
 
   useEffect(() => {
     if (!shareToast) {
@@ -156,13 +174,13 @@ const UpcomingPlans: React.FC = () => {
   const imageDimension = { height: "15rem", width: "30rem" };
   const cardDimension = { height: "15rem" };
 
-  const buildTourShareUrl = (trip: any) => {
+  const buildTourShareUrl = (trip: TourCardData) => {
     const shareUrl = new URL("/upcoming-plans", window.location.origin);
     shareUrl.searchParams.set("tour", getTourShareSlug(trip.title));
     return shareUrl.toString();
   };
 
-  const handleShare = async (trip: any) => {
+  const handleShare = async (trip: TourCardData) => {
     const shareUrl = buildTourShareUrl(trip);
     const shareData = {
       title: `${trip.title} | Maa Aasho Devi Tours`,
