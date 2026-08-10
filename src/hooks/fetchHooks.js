@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import {
+  getCachedTours,
   fetchAllTours,
   fetchContact,
   fetchContactStatus,
@@ -8,11 +9,26 @@ import {
 } from "../frontRoutes/fetchRoutes.js";
 import { useState } from 'react';
 export const getToursHook = () => {
-  const [tours, setTours] = useState([]);
+  const cachedTours = getCachedTours();
+  const [tours, setTours] = useState(cachedTours?.tours ?? []);
+
   useEffect(() => {
-    fetchAllTours().then(setTours);
-    console.log("hook worked")
+    let isMounted = true;
+
+    if (cachedTours?.tours?.length) {
+      setTours(cachedTours.tours);
+    }
+
+    fetchAllTours({ forceRefresh: true }).then((freshTours) => {
+      if (!isMounted) return;
+      setTours(freshTours ?? []);
+    });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
   return tours
 }
 export const useContactHook = () => {

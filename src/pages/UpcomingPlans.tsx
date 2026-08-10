@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fetchAllTours, getCachedTours } from "../frontRoutes/fetchRoutes.js";
 import {
   Calendar,
   MapPin,
   Clock,
-  Users,
   ArrowRight,
   Search,
+  Share2,
+  Check,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import AnimatedCard from "../components/AnimatedCard";
@@ -16,32 +17,114 @@ import SEO from "../components/SEO";
 import { getGuideForTourTitle, planningGuides } from "../data/seoLinks";
 import { getPackagePathForTitle, packagePages } from "../data/packagePages";
 
+const getTourShareSlug = (title: string) =>
+  title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const UpcomingPlans: React.FC = () => {
+  const location = useLocation();
   const cachedTours = getCachedTours();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("all");
   const [allTours, setAllTours] = useState<any[]>(cachedTours?.tours ?? []);
   const [isLoading, setIsLoading] = useState(!cachedTours?.tours?.length);
+  const [shareToast, setShareToast] = useState<string | null>(null);
+  const [activeSharedTourSlug, setActiveSharedTourSlug] = useState<string | null>(null);
+  const tourCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadTours = async () => {
       try {
-        const tours = await fetchAllTours({
-          forceRefresh: !cachedTours?.isFresh,
-        });
-        setAllTours(tours ?? []);
+        const tours = await fetchAllTours({ forceRefresh: true });
+        if (isMounted) {
+          setAllTours(tours ?? []);
+        }
       } catch (error) {
         // console.error("Failed to load tours", error);
-        if (!cachedTours?.tours?.length) {
+        if (isMounted && !cachedTours?.tours?.length) {
           setAllTours([]);
         }
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     loadTours();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  useEffect(() => {
+    if (!shareToast) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setShareToast(null);
+    }, 2500);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [shareToast]);
+
+  useEffect(() => {
+    if (!allTours.length) {
+      return;
+    }
+
+    const params = new URLSearchParams(location.search);
+    const sharedTourSlug = params.get("tour");
+
+    if (!sharedTourSlug) {
+      setActiveSharedTourSlug(null);
+      return;
+    }
+
+    const matchingTour = allTours.find(
+      (trip) => getTourShareSlug(trip.title) === sharedTourSlug,
+    );
+
+    if (!matchingTour) {
+      setActiveSharedTourSlug(null);
+      return;
+    }
+
+    if (matchingTour.region && matchingTour.region !== activeRegion) {
+      setActiveRegion(matchingTour.region);
+    }
+
+    if (!matchingTour.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+      setSearchQuery("");
+    }
+
+    setActiveSharedTourSlug(sharedTourSlug);
+
+    const scrollTimer = window.setTimeout(() => {
+      tourCardRefs.current[sharedTourSlug]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 150);
+
+    const highlightTimer = window.setTimeout(() => {
+      setActiveSharedTourSlug(null);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(highlightTimer);
+    };
+  }, [allTours, location.search, activeRegion, searchQuery]);
 
   const featuredTrips = allTours.filter((trip) => trip.featured);
 
@@ -69,8 +152,47 @@ const UpcomingPlans: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
+
   const imageDimension = { height: "15rem", width: "30rem" };
   const cardDimension = { height: "15rem" };
+
+  const buildTourShareUrl = (trip: any) => {
+    const shareUrl = new URL("/upcoming-plans", window.location.origin);
+    shareUrl.searchParams.set("tour", getTourShareSlug(trip.title));
+    return shareUrl.toString();
+  };
+
+  const handleShare = async (trip: any) => {
+    const shareUrl = buildTourShareUrl(trip);
+    const shareData = {
+      title: `${trip.title} | Maa Aasho Devi Tours`,
+      text: `View this tour package: ${trip.title}`,
+      url: shareUrl,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        setShareToast("Share link ready.");
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareUrl);
+      setShareToast("Share link copied.");
+    } catch (error) {
+      if ((error as Error)?.name === "AbortError") {
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setShareToast("Share link copied.");
+      } catch {
+        setShareToast("Could not share automatically.");
+      }
+    }
+  };
+
   const featuredTripSchemas = featuredTrips.slice(0, 6).map((trip) => ({
     "@type": "TouristTrip",
     name: trip.title,
@@ -284,6 +406,14 @@ const UpcomingPlans: React.FC = () => {
                       >
                         {getPackagePathForTitle(trip.title) ? "Open Package Page" : "Book Now"}
                       </Link>
+                      <button
+                        type="button"
+                        onClick={() => void handleShare(trip)}
+                        className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-primary/20 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
+                      >
+                        <Share2 size={14} className="mr-2" />
+                        Share This Package
+                      </button>
                       {getGuideForTourTitle(trip.title) ? (
                         <Link
                           to={getGuideForTourTitle(trip.title)?.path || "/blog"}
@@ -345,70 +475,89 @@ const UpcomingPlans: React.FC = () => {
                 {filteredTrips.map((trip, index) => (
                   <AnimatedCard key={trip.id} delay={index * 0.05}>
                     <div
-                      className="relative overflow-hidden"
-                      style={cardDimension}
+                      ref={(node) => {
+                        tourCardRefs.current[getTourShareSlug(trip.title)] = node;
+                      }}
+                      className={`rounded-3xl bg-white transition-all duration-500 ${
+                        activeSharedTourSlug === getTourShareSlug(trip.title)
+                          ? "ring-2 ring-primary ring-offset-4 ring-offset-gray-50 shadow-2xl"
+                          : ""
+                      }`}
                     >
-                      <img
-                        src={trip.image}
-                        alt={trip.title}
-                        className="object-cover transition-transform duration-500 hover:scale-110"
-                        style={imageDimension}
-                      />
-                      <div className="absolute top-4 right-4 bg-white text-primary px-3 py-1 rounded-full text-sm font-medium">
-                        {trip.duration}
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">
-                        {trip.title.includes("Yatra") ? (
-                          <>
-                            {trip.title.replace(" Yatra", "")} <i>Yatra</i>
-                          </>
-                        ) : (
-                          trip.title
-                        )}
-                      </h3>
-                      <div className="flex items-center text-sm text-gray-500 mb-2">
-                        <MapPin size={14} className="text-primary mr-1" />
-                        <span>{trip.state}</span>
-                      </div>
-                      <p
-                        className="text-gray-600 mb-4 line-clamp-2"
-                        dangerouslySetInnerHTML={{ __html: trip.description }}
-                      ></p>
-
-                      <div className="grid grid-cols-2 gap-2 mb-4">
-                        <div className="flex items-center">
-                          <Clock size={14} className="text-primary mr-1" />
-                          <span className="text-sm">{trip.duration}</span>
+                      <div
+                        className="relative overflow-hidden"
+                        style={cardDimension}
+                      >
+                        <img
+                          src={trip.image}
+                          alt={trip.title}
+                          className="object-cover transition-transform duration-500 hover:scale-110"
+                          style={imageDimension}
+                        />
+                        <div className="absolute top-4 right-4 bg-white text-primary px-3 py-1 rounded-full text-sm font-medium">
+                          {trip.duration}
                         </div>
-                        {/* <div className="flex items-center">
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-2">
+                          {trip.title.includes("Yatra") ? (
+                            <>
+                              {trip.title.replace(" Yatra", "")} <i>Yatra</i>
+                            </>
+                          ) : (
+                            trip.title
+                          )}
+                        </h3>
+                        <div className="flex items-center text-sm text-gray-500 mb-2">
+                          <MapPin size={14} className="text-primary mr-1" />
+                          <span>{trip.state}</span>
+                        </div>
+                        <p
+                          className="text-gray-600 mb-4 line-clamp-2"
+                          dangerouslySetInnerHTML={{ __html: trip.description }}
+                        ></p>
+
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                          <div className="flex items-center">
+                            <Clock size={14} className="text-primary mr-1" />
+                            <span className="text-sm">{trip.duration}</span>
+                          </div>
+                          {/* <div className="flex items-center">
                           <Users size={14} className="text-primary mr-1" />
                           <span className="text-sm">{trip.groupSize}</span>
                         </div> */}
-                        <div className="flex items-center">
-                          <Calendar size={14} className="text-primary mr-1" />
-                          <span className="text-sm">{trip.startDate}</span>
+                          <div className="flex items-center">
+                            <Calendar size={14} className="text-primary mr-1" />
+                            <span className="text-sm">{trip.startDate}</span>
+                          </div>
+                          <div className="flex items-center font-bold text-primary">
+                            {trip.price}
+                          </div>
                         </div>
-                        <div className="flex items-center font-bold text-primary">
-                          {trip.price}
-                        </div>
-                      </div>
 
-                      <Link
-                        to={getPackagePathForTitle(trip.title) || "/contact"}
-                        className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
-                      >
-                        {getPackagePathForTitle(trip.title) ? "Open Package Page" : "Book Now"}
-                      </Link>
-                      {getGuideForTourTitle(trip.title) ? (
                         <Link
-                          to={getGuideForTourTitle(trip.title)?.path || "/blog"}
-                          className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:underline"
+                          to={getPackagePathForTitle(trip.title) || "/contact"}
+                          className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 rounded-full transition-all duration-300 block text-center"
                         >
-                          Read related guide <ArrowRight size={14} className="ml-1" />
+                          {getPackagePathForTitle(trip.title) ? "Open Package Page" : "Book Now"}
                         </Link>
-                      ) : null}
+                        <button
+                          type="button"
+                          onClick={() => void handleShare(trip)}
+                          className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-primary/20 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
+                        >
+                          <Share2 size={14} className="mr-2" />
+                          Share This Package
+                        </button>
+                        {getGuideForTourTitle(trip.title) ? (
+                          <Link
+                            to={getGuideForTourTitle(trip.title)?.path || "/blog"}
+                            className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:underline"
+                          >
+                            Read related guide <ArrowRight size={14} className="ml-1" />
+                          </Link>
+                        ) : null}
+                      </div>
                     </div>
                   </AnimatedCard>
                 ))}
@@ -503,6 +652,14 @@ const UpcomingPlans: React.FC = () => {
           </motion.div>
         </div>
       </div>
+      {shareToast ? (
+        <div className="fixed right-4 top-24 z-50">
+          <div className="flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-lg">
+            <Check size={16} />
+            <span>{shareToast}</span>
+          </div>
+        </div>
+      ) : null}
     </PageTransition>
   );
 };
