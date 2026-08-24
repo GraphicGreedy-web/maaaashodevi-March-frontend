@@ -584,7 +584,7 @@ const Home: React.FC = () => {
               >
                 Bhopal Service <span className="text-primary">Coverage</span>
               </motion.h2>
-              <motion.p
+              {/* <motion.p
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -595,7 +595,7 @@ const Home: React.FC = () => {
                 These pages help travellers who search for a tour agency, travel agency,
                 family operator, or religious package support in Bhopal and then move into
                 higher-intent routes like Char Dham, Kedarnath, Ujjain, and Pashupatinath.
-              </motion.p>
+              </motion.p> */}
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
