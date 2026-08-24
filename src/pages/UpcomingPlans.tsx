@@ -57,7 +57,7 @@ const UpcomingPlans: React.FC = () => {
   const [shareToast, setShareToast] = useState<string | null>(null);
   const [activeSharedTourSlug, setActiveSharedTourSlug] = useState<string | null>(null);
   const tourCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const shouldSkipSharedScrollRef = useRef(false);
+  const shouldSkipSharedScrollRef = useRef<string | null>(null);
 
   useEffect(() => {
     const navigationEntry = performance.getEntriesByType("navigation")[0] as
@@ -71,7 +71,7 @@ const UpcomingPlans: React.FC = () => {
       return;
     }
 
-    shouldSkipSharedScrollRef.current = true;
+    shouldSkipSharedScrollRef.current = location.search;
     const previousScrollRestoration = window.history.scrollRestoration;
 
     window.history.scrollRestoration = "manual";
@@ -155,9 +155,7 @@ const UpcomingPlans: React.FC = () => {
 
     setActiveSharedTourSlug(sharedTourSlug);
 
-    if (shouldSkipSharedScrollRef.current) {
-      shouldSkipSharedScrollRef.current = false;
-
+    if (shouldSkipSharedScrollRef.current === location.search) {
       const highlightTimer = window.setTimeout(() => {
         setActiveSharedTourSlug(null);
       }, 3000);
