@@ -16,23 +16,17 @@ import {
   XCircle,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
-import { useContactHook, useContactStatusHook } from "../hooks/fetchHooks";
+import { useContactHook } from "../hooks/fetchHooks";
 import SEO from "../components/SEO";
 
 const initialFormData = {
   name: "",
   email: "",
   phone: "",
-  contactMethod: "Email",
-  subject: "",
   tour: "",
   message: "",
 };
 
-const wait = (ms: number) =>
-  new Promise((resolve) => {
-    window.setTimeout(resolve, ms);
-  });
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -92,41 +86,6 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
   const submitContact = useContactHook();
-  const fetchContactStatus = useContactStatusHook();
-
-  const monitorContactEmailStatus = async (contactId: string) => {
-    const maxPollAttempts = 6;
-
-    for (let attempt = 0; attempt < maxPollAttempts; attempt += 1) {
-      await wait(attempt === 0 ? 1500 : 3000);
-
-      const status = await fetchContactStatus(contactId);
-
-      if (status?.emailStatus === "sent") {
-        return {
-          type: "success" as const,
-          message: "Your message and confirmation email were sent successfully.",
-          showModal: true,
-        };
-      }
-
-      if (status?.emailStatus === "failed") {
-        return {
-          type: "error" as const,
-          message:
-            "Your message was saved, but the confirmation email could not be sent. Our team can still contact you directly.",
-          showModal: false,
-        };
-      }
-    }
-
-    return {
-      type: "success" as const,
-      message:
-        "Your message was submitted. Email delivery is still processing and may take a little longer.",
-      showModal: false,
-    };
-  };
 
   const handleSuccessRedirect = (path: string) => {
     setShowSuccessModal(false);
@@ -157,18 +116,13 @@ const Contact: React.FC = () => {
 
       if (response?.success === true) {
         setFormData(initialFormData);
-        if (response?.contactId) {
-          const emailToast = await monitorContactEmailStatus(response.contactId);
-          setToast(emailToast);
-          setShowSuccessModal(emailToast.showModal === true);
-        } else {
-          setToast({
-            type: "success",
-            message:
-              response.message ||
-              "Your message was submitted successfully. We'll contact you soon.",
-          });
-        }
+        setToast({
+          type: "success",
+          message:
+            response.message ||
+            "Your message was submitted successfully. We'll contact you soon.",
+        });
+        setShowSuccessModal(true);
       } else {
         setToast({
           type: "error",
@@ -399,57 +353,7 @@ const Contact: React.FC = () => {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                >
-                  <label
-                    htmlFor="contactMethod"
-                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
-                  >
-                    Preferred Contact Method
-                  </label>
-                  <select
-                    id="contactMethod"
-                    name="contactMethod"
-                    value={formData.contactMethod}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                  >
-                    <option value="Email">Email</option>
-                    <option value="Phone">Phone</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                  </select>
-                </motion.div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 }}
-                >
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1 p-2"
-                  >
-                    Subject <span className="text-[#ff6b6b]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent"
-                    placeholder="Enter subject"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
                 >
                   <label
                     htmlFor="tour"
@@ -552,33 +456,7 @@ const Contact: React.FC = () => {
             </div>
           </form>
         </motion.div>
-        {/* Hero Section with Contact Us Title */}
-        {/* <section className="py-5">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-120">
-                <a
-                  href="https://forms.gle/M13mFhbbfsNqJrpf6"
-                  target="_blank"
-                  className="bg-[#ff6b6b] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#ff5b5b] transition duration-300 flex items-center"
-                >
-                  <p className="align-centre">
-                    CLICK HERE --{" "}
-                    <span className="text-[#000000]">
-                      https://forms.gle/M13mFhbbfsNqJrpf6{" "}
-                    </span>
-                  </p>
-                  <button></button>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section> */}
+       
         <div className="w-full h-auto border flex justify-center shadow=lg bg-white">
           <div className="w-full h-[80%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {/* Main Content */}
@@ -705,13 +583,7 @@ const Contact: React.FC = () => {
                             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.548 4.048 1.507 5.744L.048 23.872l6.273-1.644A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.69 16.365c-.243.684-1.205 1.333-1.655 1.41-.432.074-.99.106-1.611-.102-.372-.117-.852-.277-1.467-.547-2.587-1.109-4.273-3.71-4.403-3.875-.13-.165-1.055-1.4-1.055-2.678 0-1.28.666-1.908.904-2.164.243-.256.53-.32.706-.32h.51c.16 0 .384-.038.596.457.228.523.78 1.81.848 1.94.064.128.106.277.021.448-.085.17-.128.277-.256.426-.133.16-.27.355-.385.476-.128.128-.262.27-.112.53.149.256.665 1.097 1.426 1.774.981.872 1.81 1.146 2.069 1.28.256.128.426.106.586-.064.16-.17.677-.79.857-1.066.181-.277.363-.235.607-.149.242.085 1.556.735 1.825.87.267.128.448.192.512.298.064.107.064.642-.18 1.326z" />
                           </svg>
                         </a>
-                        {/* <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition duration-300">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                      </svg>
-                    </a> */}
-                        {/* <a 
-                    </a> */}
+                   
                       </div>
                     </motion.div>
                   </motion.div>
@@ -760,49 +632,7 @@ const Contact: React.FC = () => {
                   </div>
                 </motion.div>
 
-                {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white p-6 rounded-xl border border-gray-200 hover:border-[#ff6b6b] transition duration-300"
-              >
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Delhi</h3>
-                <p className="text-gray-600 mb-1">123 Spiritual Avenue</p>
-                <p className="text-gray-600 mb-3">Delhi, India - 110001</p>
-                <p className="text-gray-600 mb-1">+91 98765 43210</p>
-                <p className="text-gray-600">delhi@maaashodevi.com</p>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white p-6 rounded-xl border border-gray-200 hover:border-[#ff6b6b] transition duration-300"
-              >
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Varanasi</h3>
-                <p className="text-gray-600 mb-1">456 Ganga Ghat Road</p>
-                <p className="text-gray-600 mb-3">Varanasi, UP - 221001</p>
-                <p className="text-gray-600 mb-1">+91 98765 43211</p>
-                <p className="text-gray-600">varanasi@maaashodevi.com</p>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-white p-6 rounded-xl border border-gray-200 hover:border-[#ff6b6b] transition duration-300"
-              >
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Haridwar</h3>
-                <p className="text-gray-600 mb-1">789 Har Ki Pauri</p>
-                <p className="text-gray-600 mb-3">Haridwar, UK - 249401</p>
-                <p className="text-gray-600 mb-1">+91 98765 43212</p>
-                <p className="text-gray-600">haridwar@maaashodevi.com</p>
-              </motion.div>
-            </div> */}
+                
               </div>
             </section>
           </div>
